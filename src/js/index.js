@@ -1,1 +1,2 @@
-const goodDay = "Hello mate, GooDAY";
+("Intentional Formatting Error");
+("Intentional Formatting Error");
