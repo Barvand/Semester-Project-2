@@ -1,8 +1,22 @@
+$body-bg: #1a1616;
+$primary: #0d6efd;
+$secondary: #dff0d8;
+$list-group-bg: rgb(145, 145, 145);
+$list-group-color: white;
+
+@import "../../node_modules/bootstrap/scss/functions";
+@import "variables";
+@import "variables-dark";
+@import "../../node_modules/bootstrap/scss/maps";
+@import "../../node_modules/bootstrap/scss/mixins";
+@import "../../node_modules/bootstrap/scss/utilities";
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
 $body-bg: #0000;
 
 body {
   font-family: "Montserrat", sans-serif;
 }
 h1 {
-  color: green;
+  color: white;
 }
