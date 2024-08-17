@@ -13,10 +13,6 @@
     "lint-fix": "eslint src/**/*.js --cache --fix",
     "prepare": "husky install"
   },
-  "repository": {
-    "build": "sass src/scss:dist/css",
-    "start": "sass --watch src/scss:dist/css & live-server"
-  },
   "author": "Bart van den Berg",
   "license": "ISC",
   "bugs": {
