@@ -1,6 +1,6 @@
 {
   "name": "semester-project-2",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Semester Project 2",
   "type": "module",
   "main": "index.js",
@@ -36,16 +36,15 @@
     "prettier": "^3.3.3"
   },
   "lint-staged": {
-  "*.js": [
-    "prettier --write",
-    "eslint --fix"
-  ],
-  "*.html": [
-    "prettier --write"
-  ],
-  "*.scss": [
-    "prettier --write"
-  ]
-}
+    "*.js": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.html": [
+      "prettier --write"
+    ],
+    "*.scss": [
+      "prettier --write"
+    ]
   }
-
+}
