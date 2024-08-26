@@ -26,7 +26,7 @@ export async function login(profile) {
       storage.save("profile", user);
 
       // Redirect to another page
-      window.location.href = "/feed/";
+      console.log(user);
     } else {
       // If login fails
       // Handle the error
