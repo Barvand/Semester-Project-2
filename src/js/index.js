@@ -1,11 +1,13 @@
 import * as listeners from "../js/handlers/index.js";
 import { getListings } from "./auth/postData/read.js";
 import { displayProducts } from "./render/productCards.js";
+import { renderSingleListing } from "./render/productPage.js";
 
 listeners.setRegisterFormListener();
 listeners.setLoginFormListener();
 listeners.setCreateListingFormListener();
 
+const individualListing = document.querySelector(".listing-page");
 const listingContainer = document.querySelector("listings-grid");
 
 async function renderAllPosts(parentElement) {
@@ -27,4 +29,6 @@ switch (path) {
   case "/listings/":
     renderAllPosts(listingContainer);
     break;
+  case "/listings/listing/":
+    renderSingleListing(individualListing);
 }

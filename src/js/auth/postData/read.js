@@ -4,7 +4,7 @@ import { fetchToken } from "../../fetchToken.js";
 
 const action = "/auction/listings";
 
-// const queryParams = "_author=true&_reactions=true&_comments=true";
+const queryParams = "_bids=true&_seller=true";
 
 export async function getListings() {
   try {
@@ -22,11 +22,11 @@ export async function getListings() {
   }
 }
 
-// export async function getPost(id) {
-//   if (!id) {
-//     throw new Error("GET requires a postID");
-//   }
-//   const getPostURL = `${API_SOCIAL_URL}${action}/${id}?${queryParams}`;
-//   const response = await fetchToken(getPostURL);
-//   return await response.json();
-// }
+export async function getListing(id) {
+  if (!id) {
+    throw new Error("GET requires a listing ID");
+  }
+  const getListingURL = `${API_BASE_URL}${action}/${id}?${queryParams}`;
+  const response = await fetchToken(getListingURL);
+  return await response.json();
+}

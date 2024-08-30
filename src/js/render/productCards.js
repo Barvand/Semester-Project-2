@@ -11,8 +11,9 @@ export async function displayProducts(products) {
     colDiv.className = "col-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mb-4";
 
     // Create the card div
-    const cardDiv = document.createElement("div");
+    const cardDiv = document.createElement("a");
     cardDiv.className = "card border-0";
+    cardDiv.href = `/listings/listing/?id=${product.id}`;
 
     // Create the image container with the overlay
     const imageContainer = document.createElement("div");
