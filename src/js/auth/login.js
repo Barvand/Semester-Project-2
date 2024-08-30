@@ -17,15 +17,18 @@ export async function login(profile) {
       body,
     });
 
+    // If login is successful
     if (response.ok) {
-      // If login is successful
-      const { accessToken, ...user } = await response.json();
+      const { data } = await response.json(); // Destructure 'data' from response
+      const { accessToken, ...user } = data; // Destructure 'accessToken' and the rest of the user data
+
+      console.log("Access Token:", accessToken); // Log the token to verify
 
       // Save token and user profile to storage
       storage.save("token", accessToken);
       storage.save("profile", user);
 
-      // Redirect to another page
+      // Redirect or handle successful login
       console.log(user);
     } else {
       // If login fails

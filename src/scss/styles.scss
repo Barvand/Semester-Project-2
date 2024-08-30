@@ -137,9 +137,6 @@ body {
 }
 
 // custom card styles
-.card-custom-width {
-  width: 18rem;
-}
 
 // Hero container homepage
 
@@ -159,4 +156,14 @@ body {
 
 .hero--container-text-h1 {
   font-size: 32px;
+}
+
+.card-width {
+  width: calc(100% / 4);
+}
+
+.card-img-top {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
 }

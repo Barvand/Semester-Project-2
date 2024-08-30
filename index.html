@@ -28,232 +28,593 @@
     <script type="module" src="/src/js/index.js"></script>
   </head>
   <body class="container">
-    <nav class="navbar navbar-expand-lg">
-      <div class="container-fluid p-0">
-        <a class="navbar-brand vindt-logo" href="#">VIND'T</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div
-          class="collapse navbar-collapse lg-display-flex justify-content-end"
-          id="navbarNav"
-        >
-          <ul class="navbar-nav d-flex gap-4">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/listings/"
-                >Listings</a
-              >
-            </li>
-            <li class="nav-item">
-              <button
-                class="nav-link"
-                data-bs-toggle="modal"
-                data-bs-target="#registerModal"
-              >
-                Register
-              </button>
-            </li>
-            <li class="nav-item">
-              <button
-                class="nav-link"
-                data-bs-toggle="modal"
-                data-bs-target="#loginModal"
-              >
-                Login
-              </button>
-            </li>
-            <li class="nav-item">
-              <a class="btn btn-secondary btn-custom" href="#">List an item</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <div class="container-fluid p-0">
-      <div class="row">
-        <div class="col-12 col-md-9 col-lg-6">
-          <form class="d-flex w-100" role="search">
-            <input
-              class="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button class="btn btn-outline-success" type="submit">
-              Search
-            </button>
-          </form>
-        </div>
-      </div>
-    </div>
-
-    <!-- Hero banner -->
-    <div class="container-fluid p-0 mt-5 hero--container position-relative">
-      <div class="hero--container-image">
-        <img
-          src="/images/heroe-banner-vindt.jpg"
-          alt="hero banner image. Woman sitting on cliff cheering"
-        />
-      </div>
-      <div class="container">
-        <div class="row">
-          <div
-            class="hero--container-text position-absolute top-50 start-50 translate-middle d-flex flex-column"
+    <div class="row">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid p-0">
+          <a class="navbar-brand vindt-logo" href="#">VIND'T</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
           >
-            <h1
-              class="text-uppercase display-1 text-white fw-bold align-self-sm-center align-self-center-md"
-            >
-              1000 <span class="highlight"> credits </span>
-            </h1>
-            <p
-              class="text-uppercase text-white hero--container-text-p fw-bold align-self-sm-center align-self-center-md"
-            >
-              for free upon registration
-            </p>
-            <a
-              class="btn btn-danger btn-custom text-white align-self-sm-center text-uppercase fw-bold"
-            >
-              click here
-            </a>
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div
+            class="collapse navbar-collapse lg-display-flex justify-content-end"
+            id="navbarNav"
+          >
+            <ul class="navbar-nav d-flex gap-4">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/listings/"
+                  >Listings</a
+                >
+              </li>
+              <li class="nav-item">
+                <button
+                  class="nav-link"
+                  data-bs-toggle="modal"
+                  data-bs-target="#registerModal"
+                >
+                  Register
+                </button>
+              </li>
+              <li class="nav-item">
+                <button
+                  class="nav-link"
+                  data-bs-toggle="modal"
+                  data-bs-target="#loginModal"
+                >
+                  Login
+                </button>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="btn btn-secondary btn-custom"
+                  href="#"
+                  data-bs-toggle="modal"
+                  data-bs-target="#listingModal"
+                  >List an item</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="container-fluid p-0">
+        <div class="row">
+          <div class="col-12 col-md-9 col-lg-6">
+            <form class="d-flex w-100" role="search">
+              <input
+                class="form-control me-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <button class="btn btn-outline-success" type="submit">
+                Search
+              </button>
+            </form>
           </div>
         </div>
       </div>
-      <a
-        class="navbar-brand vindt-logo position-absolute absolute top-0 end-0"
-        href="#"
-        >VIND'T</a
+
+      <!-- Hero banner -->
+      <div class="container-fluid p-0 mt-5 hero--container position-relative">
+        <div class="hero--container-image">
+          <img
+            src="/images/heroe-banner-vindt.jpg"
+            alt="hero banner image. Woman sitting on cliff cheering"
+          />
+        </div>
+        <div class="container">
+          <div class="row">
+            <div
+              class="hero--container-text position-absolute top-50 start-50 translate-middle d-flex flex-column"
+            >
+              <h1
+                class="text-uppercase display-1 text-white fw-bold align-self-sm-center align-self-center-md"
+              >
+                1000 <span class="highlight"> credits </span>
+              </h1>
+              <p
+                class="text-uppercase text-white hero--container-text-p fw-bold align-self-sm-center align-self-center-md"
+              >
+                for free upon registration
+              </p>
+              <a
+                class="btn btn-danger btn-custom text-white align-self-sm-center text-uppercase fw-bold"
+              >
+                click here
+              </a>
+            </div>
+          </div>
+        </div>
+        <a
+          class="navbar-brand vindt-logo position-absolute absolute top-0 end-0"
+          href="#"
+          >VIND'T</a
+        >
+      </div>
+
+      <!-- Carousel -->
+
+      <section class="mt-5 p-0">
+        <div id="carouselExample" class="carousel slide">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="card-wrapper d-flex gap-1">
+                <div class="card border-0">
+                  <div class="bg-black position-relative">
+                    <p
+                      class="text-white p-2 position-absolute top-0 end-0 third-bg-color rounded"
+                    >
+                      Ends in 3 hours
+                    </p>
+                  </div>
+                  <img
+                    src="/images/photocamera_VINDT.jpg"
+                    class="card-img-top"
+                    alt="product"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title text-secondary">Product name</h5>
+                    <p class="card-text">500 Credits</p>
+                  </div>
+                </div>
+                <div class="card border-0">
+                  <div class="bg-black position-relative">
+                    <p
+                      class="text-white p-2 position-absolute top-0 end-0 third-bg-color rounded"
+                    >
+                      Ends in 3 hours
+                    </p>
+                  </div>
+                  <img
+                    src="/images/photocamera_VINDT.jpg"
+                    class="card-img-top"
+                    alt="product"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title text-secondary">Product name</h5>
+                    <p class="card-text">500 Credits</p>
+                  </div>
+                </div>
+                <div class="card border-0">
+                  <div class="bg-black position-relative">
+                    <p
+                      class="text-white p-2 position-absolute top-0 end-0 third-bg-color rounded"
+                    >
+                      Ends in 3 hours
+                    </p>
+                  </div>
+                  <img
+                    src="/images/photocamera_VINDT.jpg"
+                    class="card-img-top"
+                    alt="product"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title text-secondary">Product name</h5>
+                    <p class="card-text">500 Credits</p>
+                  </div>
+                </div>
+                <div class="card border-0">
+                  <div class="bg-black position-relative">
+                    <p
+                      class="text-white p-2 position-absolute top-0 end-0 third-bg-color rounded"
+                    >
+                      Ends in 3 hours
+                    </p>
+                  </div>
+                  <img
+                    src="/images/photocamera_VINDT.jpg"
+                    class="card-img-top"
+                    alt="product"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title text-secondary">Product name</h5>
+                    <p class="card-text">500 Credits</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="card-wrapper d-flex gap-1">
+                <div class="card border-0">
+                  <div class="bg-black position-relative">
+                    <p
+                      class="text-white p-2 position-absolute top-0 end-0 third-bg-color rounded"
+                    >
+                      Ends in 3 hours
+                    </p>
+                  </div>
+                  <img
+                    src="/images/photocamera_VINDT.jpg"
+                    class="card-img-top"
+                    alt="product"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title text-secondary">Product name</h5>
+                    <p class="card-text">500 Credits</p>
+                  </div>
+                </div>
+                <div class="card border-0">
+                  <div class="bg-black position-relative">
+                    <p
+                      class="text-white p-2 position-absolute top-0 end-0 third-bg-color rounded"
+                    >
+                      Ends in 3 hours
+                    </p>
+                  </div>
+                  <img
+                    src="/images/photocamera_VINDT.jpg"
+                    class="card-img-top"
+                    alt="product"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title text-secondary">Product name</h5>
+                    <p class="card-text">500 Credits</p>
+                  </div>
+                </div>
+                <div class="card border-0">
+                  <div class="bg-black position-relative">
+                    <p
+                      class="text-white p-2 position-absolute top-0 end-0 third-bg-color rounded"
+                    >
+                      Ends in 3 hours
+                    </p>
+                  </div>
+                  <img
+                    src="/images/photocamera_VINDT.jpg"
+                    class="card-img-top"
+                    alt="product"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title text-secondary">Product name</h5>
+                    <p class="card-text">500 Credits</p>
+                  </div>
+                </div>
+                <div class="card border-0">
+                  <div class="bg-black position-relative">
+                    <p
+                      class="text-white p-2 position-absolute top-0 end-0 third-bg-color rounded"
+                    >
+                      Ends in 3 hours
+                    </p>
+                  </div>
+                  <img
+                    src="/images/photocamera_VINDT.jpg"
+                    class="card-img-top"
+                    alt="product"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title text-secondary">Product name</h5>
+                    <p class="card-text">500 Credits</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel-item">
+              <div class="card-wrapper d-grid gap-1">
+                <div class="card border-0">
+                  <div class="bg-black position-relative">
+                    <p
+                      class="text-white p-2 position-absolute top-0 end-0 third-bg-color rounded"
+                    >
+                      Ends in 3 hours
+                    </p>
+                  </div>
+                  <img
+                    src="/images/photocamera_VINDT.jpg"
+                    class="card-img-top"
+                    alt="product"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title text-secondary">Product name</h5>
+                    <p class="card-text">500 Credits</p>
+                  </div>
+                </div>
+                <div class="card border-0">
+                  <div class="bg-black position-relative">
+                    <p
+                      class="text-white p-2 position-absolute top-0 end-0 third-bg-color rounded"
+                    >
+                      Ends in 3 hours
+                    </p>
+                  </div>
+                  <img
+                    src="/images/photocamera_VINDT.jpg"
+                    class="card-img-top"
+                    alt="product"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title text-secondary">Product name</h5>
+                    <p class="card-text">500 Credits</p>
+                  </div>
+                </div>
+                <div class="card border-0">
+                  <div class="bg-black position-relative">
+                    <p
+                      class="text-white p-2 position-absolute top-0 end-0 third-bg-color rounded"
+                    >
+                      Ends in 3 hours
+                    </p>
+                  </div>
+                  <img
+                    src="/images/photocamera_VINDT.jpg"
+                    class="card-img-top"
+                    alt="product"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title text-secondary">Product name</h5>
+                    <p class="card-text">500 Credits</p>
+                  </div>
+                </div>
+                <div class="card border-0">
+                  <div class="bg-black position-relative">
+                    <p
+                      class="text-white p-2 position-absolute top-0 end-0 third-bg-color rounded"
+                    >
+                      Ends in 3 hours
+                    </p>
+                  </div>
+                  <img
+                    src="/images/photocamera_VINDT.jpg"
+                    class="card-img-top"
+                    alt="product"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title text-secondary">Product name</h5>
+                    <p class="card-text">500 Credits</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button
+              class="carousel-control-prev"
+              type="button"
+              data-bs-target="#carouselExample"
+              data-bs-slide="prev"
+            >
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button
+              class="carousel-control-next"
+              type="button"
+              data-bs-target="#carouselExample"
+              data-bs-slide="next"
+            >
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Registration Modal -->
+      <div
+        class="modal fade"
+        id="registerModal"
+        tabindex="-1"
+        aria-labelledby="registerModalLabel"
+        aria-hidden="true"
       >
-    </div>
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="registerModalLabel">Register</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <!-- Registration Form -->
+              <form id="registerForm">
+                <div class="mb-3">
+                  <label for="username" class="form-label">Username</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="username"
+                    name="name"
+                    placeholder="Enter your username"
+                    required
+                  />
+                </div>
 
-    <!-- Registration Modal -->
-    <div
-      class="modal fade"
-      id="registerModal"
-      tabindex="-1"
-      aria-labelledby="registerModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="registerModalLabel">Register</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <!-- Registration Form -->
-            <form id="registerForm">
-              <div class="mb-3">
-                <label for="username" class="form-label">Username</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="username"
-                  name="name"
-                  placeholder="Enter your username"
-                  required
-                />
-              </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email address</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    name="email"
+                    placeholder="name@example.com"
+                    required
+                  />
+                </div>
 
-              <div class="mb-3">
-                <label for="email" class="form-label">Email address</label>
-                <input
-                  type="email"
-                  class="form-control"
-                  id="email"
-                  name="email"
-                  placeholder="name@example.com"
-                  required
-                />
-              </div>
+                <div class="mb-3">
+                  <label for="password" class="form-label">Password</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    name="password"
+                    placeholder="Enter your password"
+                    required
+                  />
+                </div>
 
-              <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input
-                  type="password"
-                  class="form-control"
-                  id="password"
-                  name="password"
-                  placeholder="Enter your password"
-                  required
-                />
-              </div>
-
-              <!-- Submit Button -->
-              <div class="d-grid">
-                <button type="submit" class="btn btn-primary">Register</button>
-              </div>
-            </form>
+                <!-- Submit Button -->
+                <div class="d-grid">
+                  <button type="submit" class="btn btn-primary">
+                    Register
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <!-- Login Modal -->
-    <div
-      class="modal fade"
-      id="loginModal"
-      tabindex="-1"
-      aria-labelledby="loginModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="registerModalLabel">Register</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <!-- Login modal -->
-            <form id="loginForm">
-              <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="email"
-                  name="email"
-                  placeholder="Enter your username"
-                  required
-                />
-              </div>
+      <!-- Login Modal -->
+      <div
+        class="modal fade"
+        id="loginModal"
+        tabindex="-1"
+        aria-labelledby="loginModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="registerModalLabel">Register</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <!-- Login modal -->
+              <form id="loginForm">
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your username"
+                    required
+                  />
+                </div>
 
-              <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input
-                  type="password"
-                  class="form-control"
-                  id="password"
-                  name="password"
-                  placeholder="Enter your password"
-                  required
-                />
-              </div>
+                <div class="mb-3">
+                  <label for="password" class="form-label">Password</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    name="password"
+                    placeholder="Enter your password"
+                    required
+                  />
+                </div>
 
-              <!-- Submit Button -->
-              <div class="d-grid">
-                <button type="submit" class="btn btn-primary">Log in</button>
-              </div>
-            </form>
+                <!-- Submit Button -->
+                <div class="d-grid">
+                  <button type="submit" class="btn btn-primary">Log in</button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+
+      <!-- Listing Modal -->
+      <div
+        class="modal fade"
+        id="listingModal"
+        tabindex="-1"
+        aria-labelledby="listingModalLabel"
+        aria-hidden="true"
+        >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="listingModalLabel">
+                Create a listing
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <!-- Create a listing modal -->
+              <form id="createListingForm">
+  <div class="mb-3">
+    <label for="title" class="form-label">
+      Product title <span class="text-danger"> * </span>
+    </label>
+    <input
+      type="text"
+      class="form-control"
+      id="title"
+      name="title"
+      placeholder="Enter a title for your product(s)"
+      required
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="description" class="form-label">
+      Product description <span class="text-danger"> * </span>
+    </label>
+    <textarea
+      class="form-control"
+      id="description"
+      name="description"
+      placeholder="Enter your description"
+      rows="3"
+      required
+    ></textarea>
+  </div>
+
+  <div class="mb-3">
+    <label for="tag" class="form-label">Add tag(s)</label>
+    <input
+      type="text"
+      class="form-control"
+      id="tag"
+      name="tag"
+      placeholder="Add tag(s)"
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="deadline-date" class="form-label">Add deadline date</label>
+    <input
+      type="date"
+      class="form-control"
+      id="deadline-date"
+      name="deadline-date"
+      required
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="media-url" class="form-label">Media URL</label>
+    <input
+      type="url"
+      class="form-control"
+      id="media-url"
+      name="media-url"
+      placeholder="Enter media URL"
+      required
+    />
+  </div>
+           </div>
+          </div>
+        </div>
+      </div>
   </body>
 </html>

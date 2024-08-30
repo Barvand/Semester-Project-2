@@ -7,7 +7,7 @@ import { load } from "../js/storage/index.js";
  * @example
  * const token = load("token");
  * return {
- * "content-type": "aaplication/json",
+ * "content-type": "application/json",
  * Authorization: `Bearer token`.
  * };
  */
@@ -17,6 +17,7 @@ export function headers() {
   return {
     "content-type": "application/json",
     Authorization: `Bearer ${token}`,
+    "X-Noroff-API-Key": "88d93122-2a0f-40c1-9ed3-c3e9a42c52c8",
   };
 }
 
