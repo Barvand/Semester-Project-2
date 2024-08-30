@@ -2,13 +2,15 @@ import * as listeners from "../js/handlers/index.js";
 import { getListings } from "./auth/postData/read.js";
 import { displayProducts } from "./render/productCards.js";
 import { renderSingleListing } from "./render/productPage.js";
+import { renderProfile } from "./render/profilePage.js";
 
 listeners.setRegisterFormListener();
 listeners.setLoginFormListener();
 listeners.setCreateListingFormListener();
 
 const individualListing = document.querySelector(".listing-page");
-const listingContainer = document.querySelector("listings-grid");
+const listingContainer = document.querySelector(".listings-grid");
+const profileContainer = document.querySelector(".profile-page");
 
 async function renderAllPosts(parentElement) {
   try {
@@ -31,4 +33,7 @@ switch (path) {
     break;
   case "/listings/listing/":
     renderSingleListing(individualListing);
+    break;
+  case "/profiles/profile/":
+    renderProfile(profileContainer);
 }

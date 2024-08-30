@@ -1,5 +1,4 @@
 import { API_BASE_URL } from "../../constants.js";
-
 import { fetchToken } from "../../fetchToken.js";
 
 const action = "/auction/listings";

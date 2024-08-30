@@ -79,8 +79,9 @@ async function createDisplayBids(listing, parentElement) {
 }
 
 async function createProductSeller(listing, parentElement) {
-  const sellerName = document.createElement("p");
+  const sellerName = document.createElement("a");
   sellerName.innerText = listing.data.seller.name;
+  sellerName.href = `/profiles/profile/?name=${listing.data.seller.name}`;
   parentElement.appendChild(sellerName);
 
   const sellerImage = document.createElement("img");
