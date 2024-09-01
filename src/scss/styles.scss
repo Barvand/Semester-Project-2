@@ -76,6 +76,7 @@ nav {
 // colours
 :root {
   --third-color: #3c3131;
+  --bg-color: rgb(145, 145, 145);
 
   // fonts
   --main-font: "Darker Grotesque", Arial, sans-serif;
@@ -166,4 +167,24 @@ body {
   width: 100%;
   height: 200px;
   object-fit: cover;
+}
+
+// Profile page
+
+.profile-banner {
+  width: 100%;
+  height: 200px;
+}
+
+.avatar-wrapper {
+  max-width: 300px;
+}
+
+.profile-avatar {
+  object-fit: cover;
+  width: 100%;
+}
+
+.edit-profile {
+  margin-left: auto; /* Pushes the edit-profile div to the right */
 }

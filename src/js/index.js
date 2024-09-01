@@ -19,7 +19,7 @@ async function renderAllPosts(parentElement) {
 
     console.log(listings);
 
-    displayProducts(listings);
+    displayProducts(listings, listingContainer);
   } catch (error) {
     console.error("Error rendering posts:", error);
   }
