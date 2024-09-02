@@ -1,6 +1,7 @@
 import { getProfile } from "../auth/profileData/index.js";
 import { load } from "../storage/load.js";
 import { displayProducts } from "./productCards.js";
+import { calculateHoursLeft } from "./productCards.js";
 
 export async function renderProfile(parentElement) {
   // Get the post ID from the query string

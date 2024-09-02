@@ -5,8 +5,6 @@ export async function deleteListingFormListener() {
   const url = new URL(location.href);
   const id = url.searchParams.get("id");
 
-  console.log(id);
-
   // Display a confirmation dialog to the user
   const confirmed = window.confirm(
     "Are you sure you want to delete this post?",

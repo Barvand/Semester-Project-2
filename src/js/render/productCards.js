@@ -105,7 +105,7 @@ async function createBidsCount(product, parentElement) {
   parentElement.appendChild(cardBids);
 }
 
-function calculateHoursLeft(endsAt) {
+export function calculateHoursLeft(endsAt) {
   const endsAtDate = new Date(endsAt);
   const currentDate = new Date();
   const diffInMs = endsAtDate - currentDate;

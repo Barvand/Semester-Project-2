@@ -63,6 +63,9 @@ nav {
   font-weight: 600;
 }
 
+a {
+  text-decoration: none;
+}
 // VIND'T logo
 .vindt-logo {
   font-family: "Bungee", sans-serif;
@@ -167,6 +170,28 @@ body {
   width: 100%;
   height: 200px;
   object-fit: cover;
+}
+
+// Listing page
+
+.avatar-profile-img {
+  height: 60px;
+  width: 60px;
+  object-fit: cover;
+  padding: 5px;
+}
+
+.listing-image-wrapper {
+  height: 500px;
+  background-color: #ebe8e8;
+  border-radius: 25px;
+}
+
+.listing-image-wrapper img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  padding: 5px;
 }
 
 // Profile page
