@@ -1,11 +1,28 @@
 // Function to dynamically create and display product cards
-export async function displayProducts(products, parentElement) {
+export function displayProducts(products, parentElement) {
+  // Ensure `products` is an array
+  if (!Array.isArray(products)) {
+    console.error("Expected an array of products. Received:", products);
+    return;
+  }
+
+  // Clear existing content in the parent element
+  parentElement.innerHTML = "";
+
+  // Create and append product cards
   products.forEach((product) => {
+    // Ensure product has the necessary data
+    if (!product || !product.title || !product.id) {
+      console.error("Invalid product:", product);
+      return;
+    }
+
     // Create the main col div
     const colDiv = document.createElement("div");
     colDiv.className = "col-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mb-4";
     parentElement.appendChild(colDiv);
 
+    // Create and append the product card
     createCardDiv(product, colDiv);
   });
 }

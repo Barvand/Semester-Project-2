@@ -3,10 +3,12 @@ import { getListings } from "./auth/postData/read.js";
 import { displayProducts } from "./render/productCards.js";
 import { renderSingleListing } from "./render/productPage.js";
 import { renderProfile } from "./render/profilePage.js";
+import { searchBar } from "./filters/index.js";
 
 listeners.setRegisterFormListener();
 listeners.setLoginFormListener();
 listeners.setCreateListingFormListener();
+searchBar();
 
 const individualListing = document.querySelector(".listing-page");
 const listingContainer = document.querySelector(".listings-grid");
