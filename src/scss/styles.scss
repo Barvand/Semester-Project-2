@@ -4,6 +4,7 @@ $danger: #f30000;
 $list-group-bg: rgb(145, 145, 145);
 $list-group-color: white;
 $gradient-primary: linear-gradient(to top left, #00f56e, #10b601);
+$border-radius: 5px;
 
 @import "../../node_modules/bootstrap/scss/functions";
 @import "variables";
@@ -72,7 +73,7 @@ a {
   background: $primary;
   color: white;
   padding: 2px 4px 2px 4px;
-  border-radius: 5px;
+  border-radius: $border-radius;
   font-size: 20px;
 }
 
@@ -86,7 +87,6 @@ a {
 }
 
 // fonts
-
 h1,
 h2,
 h3,
@@ -108,7 +108,10 @@ body {
 // body background image
 body {
   background-image: url("/images/mhk_7.jpg");
-  background-position: contain;
+  background-position: 50% 50%;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr auto;
 }
 
 .highlight {
@@ -137,7 +140,8 @@ body {
 .btn-custom {
   padding-right: 20px;
   padding-left: 20px;
-  border-radius: 25px;
+  margin: 0;
+  border-radius: $border-radius;
 }
 
 // custom card styles
@@ -172,6 +176,8 @@ body {
   object-fit: cover;
 }
 
+// Carousel homepage
+
 // Listing page
 
 .avatar-profile-img {
@@ -184,7 +190,6 @@ body {
 .listing-image-wrapper {
   height: 500px;
   background-color: #ebe8e8;
-  border-radius: 25px;
 }
 
 .listing-image-wrapper img {
@@ -212,4 +217,22 @@ body {
 
 .edit-profile {
   margin-left: auto; /* Pushes the edit-profile div to the right */
+}
+
+// footer
+footer {
+  background-color: #e2e2e2;
+}
+
+// card hover
+
+.card:hover {
+  box-shadow: 1px 1px 5px #8d8b8b;
+  transition: 0.3s ease;
+}
+
+// error message
+.error-message {
+  color: red;
+  font-weight: bold;
 }

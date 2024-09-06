@@ -115,10 +115,13 @@ async function profileBannerDiv(profile, parentElement) {
   profileBannerDiv.appendChild(editProfileDiv);
 
   const editProfileText = document.createElement("p");
-  editProfileText.classList.add("p-1");
+  editProfileText.classList.add("p-1", "btn", "btn-custom");
   editProfileText.innerText = "Edit profile";
   editProfileDiv.appendChild(editProfileText);
 
+  editProfileText.setAttribute("data-bs-toggle", "modal");
+  editProfileText.setAttribute("data-bs-target", "#editProfileModal");
+  editProfileText.style.cursor = "pointer";
   parentElement.appendChild(profileBannerDiv);
 }
 

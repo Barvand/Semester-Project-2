@@ -4,10 +4,17 @@ import { displayProducts } from "./render/productCards.js";
 import { renderSingleListing } from "./render/productPage.js";
 import { renderProfile } from "./render/profilePage.js";
 import { searchBar } from "./filters/index.js";
+import { displayCredits } from "./render/navCredits.js";
+import { renderCarousel } from "./render/carousel.js";
+
+displayCredits();
+renderCarousel();
 
 listeners.setRegisterFormListener();
 listeners.setLoginFormListener();
 listeners.setCreateListingFormListener();
+listeners.setUpdateProfileFormListener();
+
 searchBar();
 
 const individualListing = document.querySelector(".listing-page");

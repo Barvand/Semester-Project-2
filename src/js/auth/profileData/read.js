@@ -9,7 +9,6 @@ export async function getProfiles() {
   const response = await fetchToken(getProfileURL);
   const result = await response.json();
 
-  console.log(result);
   return result;
 }
 

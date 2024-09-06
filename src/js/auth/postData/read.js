@@ -10,7 +10,6 @@ export async function getListings() {
     const getListingsURL = `${API_BASE_URL}${action}`;
     const response = await fetchToken(getListingsURL);
 
-    console.log(response);
     if (!response.ok) {
       throw new Error("Failed to fetch posts");
     }

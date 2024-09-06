@@ -2,7 +2,8 @@ import { getListing } from "../auth/postData/read.js";
 import { load } from "../storage/load.js";
 import { deleteListingFormListener } from "../handlers/deleteListing.js";
 import { calculateHoursLeft } from "./productCards.js";
-import { renderBidsProductsPage } from "./bids.js";
+import { createBiddingTable } from "./bidForm.js";
+import { createBidButton } from "./bidForm.js";
 
 export async function renderSingleListing(parentElement) {
   // Get the post ID from the query string
@@ -13,8 +14,6 @@ export async function renderSingleListing(parentElement) {
     // Fetch the post data based on the ID
     const listing = await getListing(id);
 
-    console.log(listing.data.bids[0].bidder);
-
     // Render the post with the fetched data
     createProductPage(listing, parentElement);
   } catch (error) {
@@ -24,7 +23,12 @@ export async function renderSingleListing(parentElement) {
 
 export async function createProductPage(listing, parentElement) {
   const imageElementDiv = document.createElement("div");
-  imageElementDiv.classList.add("listing-image-wrapper", "col-12", "col-md-8");
+  imageElementDiv.classList.add(
+    "listing-image-wrapper",
+    "col-12",
+    "col-md-8",
+    "rounded",
+  );
   parentElement.appendChild(imageElementDiv);
 
   const textElementDiv = document.createElement("div");
@@ -42,7 +46,8 @@ export async function createProductPage(listing, parentElement) {
   createDisplayBids(listing, textElementDiv);
   createPlaceABidBtn(textElementDiv);
   createTimer(listing, textElementDiv, hoursLeft);
-  renderBidsProductsPage(listing, bidsProfileSection);
+  createBiddingTable(listing, bidsProfileSection);
+  createBidButton(bidsProfileSection);
 
   // only displays the delete button if currentUser name matches the seller name.
   const currentUser = load("profile");
@@ -115,7 +120,7 @@ async function createTimer(listing, parentElement, hoursLeft) {
 
 async function createProductSeller(listing, parentElement) {
   const sellerInfoDiv = document.createElement("a");
-  sellerInfoDiv.classList.add("d-flex", "bg-secondary");
+  sellerInfoDiv.classList.add("d-flex", "bg-secondary", "rounded");
   sellerInfoDiv.href = `/profiles/profile/?name=${listing.data.seller.name}`;
   parentElement.appendChild(sellerInfoDiv);
 

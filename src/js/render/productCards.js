@@ -19,7 +19,8 @@ export function displayProducts(products, parentElement) {
 
     // Create the main col div
     const colDiv = document.createElement("div");
-    colDiv.className = "col-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mb-4";
+    colDiv.className =
+      "card-hover col-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mb-4 rounded";
     parentElement.appendChild(colDiv);
 
     // Create and append the product card
@@ -30,7 +31,7 @@ export function displayProducts(products, parentElement) {
 // Create the card div
 async function createCardDiv(product, parentElement) {
   const cardDiv = document.createElement("div");
-  cardDiv.className = "card border-0";
+  cardDiv.className = "card border-0 rounded";
   parentElement.appendChild(cardDiv);
 
   const hoursLeft = calculateHoursLeft(product.endsAt);
@@ -42,13 +43,13 @@ async function createCardDiv(product, parentElement) {
 // Create the image container with the overlay
 async function createImageAndOverlay(parentElement, product, time) {
   const imageContainer = document.createElement("a");
-  imageContainer.className = "bg-black position-relative";
+  imageContainer.className = "bg-black position-relative rounded";
   imageContainer.href = `/listings/listing/?id=${product.id}`;
   parentElement.appendChild(imageContainer);
 
   const overlayText = document.createElement("p");
   overlayText.className =
-    "text-white p-2 position-absolute top-0 end-0 third-bg-color rounded";
+    "text-white p-2 position-absolute top-0 end-0 bg-black rounded";
   overlayText.textContent = `Ends in ${time} hours`;
 
   // Append the overlay text to the image container
@@ -82,8 +83,8 @@ async function cardBody(parentElement, product) {
   cardBody.className = "card-body";
 
   // Create the card title
-  const cardTitle = document.createElement("h5");
-  cardTitle.className = "card-title text-secondary";
+  const cardTitle = document.createElement("h2");
+  cardTitle.className = "card-title h4 text-capitalize";
   cardTitle.textContent = product.title;
   cardBody.appendChild(cardTitle);
 
