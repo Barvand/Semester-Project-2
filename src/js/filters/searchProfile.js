@@ -28,6 +28,8 @@ export async function searchBar() {
 
         const resultData = results.data;
 
+        console.log(resultData);
+
         displaySearchResults(resultData); // Function to display the search results
       } catch (error) {
         console.error("Error fetching search results:", error);

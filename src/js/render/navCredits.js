@@ -2,28 +2,41 @@ import { getProfile } from "../auth/profileData/index.js";
 import { load } from "../storage/load.js";
 
 export async function displayCredits() {
-  // Load the current user's profile
   const currentUser = load("profile");
 
-  // Check if the user is logged in
   if (!currentUser) {
-    // If not logged in, exit the function early
     return;
   }
 
   try {
-    // Fetch the profile data based on the current user's name
     const profile = await getProfile(currentUser.name);
-
-    // Get the credits from the profile data
     const credits = profile.data.credits;
 
-    // Find the element where credits will be displayed
+    // Display credits in the designated column
     const userCredits = document.querySelector(".credits");
-
-    // Display the credits and make the element visible
     userCredits.innerHTML = `<p> Balance <i class="fa-solid fa-dollar-sign"></i> ${credits} </p>`;
-    userCredits.classList.remove("d-none");
+    userCredits.classList.add("p-0", "m-0");
+
+    // Create and append user info
+    const userInfoDiv = document.createElement("div");
+    userInfoDiv.classList.add("d-flex", "align-items-center");
+
+    const userAvatar = document.createElement("img");
+    userAvatar.classList.add("avatar-profile-img", "rounded-circle");
+    userAvatar.src = profile.data.avatar.url;
+    userAvatar.alt = profile.data.avatar.alt;
+
+    const userName = document.createElement("p");
+    userName.textContent = profile.data.name;
+    userName.classList.add("mb-0", "ms-2"); // Adds margin-left for spacing
+
+    userInfoDiv.appendChild(userAvatar);
+    userInfoDiv.appendChild(userName);
+
+    const userInfoColumn = document.querySelector(
+      ".col-12.col-md-4.d-flex.justify-content-end.align-items-center",
+    );
+    userInfoColumn.appendChild(userInfoDiv);
   } catch (error) {
     console.error("Error fetching or displaying credits:", error);
   }

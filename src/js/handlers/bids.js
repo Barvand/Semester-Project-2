@@ -12,28 +12,34 @@ export async function setCreateBiddingFormListener() {
   const form = document.querySelector("#bidForm");
   const parentElement = document.querySelector(".bids");
 
-  if (form) {
-    form.addEventListener("submit", async (event) => {
-      event.preventDefault(); // Prevent default form submission
-
-      const formData = new FormData(event.target);
-      const bidAmount = formData.get("bidAmount"); // Get bid amount value
-
-      // Create bid object to be sent to the API
-      const amount = {
-        amount: Number(bidAmount),
-      };
-
-      try {
-        // Send the bid amount to the API
-        await createBids(amount);
-
-        location.reload();
-      } catch (error) {
-        console.error("Error placing bid:", error);
-      }
-    });
-  } else {
+  if (!form) {
     console.error("Bid form not found.");
+    return;
   }
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault(); // Prevent default form submission
+
+    const formData = new FormData(event.target);
+    const bidAmount = formData.get("bidAmount"); // Get bid amount value
+
+    const amount = {
+      amount: Number(bidAmount),
+    };
+
+    try {
+      // Send the bid amount to the API
+      const response = await createBids(amount);
+
+      // Check if the response status is 400
+      if (response === 400) {
+        console.error("Invalid bid amount, no page refresh.");
+        return;
+      } else {
+        window.location.reload();
+      }
+    } catch (error) {
+      console.error("An error occurred while submitting the bid:", error);
+    }
+  });
 }

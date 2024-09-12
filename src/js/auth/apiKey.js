@@ -3,7 +3,7 @@ import { API_BASE_URL } from "../constants.js";
 const action = "/auth/create-api-key";
 const method = "post";
 
-async function createApiKey() {
+export async function createApiKey() {
   const createApiKeyURL = API_BASE_URL + action;
   const body = JSON.stringify({
     name: "My API Key name", // Example data to be sent in the body
@@ -21,6 +21,8 @@ async function createApiKey() {
 
     if (response.ok) {
       const apiKeyData = await response.json();
+
+      console.log(apiKeyData);
       return apiKeyData; // Optionally return the created API key data
     } else {
       const errorMessage = await response.text();

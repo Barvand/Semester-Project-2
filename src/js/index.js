@@ -6,9 +6,12 @@ import { renderProfile } from "./render/profilePage.js";
 import { searchBar } from "./filters/index.js";
 import { displayCredits } from "./render/navCredits.js";
 import { renderCarousel } from "./render/carousel.js";
+import { renderNavUser } from "./render/navigation.js";
+import { handleProfiles } from "./handlers/profilesHandler.js";
 
 displayCredits();
 renderCarousel();
+renderNavUser();
 
 listeners.setRegisterFormListener();
 listeners.setLoginFormListener();
@@ -25,9 +28,6 @@ async function renderAllPosts(parentElement) {
   try {
     const response = await getListings();
     const listings = response.data;
-
-    console.log(listings);
-
     displayProducts(listings, listingContainer);
   } catch (error) {
     console.error("Error rendering posts:", error);
@@ -45,4 +45,7 @@ switch (path) {
     break;
   case "/profiles/profile/":
     renderProfile(profileContainer);
+    break;
+  case "/profiles/":
+    handleProfiles();
 }

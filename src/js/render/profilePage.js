@@ -1,7 +1,7 @@
 import { getProfile } from "../auth/profileData/index.js";
 import { load } from "../storage/load.js";
 import { displayProducts } from "./productCards.js";
-import { calculateHoursLeft } from "./productCards.js";
+import { renderEditModal } from "./editProfileModal.js";
 
 export async function renderProfile(parentElement) {
   // Get the post ID from the query string
@@ -18,6 +18,7 @@ export async function renderProfile(parentElement) {
 
     // this renders the user data.
     renderProfilePage(profile, parentElement);
+    renderEditModal(profile);
 
     // displays listings of the USER
     displayProducts(profileListing, listingContainer);
@@ -49,80 +50,40 @@ export async function renderProfilePage(profile, parentElement) {
   textContainer.appendChild(flexContainer);
 }
 
-// async function createProfileName(profile, parentElement) {
-//   const profileName = document.createElement("h1");
-//   profileName.innerText = profile.data.name;
-//   parentElement.appendChild(profileName);
-// }
-
-// async function createProfileBio(profile, parentElement) {
-//   const profileBio = document.createElement("p");
-//   profileBio.innerText = profile.data.bio;
-//   parentElement.appendChild(profileBio);
-
-// }
-
-// async function createAvailableCredits(profile, parentElement) {
-//   const credits = document.createElement("p");
-//   credits.innerText = `Credits ${profile.data.credits}`;
-//   parentElement.appendChild(credits);
-// }
-
-// async function createProfileAvatar(profile, parentElement) {
-//   const avatarWrapper = document.createElement("div")
-//   avatarWrapper.classList.add("avatar-wrapper", "m-1");
-//   parentElement.appendChild(avatarWrapper);
-
-//   const profileAvatar = document.createElement("img");
-//   profileAvatar.src = profile.data.avatar.url;
-//   profileAvatar.alt = profile.data.avatar.alt;
-//   profileAvatar.classList.add(
-//     "rounded-circle",
-//     "border-white",
-//     "profile-avatar",
-//   );
-//   avatarWrapper.appendChild(profileAvatar);
-// }
-
-// async function createProfileBanner(profile) {
-//   const profileBanner = document.querySelector(".profile-banner");
-//  profileBanner.style.backgroundImage = `url(${profile.data.banner.url})`;
-// }
-
-// async function createAvatar(profile) {
-//   const profileAvatar = document.querySelector(".profile-avatar");
-//   profileAvatar.src = `${profile.data.avatar.url}`
-//   profileAvatar.alt = `${profile.data.avatar.alt}`
-// }
-
-// async function createProfileName(profile) {
-//   const profileName = document.querySelector(".profile-name");
-//   profileName.innerText = `${profile.data.name}`
-// }
-
-// async function createBioText(profile) {
-//   const bioText = document.querySelector(".bio-text");
-//   bioText.innerText = `${profile.data.bio}`
-// }
-
 async function profileBannerDiv(profile, parentElement) {
-  const profileBannerDiv = document.createElement("div");
-  profileBannerDiv.classList.add("profile-banner");
-  profileBannerDiv.style.backgroundImage = `url(${profile.data.banner.url})`;
+  const currentUser = load("profile");
 
-  const editProfileDiv = document.createElement("div");
-  editProfileDiv.classList.add("edit-profile", "col-12", "col-md-1");
-  profileBannerDiv.appendChild(editProfileDiv);
+  if (currentUser.name === profile.data.name) {
+    const profileBannerDiv = document.createElement("div");
+    profileBannerDiv.classList.add("profile-banner");
+    profileBannerDiv.style.backgroundImage = `url(${profile.data.banner.url})`;
 
-  const editProfileText = document.createElement("p");
-  editProfileText.classList.add("p-1", "btn", "btn-custom");
-  editProfileText.innerText = "Edit profile";
-  editProfileDiv.appendChild(editProfileText);
+    const editProfileDiv = document.createElement("div");
+    editProfileDiv.classList.add("edit-profile", "col-12", "col-md-1");
+    profileBannerDiv.appendChild(editProfileDiv);
 
-  editProfileText.setAttribute("data-bs-toggle", "modal");
-  editProfileText.setAttribute("data-bs-target", "#editProfileModal");
-  editProfileText.style.cursor = "pointer";
-  parentElement.appendChild(profileBannerDiv);
+    const editProfileText = document.createElement("p");
+    editProfileText.classList.add(
+      "p-1",
+      "btn",
+      "btn-custom",
+      "bg-black",
+      "text-white",
+      "m-2",
+    );
+    editProfileText.innerText = "Edit profile";
+    editProfileDiv.appendChild(editProfileText);
+
+    editProfileText.setAttribute("data-bs-toggle", "modal");
+    editProfileText.setAttribute("data-bs-target", "#editProfileModal");
+    editProfileText.style.cursor = "pointer";
+    parentElement.appendChild(profileBannerDiv);
+  } else {
+    const profileBannerDiv = document.createElement("div");
+    profileBannerDiv.classList.add("profile-banner");
+    profileBannerDiv.style.backgroundImage = `url(${profile.data.banner.url})`;
+    parentElement.appendChild(profileBannerDiv);
+  }
 }
 
 async function parentProfileInfo(profile, parentElement) {
@@ -144,6 +105,10 @@ async function parentProfileInfo(profile, parentElement) {
 
 async function createProfileAvatar(profile, parentElement) {
   const avatarWrapper = document.createElement("div");
+
+  // Set the background image using the correct syntax
+  avatarWrapper.style.backgroundImage = `url(${profile.data.avatar.url})`;
+
   avatarWrapper.classList.add(
     "avatar-wrapper",
     "col-12",
@@ -151,18 +116,19 @@ async function createProfileAvatar(profile, parentElement) {
     "col-lg-3",
   );
 
-  const profileAvatar = document.createElement("img");
-  profileAvatar.classList.add("profile-avatar", "rounded-circle");
-  profileAvatar.src = profile.data.avatar.url;
-  profileAvatar.alt = profile.data.avatar.alt;
-
-  avatarWrapper.appendChild(profileAvatar);
+  // Append the created avatar wrapper to the parent element
   parentElement.appendChild(avatarWrapper);
 }
 
 async function createSellerInfo(profile, parentElement) {
   const sellerInfoDiv = document.createElement("div");
-  sellerInfoDiv.classList.add("col-12", "col-md-6");
+  sellerInfoDiv.classList.add(
+    "col-12",
+    "col-md-3",
+    "d-flex",
+    "flex-column",
+    "align-items-center",
+  );
 
   const sellerName = document.createElement("h1");
   sellerName.textContent = profile.data.name;

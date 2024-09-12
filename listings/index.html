@@ -32,10 +32,10 @@
     <script type="module" src="/src/js/index.js"></script>
   </head>
   <body>
-    <div class="container fluid">
-      <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">VIND'T</a>
+     <div class="container">
+      <nav class="navbar navbar-expand-lg border-bottom border-primary mb-2">
+        <div class="container-fluid p-0">
+          <a class="navbar-brand vindt-logo" href="/home">VIND'T</a>
           <button
             class="navbar-toggler"
             type="button"
@@ -51,22 +51,13 @@
             class="collapse navbar-collapse lg-display-flex justify-content-end"
             id="navbarNav"
           >
-            <ul class="navbar-nav">
+            <ul class="navbar-nav d-flex gap-4">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#"
+                <a class="nav-link active" aria-current="page" href="/listings/"
                   >Listings</a
                 >
               </li>
-              <li class="nav-item">
-                <button
-                  class="nav-link"
-                  data-bs-toggle="modal"
-                  data-bs-target="#registerModal"
-                >
-                  Register
-                </button>
-              </li>
-              <li class="nav-item">
+              <li class="nav-item align-self-center login-btn">
                 <button
                   class="nav-link"
                   data-bs-toggle="modal"
@@ -75,9 +66,18 @@
                   Login
                 </button>
               </li>
-              <li class="nav-item">
+              <li class="nav-item align-self-center">
                 <a
-                  class="btn btn-secondary btn-custom"
+                  class="btn btn-primary btn-custom fw-bold text-white register-btn"
+                  data-bs-toggle="modal"
+                  data-bs-target="#registerModal"
+                >
+                  Register
+                </a>
+              </li>
+              <li class="nav-item align-self-center">
+                <a
+                  class="btn btn-secondary btn-custom fw-bold"
                   href="#"
                   data-bs-toggle="modal"
                   data-bs-target="#listingModal"
@@ -89,10 +89,11 @@
         </div>
       </nav>
 
-      < <div class="container">
-        <div class="row">
-          <div class="col-12 col-md-9 col-lg-6">
-            <form class="d-flex w-100" role="search">
+      <div class="container">
+        <div class="searchbar-item"></div>
+        <div class="row align-items-center personalized-bar">
+          <div class="col-12 col-md-4 d-flex align-items-center">
+            <form class="d-flex w-100" role="search" id="SearchForm">
               <input
                 id="searchBar"
                 type="text"
@@ -100,12 +101,23 @@
                 placeholder="Type in specific ID or title"
                 aria-label="ID or Title"
               />
-              <button class="input-group-text" id="search">
-                <i class="fa fa-paper-plane icon-link-hover"> </i>
+              <button class="btn btn-outline-secondary" id="search">
+                <i class="fa fa-paper-plane"></i>
               </button>
             </form>
           </div>
-          <p class="col-12 col-md-3 credits  ms-auto d-none text-success fw-bold">credits:</p>
+          <div
+            class="col-12 col-md-4 d-flex align-items-center justify-content-center"
+          >
+            <div class="d-flex align-items-center">
+              <div class="credits text-success fw-bold me-3"></div>
+              
+            </div>
+          </div>
+          <div
+            class="col-12 col-md-4 d-flex justify-content-end align-items-center"
+          >
+          </div>
         </div>
       </div>
 
@@ -118,87 +130,11 @@
       <section class="section-one mt-5 p-0">
         <div class="container p-0">
           <div class="row listings-grid">
-            <div class="col-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mb-4">
-              <div class="card border-0">
-                <div class="bg-black position-relative">
-                  <p
-                    class="text-white p-2 position-absolute top-0 end-0 third-bg-color rounded"
-                  >
-                    Ends in 3 hours
-                  </p>
-                </div>
-                <img
-                  src="/images/photocamera_VINDT.jpg"
-                  class="card-img-top"
-                  alt="product"
-                />
-                <div class="card-body">
-                  <h5 class="card-title text-secondary">Product name</h5>
-                  <p class="card-text">500 Credits</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mb-4">
-              <div class="card border-0">
-                <div class="bg-black position-relative">
-                  <p
-                    class="text-white p-2 position-absolute top-0 end-0 third-bg-color rounded"
-                  >
-                    Ends in 3 hours
-                  </p>
-                </div>
-                <img
-                  src="/images/photocamera_VINDT.jpg"
-                  class="card-img-top"
-                  alt="product"
-                />
-                <div class="card-body">
-                  <h5 class="card-title text-secondary">Product name</h5>
-                  <p class="card-text">500 Credits</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
-              <div class="card border-0">
-                <div class="bg-black position-relative">
-                  <p
-                    class="text-white p-2 position-absolute top-0 end-0 third-bg-color rounded"
-                  >
-                    Ends in 3 hours
-                  </p>
-                </div>
-                <img
-                  src="/images/photocamera_VINDT.jpg"
-                  class="card-img-top"
-                  alt="product"
-                />
-                <div class="card-body">
-                  <h5 class="card-title text-secondary">Product name</h5>
-                  <p class="card-text">500 Credits</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
-              <div class="card border-0">
-                <div class="bg-black position-relative">
-                  <p
-                    class="text-white p-2 position-absolute top-0 end-0 third-bg-color rounded"
-                  >
-                    Ends in 3 hours
-                  </p>
-                </div>
-                <img
-                  src="/images/photocamera_VINDT.jpg"
-                  class="card-img-top"
-                  alt="product"
-                />
-                <div class="card-body">
-                  <h5 class="card-title text-secondary">Product name</h5>
-                  <p class="card-text">500 Credits</p>
-                </div>
-              </div>
-            </div>
-          </div>
+           <div class="text-center">
+      <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+      </div>
+      </div>
         </div>
       </section>
       <!-- Registration Modal -->

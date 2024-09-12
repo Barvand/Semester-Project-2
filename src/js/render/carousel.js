@@ -1,23 +1,31 @@
 import { getListings } from "../auth/postData/read.js";
 import { displayProducts } from "../render/productCards.js";
+import { calculateHoursLeft } from "../render/productCards.js";
 
 export async function renderCarousel() {
-  const carouselParent = document.querySelector(".carousel");
-
   const listings = await getListings();
+  const listingsArray = listings.data;
 
-  // Log the data structure to understand it
-  console.log(listings);
+  // Filter listings that expire within 100 hours
+  const now = new Date();
+  const filteredListings = listingsArray.filter((listing) => {
+    const expirationDate = new Date(listing.endsAt); // Convert endsAt to a Date object
 
-  // Check if listings contains an array
-  if (Array.isArray(listings)) {
-    generateCarousel(listings);
-  } else if (Array.isArray(listings.data)) {
-    // Adjust this based on the actual structure
-    generateCarousel(listings.data);
-  } else {
-    console.error("Expected an array of listings, but got:", listings);
+    // If endsAt is in the past, exclude the listing
+    if (expirationDate < now) {
+      return false;
+    }
+
+    const timeDiff = (expirationDate - now) / (1000 * 60 * 60); // Difference in hours
+    return timeDiff > 1 && timeDiff <= 100; // Listings expiring within 100 hours
+  });
+
+  // If there are no valid listings, return early
+  if (filteredListings.length === 0) {
+    console.log("No valid listings to display.");
+    return;
   }
+  generateCarousel(filteredListings);
 }
 
 function generateCarousel(listings) {
@@ -32,7 +40,7 @@ function generateCarousel(listings) {
     // Create carousel indicators
     const indicator = document.createElement("button");
     indicator.type = "button";
-    indicator.dataset.bsTarget = "#carouselExampleIndicators";
+    indicator.dataset.bsTarget = "#carouselIndicators";
     indicator.dataset.bsSlideTo = i / chunkSize;
     indicator.ariaLabel = `Slide ${i / chunkSize + 1}`;
     if (i === 0) {

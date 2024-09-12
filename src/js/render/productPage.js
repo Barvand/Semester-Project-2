@@ -118,7 +118,7 @@ async function createTimer(listing, parentElement, hoursLeft) {
   parentElement.appendChild(productEnds);
 }
 
-async function createProductSeller(listing, parentElement) {
+export async function createProductSeller(listing, parentElement) {
   const sellerInfoDiv = document.createElement("a");
   sellerInfoDiv.classList.add("d-flex", "bg-secondary", "rounded");
   sellerInfoDiv.href = `/profiles/profile/?name=${listing.data.seller.name}`;

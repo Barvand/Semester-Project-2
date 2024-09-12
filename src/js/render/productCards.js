@@ -40,17 +40,30 @@ async function createCardDiv(product, parentElement) {
   cardBody(cardDiv, product);
 }
 
-// Create the image container with the overlay
 async function createImageAndOverlay(parentElement, product, time) {
   const imageContainer = document.createElement("a");
   imageContainer.className = "bg-black position-relative rounded";
   imageContainer.href = `/listings/listing/?id=${product.id}`;
   parentElement.appendChild(imageContainer);
 
+  // Create the overlayText element outside the condition
   const overlayText = document.createElement("p");
   overlayText.className =
-    "text-white p-2 position-absolute top-0 end-0 bg-black rounded";
-  overlayText.textContent = `Ends in ${time} hours`;
+    "text-white p-2 position-absolute top-0 end-0 rounded";
+
+  if (time < 0 && product._count && product._count.bids > 1) {
+    overlayText.classList.add("bg-success");
+    overlayText.textContent = `Item sold`;
+  } else if (time > 0 && product._count && product._count.bids < 1) {
+    overlayText.classList.add("bg-warning");
+    overlayText.textContent = `No bids yet`;
+  } else if (time > 0) {
+    overlayText.classList.add("bg-black");
+    overlayText.textContent = `Ends in ${time} hours`;
+  } else {
+    overlayText.classList.add("bg-danger");
+    overlayText.textContent = `Offer is expired`;
+  }
 
   // Append the overlay text to the image container
   imageContainer.appendChild(overlayText);
