@@ -6,5 +6,5 @@ export async function logout() {
   remove("token");
 
   // Optionally, redirect to the login page or homepage
-  window.location.href = "index.html"; // Adjust this URL as needed
+  window.location.href = "/home";
 }

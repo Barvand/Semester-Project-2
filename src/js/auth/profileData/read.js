@@ -2,7 +2,7 @@ import { API_BASE_URL } from "../../constants.js";
 import { fetchToken } from "../../fetchToken.js";
 
 const action = "/auction/profiles";
-const queryParams = "_listings=true";
+const queryParams = "_listings=true&&_wins=true";
 
 export async function getProfiles() {
   const getProfileURL = `${API_BASE_URL}${action}?${queryParams}`;

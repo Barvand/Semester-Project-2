@@ -5,8 +5,7 @@ import { API_BASE_URL } from "../constants.js";
 import { fetchToken } from "../fetchToken.js";
 
 let currentPage = 1;
-const limit = 25; // Number of profiles per page
-let totalPages = 1; // Initialize totalPages
+const limit = 50; // Number of profiles per page
 
 // Function to handle fetching and displaying profiles for a specific page
 export async function handleProfiles(page = 1) {
@@ -15,8 +14,6 @@ export async function handleProfiles(page = 1) {
   try {
     const getAllProfiles = await getProfilesPage(page, limit);
     const profiles = getAllProfiles.data;
-    const totalProfiles = getAllProfiles.total; // Assuming API provides total profiles
-    totalPages = Math.ceil(totalProfiles / limit); // Update totalPages
 
     parentElement.innerHTML = ""; // Clear previous profiles and pagination controls
 
@@ -30,7 +27,7 @@ export async function handleProfiles(page = 1) {
       createProfilesInfo(profile, parentElement);
     });
 
-    updatePaginationControls(page, totalPages, parentElement); // Update pagination controls
+    updatePaginationControls(page, parentElement); // Update pagination controls
   } catch (error) {
     console.error("Error fetching profiles:", error);
   }
@@ -86,10 +83,8 @@ function setUpPaginationEventListeners() {
     });
 
     nextPageButton.addEventListener("click", () => {
-      if (currentPage < totalPages) {
-        currentPage++;
-        handleProfiles(currentPage);
-      }
+      currentPage++;
+      handleProfiles(currentPage);
     });
   }
 }

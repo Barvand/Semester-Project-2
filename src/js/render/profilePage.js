@@ -3,31 +3,32 @@ import { load } from "../storage/load.js";
 import { displayProducts } from "./productCards.js";
 import { renderEditModal } from "./editProfileModal.js";
 
-export async function renderProfile(parentElement) {
+export async function renderProfile() {
   // Get the post ID from the query string
   const queryString = document.location.search;
   const params = new URLSearchParams(queryString);
   const name = params.get("name");
 
-  const listingContainer = document.querySelector(".profile-listing-container");
   try {
     // Fetch the post data based on the ID
     const profile = await getProfile(name);
 
-    const profileListing = profile.data.listings;
+    console.log(getProfile("Biddster"));
 
     // this renders the user data.
-    renderProfilePage(profile, parentElement);
+    renderProfilePage(profile);
     renderEditModal(profile);
 
     // displays listings of the USER
-    displayProducts(profileListing, listingContainer);
+    displayListings(profile);
+    // displays winnings of the user
+    displayWinnings(profile);
   } catch (error) {
     console.error("Error fetching or rendering post:", error);
   }
 }
 
-export async function renderProfilePage(profile, parentElement) {
+export async function renderProfilePage(profile) {
   const divElement = document.querySelector(".profile-page");
   divElement.classList.add("container-fluid", "p-0");
 
@@ -99,7 +100,6 @@ async function parentProfileInfo(profile, parentElement) {
 
   createProfileAvatar(profile, profileInfoDiv);
   createSellerInfo(profile, profileInfoDiv);
-
   parentElement.appendChild(profileInfoDiv);
 }
 
@@ -166,4 +166,38 @@ async function renderBioUser(profile, parentElement) {
     // Ensure bioHeaderParentElement is defined and refers to the correct element.
     parentElement.appendChild(bioParagraph);
   }
+}
+
+async function displayWinnings(profile) {
+  const winningsParent = document.querySelector(".profile-winnings-container");
+  const profileWins = profile.data.wins;
+  const header = document.createElement("h2");
+  header.textContent = `Winnings`;
+
+  if (profileWins.length === 0) {
+    const p = document.createElement("p");
+    p.textContent = `This user has no winnings yet.`;
+    header.appendChild(p);
+  }
+  winningsParent.appendChild(header);
+
+  displayProducts(profileWins, winningsParent);
+}
+
+async function displayListings(profile) {
+  const listingParent = document.querySelector(".profile-listing-container");
+  const profileListing = profile.data.listings;
+
+  const header = document.createElement("h2");
+  header.textContent = `Listings`;
+
+  if (profileListing.length === 0) {
+    const p = document.createElement("p");
+    p.textContent = `This user does not have any listings yet`;
+    header.appendChild(p);
+  }
+
+  listingParent.appendChild(header);
+
+  displayProducts(profileListing, listingParent);
 }

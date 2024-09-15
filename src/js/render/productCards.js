@@ -6,9 +6,6 @@ export function displayProducts(products, parentElement) {
     return;
   }
 
-  // Clear existing content in the parent element
-  parentElement.innerHTML = "";
-
   // Create and append product cards
   products.forEach((product) => {
     // Ensure product has the necessary data
@@ -16,6 +13,9 @@ export function displayProducts(products, parentElement) {
       console.error("Invalid product:", product);
       return;
     }
+
+    const spinner = document.querySelector(".text-center");
+    spinner.classList.add("d-none");
 
     // Create the main col div
     const colDiv = document.createElement("div");
@@ -107,16 +107,34 @@ async function cardBody(parentElement, product) {
 }
 
 async function createBidsCount(product, parentElement) {
+  const cardDiv = document.createElement("div");
+  cardDiv.classList.add("d-flex", "justify-content-between");
+  parentElement.appendChild(cardDiv);
+
   const cardBids = document.createElement("p");
   cardBids.className = "card-text";
 
-  if (product._count && typeof product._count.bids !== "undefined") {
-    cardBids.textContent = `${product._count.bids} Bids`;
-  } else {
-    cardBids.textContent = "No bid data available"; // Or you can leave it empty
-  }
+  // Check if _count exists
+  if (product._count) {
+    if (product._count.bids === 0) {
+      return;
+    }
+    if (product._count.bids === undefined) {
+      return;
+    }
 
-  parentElement.appendChild(cardBids);
+    // If there are bids, add the latest bid
+    if (product.bids && product.bids.length > 0) {
+      const latestBid = product.bids[product.bids.length - 1];
+      const cardBids = document.createElement("p");
+      cardBids.textContent = `$${latestBid.amount}`;
+      cardDiv.appendChild(cardBids);
+    }
+    // Display total number of bids
+    const allBids = document.createElement("p");
+    allBids.textContent = `Bids: ${product._count.bids}`;
+    cardDiv.appendChild(allBids);
+  }
 }
 
 export function calculateHoursLeft(endsAt) {
@@ -126,3 +144,6 @@ export function calculateHoursLeft(endsAt) {
   const diffInHours = Math.floor(diffInMs / (1000 * 60 * 60)); // Convert milliseconds to hours
   return diffInHours;
 }
+
+// a function that checks if the time has passed
+// then displays latest bid name as the winner on the product page.

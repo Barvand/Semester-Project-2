@@ -7,7 +7,7 @@ const queryParams = "_bids=true&_seller=true";
 
 export async function getListings() {
   try {
-    const getListingsURL = `${API_BASE_URL}${action}`;
+    const getListingsURL = `${API_BASE_URL}${action}/?${queryParams}`;
     const response = await fetchToken(getListingsURL);
 
     if (!response.ok) {

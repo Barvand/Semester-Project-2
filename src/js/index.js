@@ -8,6 +8,8 @@ import { displayCredits } from "./render/navCredits.js";
 import { renderCarousel } from "./render/carousel.js";
 import { renderNavUser } from "./render/navigation.js";
 import { handleProfiles } from "./handlers/profilesHandler.js";
+import { fetchListingsWithPagination } from "./auth/postData/readPagination.js";
+import { renderLoadMoreBtn } from "./handlers/listingsPagination.js";
 
 displayCredits();
 renderCarousel();
@@ -24,11 +26,16 @@ const individualListing = document.querySelector(".listing-page");
 const listingContainer = document.querySelector(".listings-grid");
 const profileContainer = document.querySelector(".profile-page");
 
-async function renderAllPosts(parentElement) {
+async function renderAllPosts() {
   try {
-    const response = await getListings();
+    let currentPage = 1; // Global variable to keep track of the current page
+    const limit = 50; // Number of items to load per request
+    const response = await fetchListingsWithPagination(currentPage, limit);
     const listings = response.data;
+    const listingContainer = document.querySelector(".listings-grid");
+
     displayProducts(listings, listingContainer);
+    renderLoadMoreBtn();
   } catch (error) {
     console.error("Error rendering posts:", error);
   }

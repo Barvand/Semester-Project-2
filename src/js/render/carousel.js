@@ -25,6 +25,26 @@ export async function renderCarousel() {
     console.log("No valid listings to display.");
     return;
   }
+
+  // Sort listings: highest bids first, no bids last
+  filteredListings.sort((a, b) => {
+    const aHasBids = a.bids.length > 0;
+    const bHasBids = b.bids.length > 0;
+
+    if (aHasBids && bHasBids) {
+      // Both have bids, compare the highest bid
+      const highestBidA = a.bids[a.bids.length - 1].amount;
+      const highestBidB = b.bids[b.bids.length - 1].amount;
+      return highestBidB - highestBidA; // Sort by highest bid amount
+    } else if (aHasBids) {
+      return -1; // a has bids, b does not, so a comes first
+    } else if (bHasBids) {
+      return 1; // b has bids, a does not, so b comes first
+    } else {
+      return 0; // Both have no bids, leave as is
+    }
+  });
+
   generateCarousel(filteredListings);
 }
 

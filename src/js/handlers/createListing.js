@@ -43,6 +43,7 @@ export async function setCreateListingFormListener() {
         title: formData.get("title"),
         description: formData.get("description"),
         endsAt: formData.get("deadline-date"),
+        tags: formData.get("tag"),
         media: [
           {
             url: formData.get("media-url"), // Retrieve the URL from the form
@@ -85,3 +86,18 @@ export async function setCreateListingFormListener() {
     });
   }
 }
+
+// document.getElementById("media-url").addEventListener("input", function () {
+//   const mediaUrl = this.value;
+//   const previewContainer = document.getElementById("media-preview");
+//   const previewImage = document.getElementById("image-preview");
+
+//   // Check if the URL is valid (you can add more validations if needed)
+//   if (mediaUrl && mediaUrl.startsWith("http")) {
+//     previewImage.src = mediaUrl;
+//     previewContainer.style.display = "block"; // Show the preview area
+//   } else {
+//     previewImage.src = ""; // Clear the preview
+//     previewContainer.style.display = "none"; // Hide the preview area
+//   }
+// });
