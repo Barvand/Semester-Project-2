@@ -27,15 +27,21 @@
       href="https://fonts.googleapis.com/css2?family=Bungee&family=Darker+Grotesque:wght@300..900&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap"
+      rel="stylesheet"
+    />
 
     <link rel="stylesheet" href="/dist/css/styles.css" />
     <script type="module" src="/src/js/index.js"></script>
   </head>
-   <body class="mt-5">
-    <div class="container mt-5">
+
+
+  <body class="mt-5">
+    <div class="container">
     <nav class="navbar navbar-expand-md bg-primary fixed-top">
   <div class="container">
-    <a class="vindt-logo" href="/home/">VIND'T</a>
+    <a class="vindt-logo" href="#">VIND'T</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -84,53 +90,73 @@
             </ul>
           </div>
         </div>
-        </div>
+  </div>
       </nav>
   
     
-      <div class="container-fluid mt-5 p-0">
-        <div class="searchbar-item"></div>
-        <div class="row">
-          <div class="col-12">
-            <form class="d-flex w-100" role="search" id="SearchForm">
-              <input
-                id="searchBar"
-                type="text"
-                class="form-control"
-                placeholder="Type in specific ID or title"
-                aria-label="ID or Title"
-              />
-              <button class="btn btn-outline-secondary" id="search">
-                <i class="fa fa-paper-plane"></i>
-              </button>
-            </form>
-          </div>
-      </div>
+
+      <!-- Hero banner -->
+      <div class="container-fluid p-0 mt-5 hero--container position-relative">
+        <div class="hero--container-image">
+          <img
+            src="/images/heroe-banner-vindt.jpg"
+            alt="hero banner image. Woman sitting on cliff cheering"
+          />
+        </div>
+        <div
+          class="hero--container-text position-absolute top-50 start-50 translate-middle d-flex flex-column"
+        >
+          <h1
+            class="text-uppercase display-1 text-white fw-bold align-self-sm-center align-self-center-md"
+          >
+            1000 <span class="highlight"> credits </span>
+          </h1>
+          <p
+            class="text-uppercase text-white hero--container-text-p fw-bold align-self-sm-center align-self-center-md"
+          >
+            for free upon registration
+          </p>
+          <a
+            class="btn btn-danger btn-custom text-white align-self-sm-center text-uppercase fw-bold"
+            data-bs-toggle="modal"
+            data-bs-target="#registerModal"
+          >
+            click here
+          </a>
+        </div>
+
+        <a
+          class="navbar-brand vindt-logo position-absolute absolute top-0 end-0"
+          href="#"
+          >VIND'T</a
+        >
       </div>
 
-      <section class="categories mt-5 p-0">
-        <button id="sortNewToOld" class="btn btn-active">New to Old <i class="fa-solid fa-arrow-up"></i></button>
-        <button id="sortHighestBids" class="btn btn-secondary">Popularity <i class="fa-solid fa-arrow-down"></i> </button>
-
+      <section class="section-one-homepage">
         <div class="container">
-          <div class="row"></div>
+          <div class="row d-flex mt-5 mb-5 rounded">
+            <div class="card-body text-center">
+              <h2 class="fw-bold">Hundreds of unique items</h2>
+              <p>
+                Find unique items all over the platform. Registered users are
+                able to list their items directly on the platform.
+              </p>
+            </div>
+            <div class="card-body text-center">
+              <h2 class="fw-bold">Register now</h2>
+              <p>and receive a 1000 credit bonus to bid on all items.</p>
+            </div>
+            <div class="card-body text-center">
+              <h2 class="fw-bold">Bidding has never been so easy</h2>
+              <p>Find a listing you like and start bidding!</p>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section class="section-one mt-5 p-0">
-        <div class="container p-0">
-          <div class="row listings-grid">
-           <div class="text-center">
-      <div class="spinner-border" role="status">
-      <span class="sr-only">Loading...</span>
-      </div>
-      </div>
-        </div>
-        </div>
+      <section class="container section-two">
+        <div class="row ending-listings col-12"></div>
       </section>
-
-      <div class="load-more text-center"> 
-        </div>
 
       <!-- Registration Modal -->
       <div
@@ -430,7 +456,19 @@
                     required
                   />
                 </div>
-                 <div class="error-message-listing" class="d-none"></div>
+                <div id="media-container">
+                <div class="media-item mb-2">
+                  <button
+                    type="button"
+                    id="add-media-btn"
+                    class="btn btn-primary text-white fw-bold"
+                  >
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                  Add an image </button>
+                </div>
+                </div>
+                <div class="error-message-listing" class="d-none"></div>
+
                 <div class="d-grid">
                   <button type="submit" class="btn btn-primary">
                     Post listing
@@ -442,15 +480,25 @@
         </div>
       </div>
     </div>
-
     <footer class="p-5 m-0">
-    <ul class="nav justify-content-center border-bottom border-primary pb-3 mb-3">
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Account</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQ</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About us</a></li>
-    </ul>
-    <p class="text-center text-body-secondary">© Vind't, inc</p>
-  </footer>
+      <ul
+        class="nav justify-content-center border-bottom border-primary pb-3 mb-3"
+      >
+        <li class="nav-item">
+          <a href="#" class="nav-link px-2 text-body-secondary">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link px-2 text-body-secondary">Account</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link px-2 text-body-secondary">FAQ</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link px-2 text-body-secondary">About us</a>
+        </li>
+      </ul>
+      <p class="text-center text-body-secondary">© Vind't, inc</p>
+    </footer>
   </body>
 </html>
+<!-- prettier-ignore-end -->
