@@ -12,23 +12,21 @@ export async function displayCredits() {
   try {
     const profile = await getProfile(currentUser.name);
 
-    const parentElement = document.querySelector(".navbar-nav");
-
-    createProfileDropdown(profile, parentElement);
+    createProfileDropdown(currentUser, profile);
   } catch (error) {
     console.error("Error fetching or displaying credits:", error);
   }
 }
 
-async function createProfileDropdown(profile, parentElement) {
-  const divElement = document.createElement("div");
+async function createProfileDropdown(currentUser, profile) {
+  const divElement = document.querySelector(".profile-btn");
+  divElement.innerHTML = "";
   divElement.classList.add(
-    "order-first", // Applies to small screens and up
-    "order-md-last", // Applies to medium screens and up
+    "order-first",
+    "order-md-last",
     "btn-group",
     "d-flex",
   );
-  parentElement.appendChild(divElement);
 
   const button = document.createElement("button");
   button.classList.add(
@@ -46,33 +44,28 @@ async function createProfileDropdown(profile, parentElement) {
 
   const userAvatar = document.createElement("img");
   userAvatar.classList.add("avatar-profile-img", "rounded-circle");
-  userAvatar.src = profile.data.avatar.url;
-  userAvatar.alt = profile.data.avatar.alt;
+  userAvatar.src = currentUser.avatar.url;
+  userAvatar.alt = currentUser.avatar.alt;
   button.insertBefore(userAvatar, button.firstChild);
 
   const list = document.createElement("ul");
   list.classList.add("dropdown-menu", "dropdown-menu-end");
 
   const anchorOne = document.createElement("a");
-  anchorOne.classList.add("dropdown-item", "dropdown-profile", "fw-bold");
-  anchorOne.href = `/profiles/profile/?name=${profile.data.name}`;
+  anchorOne.classList.add("dropdown-item", "nav-link", "fw-bold");
+  anchorOne.href = `/profiles/profile/?name=${currentUser.name}`;
   anchorOne.textContent = `Profile`;
 
-  const anchorTwo = document.createElement("a");
-  anchorTwo.classList.add(
-    "dropdown-item",
-    "dropdown-logout",
-    "btn",
-    "btn-primary",
-    "fw-bold",
-  );
+  const anchorTwo = document.createElement("p");
+  anchorTwo.classList.add("dropdown-item", "nav-link", "fw-bold", "m-0");
   anchorTwo.textContent = `Logout`;
+  anchorTwo.style.cursor = "pointer";
   anchorTwo.addEventListener("click", () => {
     logout();
   });
 
   const anchorThree = document.createElement("p");
-  anchorThree.classList.add("dropdown-item", "dropdown-profile", "fw-bold");
+  anchorThree.classList.add("dropdown-item", "fw-bold", "nav-link");
   anchorThree.textContent = `Balance $${profile.data.credits}`;
 
   list.appendChild(anchorOne);
@@ -110,6 +103,9 @@ export async function renderNavUser() {
     registerBtn.removeAttribute("data-bs-toggle");
     registerBtn.removeAttribute("data-bs-target");
 
-    loginBtn.style.display = "none";
+    loginBtn.textContent = "Home";
+    loginBtn.href = "/home/";
+    loginBtn.removeAttribute("data-bs-toggle");
+    loginBtn.removeAttribute("data-bs-target");
   }
 }
