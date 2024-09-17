@@ -35,6 +35,20 @@ export async function createBids(postData) {
     // Check if registration was successful
     if (response.ok) {
       const result = await response.json();
+
+      const displayError = document.querySelector(".error-message");
+      displayError.textContent = `Bid has been placed, please wait.`;
+      displayError.classList.add(
+        "alert",
+        "alert-success",
+        "text-center",
+        "text-success",
+      );
+      displayError.textContent = "Bid has been placed, please wait";
+
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000); // 2000ms = 2 seconds
     } else {
       // Handle failed registration
       const errorMessage = await response.json();
@@ -47,13 +61,8 @@ export async function createBids(postData) {
         displayError.classList.add(
           "text-danger",
           "text-center",
-          "border",
-          "border-1",
-          "border-danger",
-          "p-2",
-          "m-2",
-          "rounded",
-          "d-block",
+          "alert",
+          "alert-danger",
         );
         displayError.innerText = detailedErrorMessage;
       }

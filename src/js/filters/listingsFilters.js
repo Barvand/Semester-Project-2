@@ -44,9 +44,6 @@ export async function sortNewToOldBtn() {
     .addEventListener("click", sortNewToOld);
 }
 
-// Initialize sorting functionality
-sortNewToOldBtn();
-
 // Does not use the sort in the URL as unable to make it work with the count of bids,
 // fetch array and sort instead
 
@@ -55,6 +52,8 @@ export async function fetchAndSortListings(page, limit, sortOrder) {
     // Fetch the latest listings
     const response = await getListings(); // Ensure getListings() fetches data correctly
     let listings = response.data; // Adjust based on your API response structure
+
+    console.log(listings);
 
     // Sort listings based on the number of bids
     listings = listings.sort((a, b) => {
@@ -84,9 +83,5 @@ export async function sortByMostBids() {
     isHighToLow = !isHighToLow;
     fetchAndSortListings(page, limit, sortOrder);
     icon.classList.toggle("rotateIcon");
-    console.log(icon);
   });
 }
-
-// Initialize sorting functionality
-sortByMostBids();

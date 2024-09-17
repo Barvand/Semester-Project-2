@@ -15,7 +15,9 @@ export async function removeListing(id) {
     method,
   });
 
-  console.log(response);
-
-  return await response.json();
+  if (!response.ok) {
+    const errorMessage = `Failed to delete post. Status code: ${response.status}`;
+    throw new Error(errorMessage);
+  }
+  return response;
 }

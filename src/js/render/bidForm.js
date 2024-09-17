@@ -1,4 +1,4 @@
-import { setCreateBiddingFormListener } from "../handlers/bids.js";
+import { setCreateBiddingFormListener } from "../handlers/createBids.js";
 
 export async function renderBidsHeader(parentElement) {
   const header = document.createElement("h2"); // Creating a new header element
@@ -116,8 +116,7 @@ export async function createBidButton(parentElement) {
   const labelElement = document.createElement("label");
   labelElement.setAttribute("for", "bidAmount");
   labelElement.innerText = "Bid Amount:";
-  // You can keep the label hidden but ensure accessibility
-  labelElement.classList.add("d-none"); // If hidden intentionally
+  labelElement.classList.add("d-none");
 
   // Create the input field for entering the bid amount
   const inputElement = document.createElement("input");

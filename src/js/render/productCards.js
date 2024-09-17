@@ -128,11 +128,13 @@ async function createBidsCount(product, parentElement) {
       const latestBid = product.bids[product.bids.length - 1];
       const cardBids = document.createElement("p");
       cardBids.textContent = `$${latestBid.amount}`;
+      cardBids.classList.add("fw-bold");
       cardDiv.appendChild(cardBids);
     }
     // Display total number of bids
     const allBids = document.createElement("p");
     allBids.textContent = `Bids: ${product._count.bids}`;
+    allBids.classList.add("text-primary");
     cardDiv.appendChild(allBids);
   }
 }

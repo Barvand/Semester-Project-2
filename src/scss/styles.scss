@@ -92,17 +92,18 @@ a {
   --main-font: "Darker Grotesque", Arial, sans-serif;
 }
 
-// fonts
 h1,
 h2,
 h3,
 h4,
 h5,
-h6,
+h6 {
+  font-family: "Bungee", sans-serif;
+}
+// fonts
 body {
   font-family: var(--main-font);
 }
-
 // custom colors
 .third-bg-color {
   background: var(--third-color);
@@ -250,4 +251,35 @@ footer {
 .error-message {
   color: red;
   font-weight: bold;
+}
+
+// nav
+
+.dropdown {
+  list-style: none;
+  display: inline-block;
+  min-width: 300px;
+  border: none;
+}
+
+.dropdown-toggle {
+  padding: 5px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin-bottom: -1px;
+  color: white;
+}
+
+.dropdown-menu {
+  margin: 0;
+  list-style: none;
+  white-space: nowrap;
+  padding: 10px;
+  background-color: $primary;
+}
+
+//nav
+.dropdown-item:hover {
+  color: black;
 }

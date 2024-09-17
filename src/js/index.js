@@ -4,17 +4,20 @@ import { displayProducts } from "./render/productCards.js";
 import { renderSingleListing } from "./render/productPage.js";
 import { renderProfile } from "./render/profilePage.js";
 import { searchBar } from "./filters/index.js";
-import { displayCredits } from "./render/navCredits.js";
-import { renderCarousel } from "./render/carousel.js";
-import { renderNavUser } from "./render/navigation.js";
+import { displayCredits } from "./render/navbar.js";
+import { renderEndingSoonHomepage } from "./render/homepage.js";
+import { renderNavUser } from "./render/navbar.js";
 import { handleProfiles } from "./handlers/profilesHandler.js";
 import { fetchListingsWithPagination } from "./auth/postData/readPagination.js";
 import { renderLoadMoreBtn } from "./handlers/listingsPagination.js";
+import { sortByMostBids } from "./filters/index.js";
+import { sortNewToOldBtn } from "./filters/index.js";
+import { deleteClickPost } from "../js/handlers/index.js";
+import { renderMoreImageFields } from "./render/ListingForm.js";
 
 displayCredits();
-renderCarousel();
 renderNavUser();
-
+renderMoreImageFields();
 listeners.setRegisterFormListener();
 listeners.setLoginFormListener();
 listeners.setCreateListingFormListener();
@@ -44,14 +47,21 @@ async function renderAllPosts() {
 const path = location.pathname;
 
 switch (path) {
+  case "/home/":
+    renderEndingSoonHomepage();
+    break;
   case "/listings/":
     renderAllPosts(listingContainer);
+    sortByMostBids();
+    sortNewToOldBtn();
     break;
   case "/listings/listing/":
     renderSingleListing(individualListing);
+    deleteClickPost();
     break;
   case "/profiles/profile/":
     renderProfile(profileContainer);
+
     break;
   case "/profiles/":
     handleProfiles();

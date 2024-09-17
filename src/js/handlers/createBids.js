@@ -30,14 +30,6 @@ export async function setCreateBiddingFormListener() {
     try {
       // Send the bid amount to the API
       const response = await createBids(amount);
-
-      // Check if the response status is 400
-      if (response === 400) {
-        console.error("Invalid bid amount, no page refresh.");
-        return;
-      } else {
-        window.location.reload();
-      }
     } catch (error) {
       console.error("An error occurred while submitting the bid:", error);
     }

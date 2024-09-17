@@ -10,19 +10,13 @@ import { createListing } from "../auth/postData/create.js";
  */
 export async function setCreateListingFormListener() {
   const form = document.querySelector("#createListingForm");
-  const errorDiv = document.querySelector("#error-message"); // Select the error message div
+  const errorDiv = document.querySelector(".error-message-listing"); // Select the error message div
 
   if (form) {
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
       const form = event.target;
       const formData = new FormData(form);
-
-      // Clear any previous error messages
-      if (errorDiv) {
-        errorDiv.textContent = "";
-        errorDiv.style.display = "none";
-      }
 
       // Check if the user is logged in
       const token = localStorage.getItem("token");
@@ -33,23 +27,29 @@ export async function setCreateListingFormListener() {
         if (errorDiv) {
           errorDiv.textContent = "You must be logged in to create a listing.";
           errorDiv.style.display = "block";
+          errorDiv.classList.add("alert", "alert-danger");
         }
-
         return;
       }
 
       // Create post object
+      const mediaUrls = formData.getAll("media-url"); // Retrieve all media URLs from the form
+      const mediaAlts = formData.getAll("media-alt"); // Retrieve all ALT texts from the form
+      const tags = formData.getAll("tags"); // Retrieve all tags from the form
+
+      const mediaArray = mediaUrls.map((url, index) => {
+        return {
+          url: url,
+          alt: mediaAlts[index] || "", // Ensure alt text corresponds to the correct URL
+        };
+      });
+
       const listing = {
         title: formData.get("title"),
         description: formData.get("description"),
         endsAt: formData.get("deadline-date"),
-        tags: formData.get("tag"),
-        media: [
-          {
-            url: formData.get("media-url"), // Retrieve the URL from the form
-            alt: formData.get("media-alt"), // Retrieve the ALT text from the form
-          },
-        ],
+        media: mediaArray, // Assign the constructed media array
+        tags: tags, // Assign the tags array
       };
 
       // Validation to ensure required fields are present
@@ -62,42 +62,46 @@ export async function setCreateListingFormListener() {
       }
 
       try {
-        // Send it to the API
-        const response = await createListing(listing); // await the response
+        // Send the listing to the API
+        const response = await createListing(listing);
 
-        if (response.ok) {
-          console.log("Listing created:", listing);
-
-          // After post creation, redirect to the feed page or show success message
-          // For example:
-          // window.location.href = "/feed";
-        } else {
-          throw new Error(`Failed to create listing: ${response.statusText}`);
+        // Check if the response contains an error field or some indicator of failure
+        if (!response || response.error) {
+          // Throw an error with the message from the response, if available
+          throw new Error(response.error || "Failed to create listing");
         }
+
+        // If no error, show a success message to the user
+        showCreatingMessage();
+
+        // Redirect to the profile page after a delay
+        setTimeout(() => {
+          window.location.href = `/listings/`;
+        }, 2000); // 2000ms = 2 seconds
       } catch (error) {
         console.error("Error creating listing:", error);
 
         // Display error message to the user
+        const errorDiv = document.getElementById("error-message"); // Assuming you have a div for error messages
         if (errorDiv) {
           errorDiv.textContent = `Error creating listing: ${error.message}`;
           errorDiv.style.display = "block";
+          errorDiv.classList.add("alert", "alert-danger");
         }
       }
     });
   }
 }
 
-// document.getElementById("media-url").addEventListener("input", function () {
-//   const mediaUrl = this.value;
-//   const previewContainer = document.getElementById("media-preview");
-//   const previewImage = document.getElementById("image-preview");
+function showCreatingMessage() {
+  const errorDiv = document.querySelector(".error-message-listing");
+  errorDiv.classList.add("alert", "alert-success");
+  errorDiv.textContent =
+    "Post created successfully. Redirecting to your listings...";
 
-//   // Check if the URL is valid (you can add more validations if needed)
-//   if (mediaUrl && mediaUrl.startsWith("http")) {
-//     previewImage.src = mediaUrl;
-//     previewContainer.style.display = "block"; // Show the preview area
-//   } else {
-//     previewImage.src = ""; // Clear the preview
-//     previewContainer.style.display = "none"; // Hide the preview area
-//   }
-// });
+  // Remove the message after 2 seconds
+  setTimeout(() => {
+    errorDiv.textContent = ""; // Clear the content
+    errorDiv.style.display = "none"; // Hide the message
+  }, 2000);
+}

@@ -113,8 +113,6 @@ async function createDisplayBids(listing, parentElement, hoursLeft) {
   parentElement.appendChild(productBids);
 }
 
-console.log(getListing("7d88bea9-5482-4556-87c0-ee4e4f9d1baa"));
-
 async function timerAndButton(listing, parentElement, hoursLeft) {
   const productEnds = document.createElement("p");
   productEnds.classList.add("p-1", "rounded");
@@ -184,7 +182,10 @@ export async function createProductSeller(listing, parentElement) {
 }
 
 function deleteListingBtn(parentElement) {
-  const deletePost = document.createElement("p");
+  const deletePost = document.createElement("button");
+  deletePost.type = "button";
+  deletePost.setAttribute("data-bs-toggle", "modal");
+  deletePost.setAttribute("data-bs-target", "#deletionModal");
   deletePost.classList.add(
     "btn",
     "btn-danger",
@@ -196,11 +197,6 @@ function deleteListingBtn(parentElement) {
   );
   deletePost.innerText = `Delete post`;
   parentElement.appendChild(deletePost);
-
-  // Add event listener for the delete button
-  deletePost.addEventListener("click", (event) => {
-    deleteListingFormListener();
-  });
 }
 
 export async function productImageCarousel(listing, parentElement) {

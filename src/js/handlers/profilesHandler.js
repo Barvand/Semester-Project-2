@@ -27,14 +27,18 @@ export async function handleProfiles(page = 1) {
       createProfilesInfo(profile, parentElement);
     });
 
-    updatePaginationControls(page, parentElement); // Update pagination controls
+    // updatePaginationControls(page, parentElement); // Update pagination controls
   } catch (error) {
     console.error("Error fetching profiles:", error);
   }
 }
 
 // Function to update pagination controls
-function updatePaginationControls(page, totalPages, parentElement) {
+export async function updatePaginationControls(
+  page,
+  totalPages,
+  parentElement,
+) {
   // Create the div container
   const paginationControls = document.createElement("div");
   paginationControls.classList.add("pagination-controls");
@@ -68,6 +72,8 @@ function updatePaginationControls(page, totalPages, parentElement) {
   setUpPaginationEventListeners();
 }
 
+// handleProfiles(currentPage);
+
 // Function to set up event listeners for pagination buttons
 function setUpPaginationEventListeners() {
   const prevPageButton = document.getElementById("prev-page");
@@ -88,9 +94,6 @@ function setUpPaginationEventListeners() {
     });
   }
 }
-
-// Initial load
-handleProfiles(currentPage);
 
 async function getProfilesPage(page, limit) {
   const response = await fetchToken(
