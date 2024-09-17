@@ -1,4 +1,4 @@
-import { createBids } from "../auth/postData/create.js";
+import { createBids } from "../auth/postData/createBid.js";
 import { createBiddingTable } from "../render/bidForm.js";
 // Trick from course assignment video - Creates an object with the keys and values with a single line of code.
 /**

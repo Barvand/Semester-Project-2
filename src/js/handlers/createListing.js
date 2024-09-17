@@ -51,57 +51,19 @@ export async function setCreateListingFormListener() {
         media: mediaArray, // Assign the constructed media array
         tags: tags, // Assign the tags array
       };
-
-      // Validation to ensure required fields are present
-      if (!listing.title || !listing.endsAt) {
-        if (errorDiv) {
-          errorDiv.textContent = "Title and deadline are required fields.";
-          errorDiv.style.display = "block";
-        }
-        return;
-      }
+  
 
       try {
         // Send the listing to the API
         const response = await createListing(listing);
-
-        // Check if the response contains an error field or some indicator of failure
-        if (!response || response.error) {
-          // Throw an error with the message from the response, if available
-          throw new Error(response.error || "Failed to create listing");
-        }
-
-        // If no error, show a success message to the user
-        showCreatingMessage();
-
-        // Redirect to the profile page after a delay
-        setTimeout(() => {
-          window.location.href = `/listings/`;
-        }, 2000); // 2000ms = 2 seconds
-      } catch (error) {
-        console.error("Error creating listing:", error);
-
-        // Display error message to the user
-        const errorDiv = document.getElementById("error-message"); // Assuming you have a div for error messages
-        if (errorDiv) {
-          errorDiv.textContent = `Error creating listing: ${error.message}`;
-          errorDiv.style.display = "block";
-          errorDiv.classList.add("alert", "alert-danger");
-        }
       }
-    });
-  }
-}
+        // Check if the response contains an error field or some indicator of failure
+        catch (error) {
+      console.error("An error occurred while submitting the bid:", error);
+        }
+      })
+    }
+  }; 
 
-function showCreatingMessage() {
-  const errorDiv = document.querySelector(".error-message-listing");
-  errorDiv.classList.add("alert", "alert-success");
-  errorDiv.textContent =
-    "Post created successfully. Redirecting to your listings...";
 
-  // Remove the message after 2 seconds
-  setTimeout(() => {
-    errorDiv.textContent = ""; // Clear the content
-    errorDiv.style.display = "none"; // Hide the message
-  }, 2000);
-}
+
