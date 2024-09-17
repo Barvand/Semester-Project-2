@@ -89,15 +89,11 @@ export async function renderNavUser() {
     registerBtn.style.display = "block";
     loginBtn.style.display = "block";
 
-    // Remove modal-related attributes from the register button
-    registerBtn.removeAttribute("data-bs-toggle");
-    registerBtn.removeAttribute("data-bs-target");
-
     return;
   } else {
     // Update buttons if user is logged in
     registerBtn.textContent = "Profiles";
-    registerBtn.href = "/profiles/index.html";
+    registerBtn.href = "/profiles/";
 
     // Remove modal-related attributes from the register button
     registerBtn.removeAttribute("data-bs-toggle");

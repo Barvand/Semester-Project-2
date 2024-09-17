@@ -156,7 +156,7 @@
               <!-- Registration Form -->
               <form id="registerForm">
                 <div class="mb-3">
-                  <label for="username" class="form-label"
+                  <label for="name" class="form-label"
                     >Name<span class="text-danger"> * </span></label
                   >
                   <input
@@ -278,7 +278,7 @@
           <div class="modal-content">
             <p class="navbar-brand vindt-logo text-center">VIND'T</p>
             <div class="modal-header">
-              <h5 class="modal-title" id="registerModalLabel">Register</h5>
+              <h5 class="modal-title">Login</h5>
               <button
                 type="button"
                 class="btn-close"
@@ -296,7 +296,7 @@
                   <input
                     type="text"
                     class="form-control"
-                    id="email"
+                    id="email-login"
                     name="email"
                     placeholder="Enter your username"
                     required
@@ -310,7 +310,7 @@
                   <input
                     type="password"
                     class="form-control"
-                    id="password"
+                    id="password-login"
                     name="password"
                     placeholder="Enter your password"
                     required
@@ -402,7 +402,6 @@
                     class="form-control"
                     id="deadline-date"
                     name="deadline-date"
-                    placeholder="Add deadline"
                     required
                   />
                 </div>
@@ -430,7 +429,18 @@
                     required
                   />
                 </div>
-                 <div class="error-message-listing" class="d-none"></div>
+                <div id="media-container">
+                <div class="media-item mb-2">
+                  <button
+                    type="button"
+                    id="add-media-btn"
+                    class="btn btn-primary text-white fw-bold"
+                  >
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                  Add an image </button>
+                </div>
+                </div>
+                <div class="error-message-listing"></div>
                 <div class="d-grid">
                   <button type="submit" class="btn btn-primary">
                     Post listing
