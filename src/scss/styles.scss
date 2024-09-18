@@ -331,3 +331,16 @@ footer {
   height: 2px;
   background-color: #ffffff;
 }
+
+
+
+.login-btn, .register-btn { 
+  cursor: pointer;
+}
+
+.dropdown-menu { 
+  border: none;
+  text-align: center;
+  width: 100%;
+  font-size: 18px;
+}

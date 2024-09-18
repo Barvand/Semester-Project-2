@@ -31,63 +31,87 @@
     <link rel="stylesheet" href="/dist/css/styles.css" />
     <script type="module" src="/src/js/index.js"></script>
   </head>
-   <body class="mt-5">
+  <body class="mt-5">
     <div class="container mt-5">
-    <nav class="navbar navbar-expand-md bg-primary fixed-top">
-  <div class="container">
-    <a class="vindt-logo" href="/home/">VIND'T</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="offcanvas offcanvas-end bg-primary" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title vindt-logo" id="offcanvasNavbarLabel">VIND'T</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      </div>
-      <div class="offcanvas-body">
-            <ul class="navbar-nav justify-content-end flex-grow-1 gap-4">
-              <li class="nav-item align-self-center">
-                <a
-                  class="nav-link login-btn"
-                  data-bs-toggle="modal"
-                  data-bs-target="#loginModal"
+      <nav class="navbar navbar-expand-md bg-primary fixed-top">
+        <div class="container">
+          <a class="vindt-logo" href="/home/">VIND'T</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasNavbar"
+            aria-controls="offcanvasNavbar"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div
+            class="offcanvas offcanvas-end bg-primary"
+            tabindex="-1"
+            id="offcanvasNavbar"
+            aria-labelledby="offcanvasNavbarLabel"
+          >
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title vindt-logo" id="offcanvasNavbarLabel">
+                VIND'T
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 gap-4">
+                <li class="nav-item align-self-center">
+                  <a
+                    class="nav-link login-btn"
+                    data-bs-toggle="modal"
+                    data-bs-target="#loginModal"
+                  >
+                    Login
+                  </a>
+                </li>
+                <li class="nav-item align-self-center">
+                  <a class="nav-link" aria-current="page" href="/listings/"
+                    >Listings</a
+                  >
+                </li>
+                <li class="nav-item align-self-center">
+                  <a
+                    class="nav-link fw-bold register-btn"
+                    data-bs-toggle="modal"
+                    data-bs-target="#registerModal"
+                  >
+                    Register
+                  </a>
+                </li>
+                <li class="nav-item align-self-center">
+                  <a
+                    class="fw-bold nav-item-listing"
+                    href="#"
+                    data-bs-toggle="modal"
+                    data-bs-target="#listingModal"
+                    >List an item</a
+                  >
+                </li>
+                <li
+                  class="profile-btn order-first order-md-last btn-group d-flex justify-content-center"
                 >
-                  Login
-              </a>
-              </li>
-              <li class="nav-item align-self-center">
-                <a class="nav-link" aria-current="page" href="/listings/"
-                  >Listings</a
-                >
-              </li>
-              <li class="nav-item align-self-center">
-                <a
-                  class="nav-link fw-bold register-btn"
-                  data-bs-toggle="modal"
-                  data-bs-target="#registerModal"
-                >
-                  Register
-                </a>
-              </li>
-              <li class="nav-item align-self-center">
-                <a
-                  class="fw-bold nav-item-listing"
-                  href="#"
-                  data-bs-toggle="modal"
-                  data-bs-target="#listingModal"
-                  >List an item</a
-                >
-              </li>
-              <li class="profile-btn"> 
-                <img class="avatar-profile-img p-1 rounded-circle" alt="unknown-profile" src="/images/Unknown_person.jpg"> 
-              </li>
-            </ul>
+                  <img
+                    class="avatar-profile-img p-1 rounded-circle"
+                    alt="unknown-profile"
+                    src="/images/Unknown_person.jpg"
+                  />
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-        </div>
       </nav>
-  
-    
+
       <div class="container-fluid mt-5 p-0">
         <div class="searchbar-item"></div>
         <div class="row">
@@ -105,429 +129,429 @@
               </button>
             </form>
           </div>
-      </div>
+        </div>
       </div>
 
-
-      <section class="profile-page col-12 border-black border-1">
-     </section>
-    <section class="listings container"> 
-      <div class="row profile-listing-container">
-      </div>
-      <div class="row profile-winnings-container">
-      </div>
+      <section class="profile-page col-12 border-black border-1"></section>
+      <section class="listings container">
+        <div class="row profile-listing-container"></div>
+        <div class="row profile-winnings-container"></div>
       </section>
       <!-- Registration Modal -->
-    <div
-      class="modal fade"
-      id="registerModal"
-      tabindex="-1"
-      aria-labelledby="registerModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <p class="navbar-brand vindt-logo text-center">VIND'T</p>
-          <div class="modal-header">
-            <h5 class="modal-title" id="registerModalLabel">Register</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <!-- Registration Form -->
-            <form id="registerForm">
-              <div class="mb-3">
-                <label for="username" class="form-label"
-                  >Name<span class="text-danger"> * </span></label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="name"
-                  name="name"
-                  placeholder="Enter your name"
-                  required
-                />
-              </div>
+      <div
+        class="modal fade"
+        id="registerModal"
+        tabindex="-1"
+        aria-labelledby="registerModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <p class="navbar-brand vindt-logo text-center">VIND'T</p>
+            <div class="modal-header">
+              <h5 class="modal-title" id="registerModalLabel">Register</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <!-- Registration Form -->
+              <form id="registerForm">
+                <div class="mb-3">
+                  <label for="username" class="form-label"
+                    >Name<span class="text-danger"> * </span></label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    name="name"
+                    placeholder="Enter your name"
+                    required
+                  />
+                </div>
 
-              <div class="mb-3">
-                <label for="email" class="form-label"
-                  >Email address<span class="text-danger"> * </span></label
-                >
-                <input
-                  type="email"
-                  class="form-control"
-                  id="email"
-                  name="email"
-                  placeholder="name@example.com"
-                  required
-                />
-              </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label"
+                    >Email address<span class="text-danger"> * </span></label
+                  >
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    name="email"
+                    placeholder="name@example.com"
+                    required
+                  />
+                </div>
 
-              <div class="mb-3">
-                <label for="password" class="form-label"
-                  >Password <span class="text-danger"> * </span></label
-                >
-                <input
-                  type="password"
-                  class="form-control"
-                  id="password"
-                  name="password"
-                  placeholder="Enter your password"
-                  required
-                />
-              </div>
+                <div class="mb-3">
+                  <label for="password" class="form-label"
+                    >Password <span class="text-danger"> * </span></label
+                  >
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    name="password"
+                    placeholder="Enter your password"
+                    required
+                  />
+                </div>
 
-              <!-- Optional fields -->
+                <!-- Optional fields -->
 
-              <p>Optional</p>
-              <div class="mb-3">
-                <label for="bio" class="form-label">Bio</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="bio"
-                  name="bio"
-                  placeholder="Tell us something about yourself"
-                />
-              </div>
-              <div class="mb-3">
-                <label for="avatarUrl" class="form-label">Avatar URL</label>
-                <input
-                  type="url"
-                  class="form-control"
-                  id="avatarUrl"
-                  name="avatarUrl"
-                  placeholder="Set an Avatar URL"
-                />
-              </div>
-              <div class="mb-3">
-                <label for="avatarAlt" class="form-label"
-                  >Avatar ALT Text</label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="avatarAlt"
-                  name="avatarAlt"
-                  placeholder="My avatar ALT text"
-                />
-              </div>
-              <div class="mb-3">
-                <label for="bannerUrl" class="form-label">Banner URL</label>
-                <input
-                  type="url"
-                  class="form-control"
-                  id="bannerUrl"
-                  name="bannerUrl"
-                  placeholder="Set a Banner URL"
-                />
-              </div>
-              <div class="mb-3">
-                <label for="bannerAlt" class="form-label"
-                  >Banner ALT Text</label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="bannerAlt"
-                  name="bannerAlt"
-                  placeholder="My banner ALT text"
-                />
-              </div>
-              <div class="error-message-registration"></div>
-              <!-- Submit Button -->
-              <div class="d-grid">
-                <button type="submit" class="btn btn-primary">Register</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Login Modal -->
-    <div
-      class="modal fade"
-      id="loginModal"
-      tabindex="-1"
-      aria-labelledby="loginModal"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <p class="navbar-brand vindt-logo text-center">VIND'T</p>
-          <div class="modal-header">
-            <h5 class="modal-title" id="registerModalLabel">Register</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <!-- Login modal -->
-            <form id="loginForm">
-              <div class="mb-3">
-                <label for="email" class="form-label"
-                  >Email <span class="text-danger"> * </span></label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="email"
-                  name="email"
-                  placeholder="Enter your username"
-                  required
-                />
-              </div>
-
-              <div class="mb-3">
-                <label for="password" class="form-label"
-                  >Password <span class="text-danger"> * </span></label
-                >
-                <input
-                  type="password"
-                  class="form-control"
-                  id="password"
-                  name="password"
-                  placeholder="Enter your password"
-                  required
-                />
-              </div>
-
-              <div class="error-message-login"></div>
-
-              <!-- Submit Button -->
-              <div class="d-grid">
-                <button type="submit" class="btn btn-primary">Log in</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Listing Modal -->
-     <div
-      class="modal fade"
-      id="listingModal"
-      tabindex="-1"
-      aria-labelledby="listingModalLabel"
-      aria-hidden="true"
-     >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <p class="navbar-brand vindt-logo text-center">VIND'T</p>
-          <div class="modal-header">
-            <h5 class="modal-title" id="listingModalLabel">Create a listing</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <form id="createListingForm">
-              <div class="mb-3">
-                <label for="title" class="form-label"
-                  >Product title <span class="text-danger"> * </span></label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="title"
-                  name="title"
-                  placeholder="Enter a title for your product(s)"
-                  required
-                />
-              </div>
-
-              <div class="mb-3">
-                <label for="description" class="form-label"
-                  >Product description
-                  <span class="text-danger"> * </span></label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="description"
-                  name="description"
-                  placeholder="Enter your description"
-                  required
-                />
-              </div>
-
-              <div class="mb-3">
-                <label for="tag" class="form-label">Add tag(s)</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="tag"
-                  name="tag"
-                  placeholder="Add tag(s)"
-                />
-              </div>
-
-              <div class="mb-3">
-                <label for="deadline-date" class="form-label"
-                  >Add deadline date</label
-                >
-                <input
-                  type="date"
-                  class="form-control"
-                  id="deadline-date"
-                  name="deadline-date"
-                  placeholder="Add deadline"
-                  required
-                />
-              </div>
-
-              <div class="mb-3">
-                <label for="media-url">Media URL</label>
-                <input
-                  type="url"
-                  class="form-control"
-                  id="media-url"
-                  name="media-url"
-                  placeholder="Enter media URL"
-                  required
-                />
-              </div>
-
-              <div class="mb-3">
-                <label for="media-alt">Media ALT Text</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="media-alt"
-                  name="media-alt"
-                  placeholder="Enter ALT text"
-                  required
-                />
-              </div>
-              <div class="mb-3" id="media-preview" style="display: none;">
-              <label for="image-preview">Image Preview</label>
-              <img id="image-preview" class="img-fluid" alt="Media Preview" />
-              </div>
-              
-              <div class="error-message-listing" class="d-none"></div>
-              <div class="d-grid">
-                <button type="submit" class="btn btn-primary">
-                  Post listing
-                </button>
+                <p>Optional</p>
+                <div class="mb-3">
+                  <label for="bio" class="form-label">Bio</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="bio"
+                    name="bio"
+                    placeholder="Tell us something about yourself"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="avatarUrl" class="form-label">Avatar URL</label>
+                  <input
+                    type="url"
+                    class="form-control"
+                    id="avatarUrl"
+                    name="avatarUrl"
+                    placeholder="Set an Avatar URL"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="avatarAlt" class="form-label"
+                    >Avatar ALT Text</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="avatarAlt"
+                    name="avatarAlt"
+                    placeholder="My avatar ALT text"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="bannerUrl" class="form-label">Banner URL</label>
+                  <input
+                    type="url"
+                    class="form-control"
+                    id="bannerUrl"
+                    name="bannerUrl"
+                    placeholder="Set a Banner URL"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="bannerAlt" class="form-label"
+                    >Banner ALT Text</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="bannerAlt"
+                    name="bannerAlt"
+                    placeholder="My banner ALT text"
+                  />
+                </div>
+                <div class="error-message-registration"></div>
+                <!-- Submit Button -->
+                <div class="d-grid">
+                  <button type="submit" class="btn btn-primary">
+                    Register
+                  </button>
                 </div>
               </form>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  
-             
-           
-             
-          
-
-    <!-- Edit profile -->
-    <div
-      class="modal fade"
-      id="editProfileModal"
-      tabindex="-1"
-      aria-labelledby="editProfileModal"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <p class="navbar-brand vindt-logo text-center">VIND'T</p>
-          <div class="modal-header">
-            <h5 class="modal-title" id="profileModalLabel"> Update your profile </h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <form id="editProfileForm">
-              <div class="mb-3">
-                <div class="current-avatar">
-                  <div class="spinner-border text-primary" role="status">
-                  <span class="sr-only">Loading...</span>
-                 </div>
+      <!-- Login Modal -->
+      <div
+        class="modal fade"
+        id="loginModal"
+        tabindex="-1"
+        aria-labelledby="loginModal"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <p class="navbar-brand vindt-logo text-center">VIND'T</p>
+            <div class="modal-header">
+              <h5 class="modal-title" id="registerModalLabel">Register</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <!-- Login modal -->
+              <form id="loginForm">
+                <div class="mb-3">
+                  <label for="email" class="form-label"
+                    >Email <span class="text-danger"> * </span></label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your username"
+                    required
+                  />
                 </div>
-                <label for="avatarUrl" class="form-label">Avatar URL</label>
-                <input
-                  type="url"
-                  class="form-control"
-                  id="avatarUrl"
-                  name="avatarUrl"
-                  placeholder="Set an Avatar URL"
-                />
-              </div>
-              <div class="mb-3">
-                <label for="avatarAlt" class="form-label"
-                  >Avatar ALT Text</label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="avatarAlt"
-                  name="avatarAlt"
-                  placeholder="My avatar ALT text"
-                />
-              </div>
-              <div class="mb-3">
-                <label for="bannerUrl" class="form-label">Banner URL</label>
-                <input
-                  type="url"
-                  class="form-control"
-                  id="bannerUrl"
-                  name="bannerUrl"
-                  placeholder="Set a Banner URL"
-                />
-              </div>
-              <div class="mb-3">
-                <label for="bannerAlt" class="form-label"
-                  >Banner ALT Text</label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="bannerAlt"
-                  name="bannerAlt"
-                  placeholder="My banner ALT text"
-                />
-              </div>
-              <div class="mb-3">
-                <label for="bio" class="form-label">Bio</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="bio"
-                  name="bio"
-                  placeholder="Tell us something about yourself"
-                />
-              </div>
 
-              <div class="d-grid">
-                <button type="submit" class="btn btn-primary">
-                  Post listing
-                </button>
+                <div class="mb-3">
+                  <label for="password" class="form-label"
+                    >Password <span class="text-danger"> * </span></label
+                  >
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    name="password"
+                    placeholder="Enter your password"
+                    required
+                  />
                 </div>
-                </form>
+
+                <div class="error-message-login"></div>
+
+                <!-- Submit Button -->
+                <div class="d-grid">
+                  <button type="submit" class="btn btn-primary">Log in</button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-      
-            <!-- Registration Modal -->
+      <!-- Listing Modal -->
+      <div
+        class="modal fade"
+        id="listingModal"
+        tabindex="-1"
+        aria-labelledby="listingModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <p class="navbar-brand vindt-logo text-center">VIND'T</p>
+            <div class="modal-header">
+              <h5 class="modal-title" id="listingModalLabel">
+                Create a listing
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <form id="createListingForm">
+                <div class="mb-3">
+                  <label for="title" class="form-label"
+                    >Product title <span class="text-danger"> * </span></label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="title"
+                    name="title"
+                    placeholder="Enter a title for your product(s)"
+                    required
+                  />
+                </div>
+
+                <div class="mb-3">
+                  <label for="description" class="form-label"
+                    >Product description
+                    <span class="text-danger"> * </span></label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="description"
+                    name="description"
+                    placeholder="Enter your description"
+                    required
+                  />
+                </div>
+
+                <div class="mb-3">
+                  <label for="tag" class="form-label">Add tag(s)</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="tag"
+                    name="tag"
+                    placeholder="Add tag(s)"
+                  />
+                </div>
+
+                <div class="mb-3">
+                  <label for="deadline-date" class="form-label"
+                    >Add deadline date</label
+                  >
+                  <input
+                    type="date"
+                    class="form-control"
+                    id="deadline-date"
+                    name="deadline-date"
+                    placeholder="Add deadline"
+                    required
+                  />
+                </div>
+
+                <div class="mb-3">
+                  <label for="media-url">Media URL</label>
+                  <input
+                    type="url"
+                    class="form-control"
+                    id="media-url"
+                    name="media-url"
+                    placeholder="Enter media URL"
+                    required
+                  />
+                </div>
+
+                <div class="mb-3">
+                  <label for="media-alt">Media ALT Text</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="media-alt"
+                    name="media-alt"
+                    placeholder="Enter ALT text"
+                    required
+                  />
+                </div>
+                <div class="mb-3" id="media-preview" style="display: none">
+                  <label for="image-preview">Image Preview</label>
+                  <img
+                    id="image-preview"
+                    class="img-fluid"
+                    alt="Media Preview"
+                  />
+                </div>
+
+                <div class="error-message-listing" class="d-none"></div>
+                <div class="d-grid">
+                  <button type="submit" class="btn btn-primary">
+                    Post listing
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Edit profile -->
+      <div
+        class="modal fade"
+        id="editProfileModal"
+        tabindex="-1"
+        aria-labelledby="editProfileModal"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <p class="navbar-brand vindt-logo text-center">VIND'T</p>
+            <div class="modal-header">
+              <h5 class="modal-title" id="profileModalLabel">
+                Update your profile
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <form id="editProfileForm">
+                <div class="mb-3">
+                  <div class="current-avatar">
+                    <div class="spinner-border text-primary" role="status">
+                      <span class="sr-only">Loading...</span>
+                    </div>
+                  </div>
+                  <label for="avatarUrl" class="form-label">Avatar URL</label>
+                  <input
+                    type="url"
+                    class="form-control"
+                    id="avatarUrl"
+                    name="avatarUrl"
+                    placeholder="Set an Avatar URL"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="avatarAlt" class="form-label"
+                    >Avatar ALT Text</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="avatarAlt"
+                    name="avatarAlt"
+                    placeholder="My avatar ALT text"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="bannerUrl" class="form-label">Banner URL</label>
+                  <input
+                    type="url"
+                    class="form-control"
+                    id="bannerUrl"
+                    name="bannerUrl"
+                    placeholder="Set a Banner URL"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="bannerAlt" class="form-label"
+                    >Banner ALT Text</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="bannerAlt"
+                    name="bannerAlt"
+                    placeholder="My banner ALT text"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="bio" class="form-label">Bio</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="bio"
+                    name="bio"
+                    placeholder="Tell us something about yourself"
+                  />
+                </div>
+
+                <div class="d-grid">
+                  <button type="submit" class="btn btn-primary">
+                    Post listing
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Registration Modal -->
       <div
         class="modal fade"
         id="registerModal"
@@ -825,15 +849,16 @@
                   />
                 </div>
                 <div id="media-container">
-                <div class="media-item mb-2">
-                  <button
-                    type="button"
-                    id="add-media-btn"
-                    class="btn btn-primary text-white fw-bold"
-                  >
-                    <i class="fa fa-plus" aria-hidden="true"></i>
-                  Add an image </button>
-                </div>
+                  <div class="media-item mb-2">
+                    <button
+                      type="button"
+                      id="add-media-btn"
+                      class="btn btn-primary text-white fw-bold"
+                    >
+                      <i class="fa fa-plus" aria-hidden="true"></i>
+                      Add an image
+                    </button>
+                  </div>
                 </div>
                 <div class="error-message-listing"></div>
                 <div class="d-grid">
@@ -848,16 +873,24 @@
       </div>
     </div>
 
-                <footer class="p-5 m-0">
-      <ul class="nav justify-content-center border-bottom border-primary pb-3 mb-3">
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Account</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQ</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About us</a></li>
-    </ul>
-    <p class="text-center text-body-secondary">© Vind't, inc</p>
-  </footer>
-
-
-</body>
+    <footer class="p-5 m-0">
+      <ul
+        class="nav justify-content-center border-bottom border-primary pb-3 mb-3"
+      >
+        <li class="nav-item">
+          <a href="#" class="nav-link px-2 text-body-secondary">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link px-2 text-body-secondary">Account</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link px-2 text-body-secondary">FAQ</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link px-2 text-body-secondary">About us</a>
+        </li>
+      </ul>
+      <p class="text-center text-body-secondary">© Vind't, inc</p>
+    </footer>
+  </body>
 </html>

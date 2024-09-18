@@ -31,63 +31,87 @@
     <link rel="stylesheet" href="/dist/css/styles.css" />
     <script type="module" src="/src/js/index.js"></script>
   </head>
-   <body class="mt-5">
+  <body class="mt-5">
     <div class="container mt-5">
-    <nav class="navbar navbar-expand-md bg-primary fixed-top">
-  <div class="container">
-    <a class="vindt-logo" href="/home/">VIND'T</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="offcanvas offcanvas-end bg-primary" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title vindt-logo" id="offcanvasNavbarLabel">VIND'T</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      </div>
-      <div class="offcanvas-body">
-            <ul class="navbar-nav justify-content-end flex-grow-1 gap-4">
-              <li class="nav-item align-self-center">
-                <a
-                  class="nav-link login-btn"
-                  data-bs-toggle="modal"
-                  data-bs-target="#loginModal"
+      <nav class="navbar navbar-expand-md bg-primary fixed-top">
+        <div class="container">
+          <a class="vindt-logo" href="/home/">VIND'T</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasNavbar"
+            aria-controls="offcanvasNavbar"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div
+            class="offcanvas offcanvas-end bg-primary"
+            tabindex="-1"
+            id="offcanvasNavbar"
+            aria-labelledby="offcanvasNavbarLabel"
+          >
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title vindt-logo" id="offcanvasNavbarLabel">
+                VIND'T
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 gap-4">
+                <li class="nav-item align-self-center">
+                  <a
+                    class="nav-link login-btn"
+                    data-bs-toggle="modal"
+                    data-bs-target="#loginModal"
+                  >
+                    Login
+                  </a>
+                </li>
+                <li class="nav-item align-self-center">
+                  <a class="nav-link" aria-current="page" href="/listings/"
+                    >Listings</a
+                  >
+                </li>
+                <li class="nav-item align-self-center">
+                  <a
+                    class="nav-link fw-bold register-btn"
+                    data-bs-toggle="modal"
+                    data-bs-target="#registerModal"
+                  >
+                    Register
+                  </a>
+                </li>
+                <li class="nav-item align-self-center">
+                  <a
+                    class="fw-bold nav-item-listing"
+                    href="#"
+                    data-bs-toggle="modal"
+                    data-bs-target="#listingModal"
+                    >List an item</a
+                  >
+                </li>
+                <li
+                  class="profile-btn order-first order-md-last btn-group d-flex justify-content-center"
                 >
-                  Login
-              </a>
-              </li>
-              <li class="nav-item align-self-center">
-                <a class="nav-link" aria-current="page" href="/listings/"
-                  >Listings</a
-                >
-              </li>
-              <li class="nav-item align-self-center">
-                <a
-                  class="nav-link fw-bold register-btn"
-                  data-bs-toggle="modal"
-                  data-bs-target="#registerModal"
-                >
-                  Register
-                </a>
-              </li>
-              <li class="nav-item align-self-center">
-                <a
-                  class="fw-bold nav-item-listing"
-                  href="#"
-                  data-bs-toggle="modal"
-                  data-bs-target="#listingModal"
-                  >List an item</a
-                >
-              </li>
-              <li class="profile-btn"> 
-                <img class="avatar-profile-img p-1 rounded-circle" alt="unknown-profile" src="/images/Unknown_person.jpg"> 
-              </li>
-            </ul>
+                  <img
+                    class="avatar-profile-img p-1 rounded-circle"
+                    alt="unknown-profile"
+                    src="/images/Unknown_person.jpg"
+                  />
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-        </div>
       </nav>
-  
-    
+
       <div class="container-fluid mt-5 p-0">
         <div class="searchbar-item"></div>
         <div class="row">
@@ -105,12 +129,16 @@
               </button>
             </form>
           </div>
-      </div>
+        </div>
       </div>
 
       <section class="categories mt-5 p-0">
-        <button id="sortNewToOld" class="btn btn-active">New to Old <i class="fa-solid fa-arrow-up"></i></button>
-        <button id="sortHighestBids" class="btn btn-secondary">Popularity <i class="fa-solid fa-arrow-down"></i> </button>
+        <button id="sortNewToOld" class="btn btn-active">
+          New to Old <i class="fa-solid fa-arrow-up"></i>
+        </button>
+        <button id="sortHighestBids" class="btn btn-secondary">
+          Popularity <i class="fa-solid fa-arrow-down"></i>
+        </button>
 
         <div class="container">
           <div class="row"></div>
@@ -120,17 +148,16 @@
       <section class="section-one mt-5 p-0">
         <div class="container p-0">
           <div class="row listings-grid">
-           <div class="text-center">
-      <div class="spinner-border" role="status">
-      <span class="sr-only">Loading...</span>
-      </div>
-      </div>
-        </div>
+            <div class="text-center">
+              <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      <div class="load-more text-center"> 
-        </div>
+      <div class="load-more text-center"></div>
 
       <!-- Registration Modal -->
       <div
@@ -430,15 +457,16 @@
                   />
                 </div>
                 <div id="media-container">
-                <div class="media-item mb-2">
-                  <button
-                    type="button"
-                    id="add-media-btn"
-                    class="btn btn-primary text-white fw-bold"
-                  >
-                    <i class="fa fa-plus" aria-hidden="true"></i>
-                  Add an image </button>
-                </div>
+                  <div class="media-item mb-2">
+                    <button
+                      type="button"
+                      id="add-media-btn"
+                      class="btn btn-primary text-white fw-bold"
+                    >
+                      <i class="fa fa-plus" aria-hidden="true"></i>
+                      Add an image
+                    </button>
+                  </div>
                 </div>
                 <div class="error-message-listing"></div>
                 <div class="d-grid">
@@ -454,13 +482,23 @@
     </div>
 
     <footer class="p-5 m-0">
-    <ul class="nav justify-content-center border-bottom border-primary pb-3 mb-3">
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Account</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQ</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About us</a></li>
-    </ul>
-    <p class="text-center text-body-secondary">© Vind't, inc</p>
-  </footer>
+      <ul
+        class="nav justify-content-center border-bottom border-primary pb-3 mb-3"
+      >
+        <li class="nav-item">
+          <a href="#" class="nav-link px-2 text-body-secondary">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link px-2 text-body-secondary">Account</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link px-2 text-body-secondary">FAQ</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link px-2 text-body-secondary">About us</a>
+        </li>
+      </ul>
+      <p class="text-center text-body-secondary">© Vind't, inc</p>
+    </footer>
   </body>
 </html>

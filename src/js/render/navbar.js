@@ -21,19 +21,12 @@ export async function displayCredits() {
 async function createProfileDropdown(currentUser, profile) {
   const divElement = document.querySelector(".profile-btn");
   divElement.innerHTML = "";
-  divElement.classList.add(
-    "order-first",
-    "order-md-last",
-    "btn-group",
-    "d-flex",
-  );
+  divElement.classList.add("flex-column");
 
   const button = document.createElement("button");
   button.classList.add(
     "btn",
-    "btn-white",
     "btn-sm",
-    "profile-btn",
     "d-flex",
     "flex-column",
     "align-items-center",
@@ -46,31 +39,41 @@ async function createProfileDropdown(currentUser, profile) {
   userAvatar.classList.add("avatar-profile-img", "rounded-circle");
   userAvatar.src = currentUser.avatar.url;
   userAvatar.alt = currentUser.avatar.alt;
-  button.insertBefore(userAvatar, button.firstChild);
+  button.appendChild(userAvatar);
 
   const list = document.createElement("ul");
   list.classList.add("dropdown-menu", "dropdown-menu-end");
 
+  const listItemOne = document.createElement("li")
+  listItemOne.classList.add("nav-item");
+
   const anchorOne = document.createElement("a");
-  anchorOne.classList.add("dropdown-item", "nav-link", "fw-bold");
+  anchorOne.classList.add("nav-link", "fw-bold");
   anchorOne.href = `/profiles/profile/?name=${currentUser.name}`;
   anchorOne.textContent = `Profile`;
+  listItemOne.appendChild(anchorOne);
 
-  const anchorTwo = document.createElement("p");
-  anchorTwo.classList.add("dropdown-item", "nav-link", "fw-bold", "m-0");
+  const listItemTwo = document.createElement("li");
+  listItemTwo.classList.add("nav-item");
+  const anchorTwo = document.createElement("a");
+  anchorTwo.classList.add("nav-link");
   anchorTwo.textContent = `Logout`;
   anchorTwo.style.cursor = "pointer";
   anchorTwo.addEventListener("click", () => {
     logout();
   });
+  listItemTwo.appendChild(anchorTwo);
 
-  const anchorThree = document.createElement("p");
-  anchorThree.classList.add("dropdown-item", "fw-bold", "nav-link");
+  const listItemThree = document.createElement("li");
+  listItemThree.classList.add("nav-item");
+  const anchorThree = document.createElement("a");
+  anchorThree.classList.add("nav-link");
   anchorThree.textContent = `Balance $${profile.data.credits}`;
+  listItemThree.appendChild(anchorThree);
 
-  list.appendChild(anchorOne);
-  list.appendChild(anchorTwo);
-  list.appendChild(anchorThree);
+  list.appendChild(listItemOne);
+  list.appendChild(listItemTwo);
+  list.appendChild(listItemThree);
 
   divElement.appendChild(button);
   divElement.appendChild(list);

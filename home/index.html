@@ -36,64 +36,86 @@
     <script type="module" src="/src/js/index.js"></script>
   </head>
 
-
   <body class="mt-5">
     <div class="container">
-    <nav class="navbar navbar-expand-md bg-primary fixed-top">
-  <div class="container">
-    <a class="vindt-logo" href="#">VIND'T</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="offcanvas offcanvas-end bg-primary" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title vindt-logo" id="offcanvasNavbarLabel">VIND'T</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      </div>
-      <div class="offcanvas-body">
-            <ul class="navbar-nav justify-content-end flex-grow-1 gap-4">
-              <li class="nav-item align-self-center">
-                <a
-                  class="nav-link login-btn"
-                  data-bs-toggle="modal"
-                  data-bs-target="#loginModal"
+      <nav class="navbar navbar-expand-md bg-primary fixed-top">
+        <div class="container">
+          <a class="vindt-logo" href="#">VIND'T</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasNavbar"
+            aria-controls="offcanvasNavbar"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div
+            class="offcanvas offcanvas-end bg-primary"
+            tabindex="-1"
+            id="offcanvasNavbar"
+            aria-labelledby="offcanvasNavbarLabel"
+          >
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title vindt-logo" id="offcanvasNavbarLabel">
+                VIND'T
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 gap-4">
+                <li class="nav-item align-self-center">
+                  <a
+                    class="nav-link login-btn"
+                    data-bs-toggle="modal"
+                    data-bs-target="#loginModal"
+                  >
+                    Login
+                  </a>
+                </li>
+                <li class="nav-item align-self-center">
+                  <a class="nav-link" aria-current="page" href="/listings/"
+                    >Listings</a
+                  >
+                </li>
+                <li class="nav-item align-self-center">
+                  <a
+                    class="nav-link fw-bold register-btn"
+                    data-bs-toggle="modal"
+                    data-bs-target="#registerModal"
+                  >
+                    Register
+                  </a>
+                </li>
+                <li class="nav-item align-self-center">
+                  <a
+                    class="fw-bold nav-item-listing"
+                    href="#"
+                    data-bs-toggle="modal"
+                    data-bs-target="#listingModal"
+                    >List an item</a
+                  >
+                </li>
+                <li
+                  class="profile-btn order-first order-md-last btn-group d-flex justify-content-center order-first order-md-last btn-group d-flex justify-content-center"
                 >
-                  Login
-              </a>
-              </li>
-              <li class="nav-item align-self-center">
-                <a class="nav-link" aria-current="page" href="/listings/"
-                  >Listings</a
-                >
-              </li>
-              <li class="nav-item align-self-center">
-                <a
-                  class="nav-link fw-bold register-btn"
-                  data-bs-toggle="modal"
-                  data-bs-target="#registerModal"
-                >
-                  Register
-                </a>
-              </li>
-              <li class="nav-item align-self-center">
-                <a
-                  class="fw-bold nav-item-listing"
-                  href="#"
-                  data-bs-toggle="modal"
-                  data-bs-target="#listingModal"
-                  >List an item</a
-                >
-              </li>
-              <li class="profile-btn"> 
-                <img class="avatar-profile-img p-1 rounded-circle" alt="unknown-profile" src="/images/Unknown_person.jpg"> 
-              </li>
-            </ul>
+                  <img
+                    class="avatar-profile-img p-1 rounded-circle"
+                    alt="unknown-profile"
+                    src="/images/Unknown_person.jpg"
+                  />
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-  </div>
       </nav>
-  
-    
 
       <!-- Hero banner -->
       <div class="container-fluid p-0 mt-5 hero--container position-relative">
@@ -456,15 +478,16 @@
                   />
                 </div>
                 <div id="media-container">
-                <div class="media-item mb-2">
-                  <button
-                    type="button"
-                    id="add-media-btn"
-                    class="btn btn-primary text-white fw-bold"
-                  >
-                    <i class="fa fa-plus" aria-hidden="true"></i>
-                  Add an image </button>
-                </div>
+                  <div class="media-item mb-2">
+                    <button
+                      type="button"
+                      id="add-media-btn"
+                      class="btn btn-primary text-white fw-bold"
+                    >
+                      <i class="fa fa-plus" aria-hidden="true"></i>
+                      Add an image
+                    </button>
+                  </div>
                 </div>
                 <div class="error-message-listing"></div>
                 <div class="d-grid">
