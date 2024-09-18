@@ -1,13 +1,14 @@
-import { fetchListingsWithPagination } from "../auth/postData/readPagination.js";
+import { getListings } from "../auth/postData/read.js";
 import { displayProducts } from "../render/productCards.js";
 
-let currentPage = 2; // Global variable to keep track of the current page
-const limit = 50; // Number of items to load per request
+let currentPage = 2; // Tracks the current page
+let limit = 50; // Items per page
+let sort = "created"; // Default sort field
+let sortOrder = "desc"; // Default sort order
 
-// Function to load and display more listings
 async function loadMoreListings() {
   try {
-    const response = await fetchListingsWithPagination(currentPage, limit);
+    const response = await getListings(currentPage, limit, sort, sortOrder);
     const listings = response.data;
 
     // Ensure listings exist and append them to the container
@@ -42,6 +43,6 @@ export function renderLoadMoreBtn() {
   parentElement.appendChild(btn);
 
   btn.addEventListener("click", async () => {
-    await loadMoreListings(); // Fetch and display the next set of items
+    await loadMoreListings(); // Fetch and display the next set of items based on the current state
   });
 }

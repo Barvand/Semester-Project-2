@@ -26,6 +26,8 @@ export async function searchBar() {
 
         const results = await response.json();
 
+        console.log(results);
+
         const resultData = results.data;
 
         displaySearchResults(resultData); // Function to display the search results

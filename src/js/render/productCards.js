@@ -14,9 +14,6 @@ export function displayProducts(products, parentElement) {
       return;
     }
 
-    const spinner = document.querySelector(".text-center");
-    spinner.classList.add("d-none");
-
     // Create the main col div
     const colDiv = document.createElement("div");
     colDiv.className =

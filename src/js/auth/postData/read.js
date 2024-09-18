@@ -5,9 +5,15 @@ const action = "/auction/listings";
 
 const queryParams = "_bids=true&_seller=true";
 
-export async function getListings() {
+export async function getListings(
+  page,
+  limit,
+  sort = "created",
+  sortOrder = "desc",
+) {
   try {
-    const getListingsURL = `${API_BASE_URL}${action}/?${queryParams}`;
+    const getListingsURL = `${API_BASE_URL}/auction/listings?page=${page}&limit=${limit}&sort=${sort}&sortOrder=${sortOrder}&${queryParams}`;
+
     const response = await fetchToken(getListingsURL);
 
     if (!response.ok) {

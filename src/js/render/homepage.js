@@ -2,10 +2,15 @@ import { getListings } from "../auth/postData/read.js";
 import { displayProducts } from "./productCards.js";
 
 export async function renderEndingSoonHomepage() {
-  const listings = await getListings();
+  let currentPage = 1; // Global variable to keep track of the current page
+  const limit = 50; // Number of items to load per request
+
+  const listings = await getListings(currentPage, limit);
   const listingsArray = listings.data;
 
   const parentContainer = document.querySelector(".ending-listings");
+
+  parentContainer.innerHTML = "";
   // Filter listings that expire within 100 hours
   const now = new Date();
   const filteredListings = listingsArray.filter((listing) => {

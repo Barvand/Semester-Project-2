@@ -1,103 +1,56 @@
-import { getProfiles } from "../auth/profileData/index.js";
-import { createProfilesInfo } from "../render/profiles.js";
-import { displayProducts } from "../render/productCards.js";
-import { API_BASE_URL } from "../constants.js";
-import { fetchToken } from "../fetchToken.js";
+import { createProfileCards } from "../render/profiles.js";
+import { fetchProfilesWithPagination } from "../auth/profileData/index.js";
 
-let currentPage = 1;
-const limit = 50; // Number of profiles per page
+let currentPage = 1; // Global variable to keep track of the current page
+const limit = 100; // Number of items to load per request
 
 // Function to handle fetching and displaying profiles for a specific page
-export async function handleProfiles(page = 1) {
-  const parentElement = document.querySelector(".profiles-page-container");
-
+export async function handleProfiles(parentElement) {
   try {
-    const getAllProfiles = await getProfilesPage(page, limit);
+    const getAllProfiles = await fetchProfilesWithPagination(
+      currentPage,
+      limit,
+    );
     const profiles = getAllProfiles.data;
 
-    parentElement.innerHTML = ""; // Clear previous profiles and pagination controls
-
-    profiles.forEach((profile) => {
-      if (!profile || !profile.name) {
-        console.error("Invalid profile:", profile);
-        return;
-      }
-
-      // Pass each individual profile to displayProfiles
-      createProfilesInfo(profile, parentElement);
-    });
-
-    // updatePaginationControls(page, parentElement); // Update pagination controls
-  } catch (error) {
-    console.error("Error fetching profiles:", error);
-  }
-}
-
-// Function to update pagination controls
-export async function updatePaginationControls(
-  page,
-  totalPages,
-  parentElement,
-) {
-  // Create the div container
-  const paginationControls = document.createElement("div");
-  paginationControls.classList.add("pagination-controls");
-
-  // Create the "Previous" button
-  const prevPageButton = document.createElement("button");
-  prevPageButton.id = "prev-page";
-  prevPageButton.disabled = page === 1;
-  prevPageButton.textContent = "Previous";
-
-  // Create the span for page number
-  const pageNumberSpan = document.createElement("span");
-  pageNumberSpan.id = "page-number";
-  pageNumberSpan.textContent = page;
-
-  // Create the "Next" button
-  const nextPageButton = document.createElement("button");
-  nextPageButton.id = "next-page";
-  nextPageButton.textContent = "Next";
-  nextPageButton.disabled = page === totalPages;
-
-  // Append the buttons and span to the div
-  paginationControls.appendChild(prevPageButton);
-  paginationControls.appendChild(pageNumberSpan);
-  paginationControls.appendChild(nextPageButton);
-
-  // Append pagination controls to the parent element
-  parentElement.appendChild(paginationControls);
-
-  // Set up event listeners after adding controls
-  setUpPaginationEventListeners();
-}
-
-// handleProfiles(currentPage);
-
-// Function to set up event listeners for pagination buttons
-function setUpPaginationEventListeners() {
-  const prevPageButton = document.getElementById("prev-page");
-  const nextPageButton = document.getElementById("next-page");
-
-  // Ensure the buttons exist before adding event listeners
-  if (prevPageButton && nextPageButton) {
-    prevPageButton.addEventListener("click", () => {
-      if (currentPage > 1) {
-        currentPage--;
-        handleProfiles(currentPage);
-      }
-    });
-
-    nextPageButton.addEventListener("click", () => {
+    if (profiles.length > 0) {
+      createProfileCards(profiles, parentElement);
       currentPage++;
-      handleProfiles(currentPage);
-    });
+    } else {
+      // Hide the "Load More" button if no more items are available
+      const loadMoreBtn = document.querySelector(".load-more-profiles button");
+      if (loadMoreBtn) {
+        loadMoreBtn.style.display = "block";
+      }
+    }
+  } catch (error) {
+    console.error("Error loading more profiles:", error);
   }
 }
 
-async function getProfilesPage(page, limit) {
-  const response = await fetchToken(
-    `${API_BASE_URL}/auction/profiles?page=${page}&limit=${limit}&sortOrder=asc`,
-  );
-  return response.json(); // Assuming the API returns JSON
+// Function to render the "Load More" button
+export function renderLoadMoreBtnProfiles(container) {
+  const parentElement = document.querySelector(".load-more-profiles");
+  const existingBtn = parentElement.querySelector("button");
+  if (existingBtn) return;
+
+  const btn = document.createElement("button");
+  btn.textContent = "Load more";
+  btn.classList.add("fw-bold", "btn", "btn-primary", "text-white");
+  parentElement.appendChild(btn);
+
+  console.log("Button created:", btn);
+
+  // Make sure to pass the correct parentElement to handleProfiles when the button is clicked
+  btn.addEventListener("click", async () => {
+    await handleProfiles(container); // Pass the profiles container here
+  });
+}
+
+export async function renderProfilesPage() {
+  const profilesContainer = document.querySelector(".profiles-page-container");
+  profilesContainer.innerHTML = "";
+
+  await handleProfiles(profilesContainer);
+  renderLoadMoreBtnProfiles(profilesContainer);
 }
