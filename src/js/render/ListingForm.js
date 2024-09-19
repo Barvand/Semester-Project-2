@@ -7,7 +7,7 @@ export async function renderMoreImageFields() {
 
       // Create a new div to hold the new media inputs
       const newMediaItem = document.createElement("div");
-      newMediaItem.classList.add("media-item");
+      newMediaItem.classList.add("media-item", "mb-3git add ");
 
       // Create the new input fields for media URL and ALT text
       const mediaUrlInput = document.createElement("input");
