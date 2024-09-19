@@ -18,7 +18,6 @@ export async function renderProfile() {
     // this renders the user data.
     renderProfilePage(profile);
     renderEditModal(profile);
-    isUserLoggedIn(container);
 
     // displays listings of the USER
     displayListings(profile);

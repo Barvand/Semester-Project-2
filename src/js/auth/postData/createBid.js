@@ -1,3 +1,9 @@
+import { API_BASE_URL } from "../../constants.js";
+import { fetchToken } from "../../fetchToken.js";
+
+const action = "/auction/listings";
+const method = "post";
+
 export async function createBids(postData) {
   const urlParams = new URLSearchParams(window.location.search);
   const id = urlParams.get("id");
@@ -10,12 +16,10 @@ export async function createBids(postData) {
       body: JSON.stringify(postData),
     });
 
-
     const displayError = document.querySelector(".error-message");
 
     // Check if registration was successful
     if (response.ok) {
-  
       displayError.textContent = `Bid has been placed, please wait.`;
       displayError.classList.add(
         "alert",

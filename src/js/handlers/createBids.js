@@ -32,10 +32,6 @@ export async function setCreateBiddingFormListener() {
       const response = await createBids(amount);
     } catch (error) {
       console.error("An error occurred while submitting the bid:", error);
-      const errorMessage = document.createElement("div");
-      errorMessage.classList.add("alert", "alert-danger", "text-center");
-      errorMessage.textContent = "Please log in to interact with bidding.";
-      parentElement.appendChild(errorMessage);
     }
   });
 }
