@@ -13,18 +13,18 @@ import { renderProfilesPage } from "./handlers/profilesHandler.js";
 import { renderAllPosts } from "./handlers/listingsPage.js";
 import { searchBarProfiles } from "./filters/searchProfile.js";
 
+const individualListing = document.querySelector(".listing-page");
+const listingContainer = document.querySelector(".listings-grid");
+const profileContainer = document.querySelector(".profile-page");
+
+// Global functions
 displayCredits();
 renderNavUser();
 renderMoreImageFields();
-
 listeners.setRegisterFormListener();
 listeners.setLoginFormListener();
 listeners.setCreateListingFormListener();
 listeners.setUpdateProfileFormListener();
-
-const individualListing = document.querySelector(".listing-page");
-const listingContainer = document.querySelector(".listings-grid");
-const profileContainer = document.querySelector(".profile-page");
 
 const path = location.pathname;
 
