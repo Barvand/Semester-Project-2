@@ -125,10 +125,6 @@ body {
   background-image: $gradient-primary;
 }
 
-.all-unset {
-  all: unset;
-}
-
 .bg-color {
   background-color: #b50ddb;
 }
@@ -141,7 +137,9 @@ body {
 }
 
 // custom card styles
-
+.card {
+  min-height: 313px;
+}
 // Hero container homepage
 
 .hero--container-image {

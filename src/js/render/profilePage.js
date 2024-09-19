@@ -174,12 +174,12 @@ async function displayWinnings(profile) {
   const header = document.createElement("h2");
   header.textContent = `Winnings`;
 
+  winningsParent.appendChild(header);
   if (profileWins.length === 0) {
     const p = document.createElement("p");
     p.textContent = `This user has no winnings yet.`;
-    header.appendChild(p);
+    winningsParent.appendChild(p);
   }
-  winningsParent.appendChild(header);
 
   displayProducts(profileWins, winningsParent);
 }
@@ -190,14 +190,13 @@ async function displayListings(profile) {
 
   const header = document.createElement("h2");
   header.textContent = `Listings`;
+  listingParent.appendChild(header);
 
   if (profileListing.length === 0) {
-    const p = document.createElement("p");
-    p.textContent = `This user does not have any listings yet`;
-    header.appendChild(p);
+    const paragraph = document.createElement("p");
+    paragraph.textContent = `This user does not have any listings yet`;
+    listingParent.appendChild(paragraph);
   }
-
-  listingParent.appendChild(header);
 
   displayProducts(profileListing, listingParent);
 }

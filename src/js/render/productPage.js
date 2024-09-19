@@ -115,8 +115,11 @@ async function timerAndButton(listing, parentElement, hoursLeft) {
   bidBtn.textContent = `Place a bid`;
   parentElement.appendChild(bidBtn);
 
-  const sectionBids = document.querySelector(".bids");
-  sectionBids.scrollIntoView({ behavior: "smooth" });
+  // Ensure the `.bids` element exists and is appended
+  bidBtn.addEventListener("click", () => {
+    const sectionBids = document.querySelector(".bids");
+    sectionBids.scrollIntoView({ behavior: "smooth" });
+  });
 
   if (hoursLeft < 0 && listing.data._count && listing.data._count.bids > 1) {
     productEnds.classList.add("bg-success", "text-white", "fw-bold");
@@ -202,7 +205,6 @@ export async function productImageCarousel(listing, parentElement) {
       const carouselItem = document.createElement("div");
       carouselItem.classList.add("carousel-item", "listing-image-wrapper");
 
-      // Add 'active' class only to the first item
       if (index === 0) {
         carouselItem.classList.add("active");
       }

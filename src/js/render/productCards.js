@@ -28,7 +28,7 @@ export function displayProducts(products, parentElement) {
 // Create the card div
 async function createCardDiv(product, parentElement) {
   const cardDiv = document.createElement("div");
-  cardDiv.className = "card border-0 rounded";
+  cardDiv.className = "card border-1 rounded";
   parentElement.appendChild(cardDiv);
 
   const hoursLeft = calculateHoursLeft(product.endsAt);
@@ -53,6 +53,10 @@ async function createImageAndOverlay(parentElement, product, time) {
   } else if (time > 0 && product._count && product._count.bids < 1) {
     overlayText.classList.add("bg-primary", "text-white");
     overlayText.textContent = `No bids yet`;
+  } else if (time > 100) {
+    // New condition for time more than 100 hours
+    overlayText.classList.add("bg-black", "text-white");
+    overlayText.textContent = `More than 100 hours left`;
   } else if (time > 0) {
     overlayText.classList.add("bg-black", "text-white");
     overlayText.textContent = `Ends in ${time} hours`;
