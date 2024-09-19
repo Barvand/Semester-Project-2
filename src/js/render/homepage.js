@@ -1,4 +1,5 @@
 import { getListings } from "../auth/postData/read.js";
+import { h2Header } from "./headers.js";
 import { displayProducts } from "./productCards.js";
 
 export async function renderEndingSoonHomepage() {
@@ -54,21 +55,6 @@ export async function renderEndingSoonHomepage() {
 }
 
 async function generateEndingSoonListings(listing, parentElement) {
-  createHeader(parentElement);
+  h2Header("Ending soon", parentElement);
   displayProducts(listing, parentElement); // Ensure this function handles the addition of "col-md-3" classes to cards
-}
-
-async function createHeader(parentElement) {
-  const header = document.createElement("h2");
-  header.textContent = `Ending soon`;
-  header.classList.add(
-    "border",
-    "border-1",
-    "bg-primary",
-    "text-white",
-    "text-center",
-    "p-1",
-    "rounded",
-  );
-  parentElement.appendChild(header);
 }

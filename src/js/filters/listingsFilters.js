@@ -1,9 +1,12 @@
 import { getListings } from "../auth/postData/read.js";
 import { displayProducts } from "../render/productCards.js";
+import { h1Header } from "../render/headers.js";
 
 // Track the current sorting state
 let isNewToOld = true; // Initially sorting from New to Old
 let isHighToLow = true;
+
+const listingContainer = document.querySelector(".listings-grid");
 
 async function fetchAndDisplayListings(page, limit, sort, sortOrder) {
   try {
@@ -11,8 +14,14 @@ async function fetchAndDisplayListings(page, limit, sort, sortOrder) {
     const listings = allListings.data; // Adjust based on your API response structure
 
     // Display the sorted listings
-    const listingContainer = document.querySelector(".listings-grid");
+
     listingContainer.innerHTML = ""; // Clear existing listings
+    // Corrected comparison operator and fixed the else statement
+    if (sortOrder === "asc") {
+      h1Header("Newest to oldest", listingContainer);
+    } else {
+      h1Header("Oldest to newest", listingContainer);
+    }
     displayProducts(listings, listingContainer);
   } catch (error) {
     console.error("Error fetching sorted listings:", error);
@@ -91,6 +100,7 @@ export async function fetchAndSortAllListings(sortOrder) {
     // Update the UI with sorted listings
     const listingContainer = document.querySelector(".listings-grid");
     listingContainer.innerHTML = ""; // Clear existing listings
+    h1Header("Popular listings", listingContainer);
     displayProducts(filteredListings, listingContainer); // Display all sorted listings
   } catch (error) {
     console.error("Error fetching and sorting listings:", error);

@@ -1,6 +1,7 @@
 import { getListings } from "../auth/postData/read.js";
 import { displayProducts } from "../render/productCards.js";
 import { renderLoadMoreBtn } from "../filters/listingsPagination.js";
+import { h1Header } from "../render/headers.js";
 
 export async function renderAllPosts() {
   try {
@@ -12,6 +13,7 @@ export async function renderAllPosts() {
 
     listingContainer.innerHTML = "";
 
+    h1Header("Listings", listingContainer);
     displayProducts(listings, listingContainer);
     renderLoadMoreBtn();
   } catch (error) {

@@ -1,5 +1,6 @@
 import { createProfileCards } from "../render/profiles.js";
-import { fetchProfilesWithPagination } from "../auth/profileData/index.js";
+import { getProfiles } from "../auth/profileData/index.js";
+import { h1Header } from "../render/headers.js";
 
 let currentPage = 1; // Global variable to keep track of the current page
 const limit = 100; // Number of items to load per request
@@ -7,10 +8,7 @@ const limit = 100; // Number of items to load per request
 // Function to handle fetching and displaying profiles for a specific page
 export async function handleProfiles(parentElement) {
   try {
-    const getAllProfiles = await fetchProfilesWithPagination(
-      currentPage,
-      limit,
-    );
+    const getAllProfiles = await getProfiles(currentPage, limit);
     const profiles = getAllProfiles.data;
 
     if (profiles.length > 0) {
@@ -30,7 +28,7 @@ export async function handleProfiles(parentElement) {
 
 // Function to render the "Load More" button
 export function renderLoadMoreBtnProfiles(container) {
-  const parentElement = document.querySelector(".load-more-profiles");
+  const parentElement = document.querySelector(".load-more-profiles-btn");
   const existingBtn = parentElement.querySelector("button");
   if (existingBtn) return;
 
@@ -38,8 +36,6 @@ export function renderLoadMoreBtnProfiles(container) {
   btn.textContent = "Load more";
   btn.classList.add("fw-bold", "btn", "btn-primary", "text-white");
   parentElement.appendChild(btn);
-
-  console.log("Button created:", btn);
 
   // Make sure to pass the correct parentElement to handleProfiles when the button is clicked
   btn.addEventListener("click", async () => {
@@ -51,6 +47,7 @@ export async function renderProfilesPage() {
   const profilesContainer = document.querySelector(".profiles-page-container");
   profilesContainer.innerHTML = "";
 
+  h1Header("Profiles", profilesContainer);
   await handleProfiles(profilesContainer);
   renderLoadMoreBtnProfiles(profilesContainer);
 }

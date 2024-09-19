@@ -11,6 +11,7 @@ import { deleteClickPost } from "../js/handlers/index.js";
 import { renderMoreImageFields } from "./render/ListingForm.js";
 import { renderProfilesPage } from "./handlers/profilesHandler.js";
 import { renderAllPosts } from "./handlers/listingsPage.js";
+import { searchBarProfiles } from "./filters/searchProfile.js";
 
 displayCredits();
 renderNavUser();
@@ -20,8 +21,6 @@ listeners.setRegisterFormListener();
 listeners.setLoginFormListener();
 listeners.setCreateListingFormListener();
 listeners.setUpdateProfileFormListener();
-
-searchBar();
 
 const individualListing = document.querySelector(".listing-page");
 const listingContainer = document.querySelector(".listings-grid");
@@ -37,6 +36,7 @@ switch (path) {
     renderAllPosts(listingContainer);
     sortByMostBids();
     sortNewToOldBtn();
+    searchBar();
     break;
   case "/listings/listing/":
     renderSingleListing(individualListing);
@@ -48,4 +48,5 @@ switch (path) {
     break;
   case "/profiles/":
     renderProfilesPage();
+    searchBarProfiles();
 }
