@@ -1,6 +1,6 @@
 import { getListing } from "../auth/postData/read.js";
 import { load } from "../storage/load.js";
-import { deleteListingFormListener } from "../handlers/deleteListing.js";
+
 import { calculateHoursLeft } from "./productCards.js";
 import { createBiddingTable } from "./bidForm.js";
 import { createBidButton } from "./bidForm.js";
@@ -58,22 +58,6 @@ export async function createProductPage(listing, parentElement) {
     return;
   }
 }
-
-// async function createProductImage(listing, parentElement) {
-//   if (listing.data.media && listing.data.media.length > 0) {
-//     const productImage = document.createElement("img");
-//     productImage.src = listing.data.media[0].url;
-//     productImage.alt = listing.data.media[0].alt;
-//     productImage.classList.add("img-fluid");
-//     parentElement.appendChild(productImage);
-//   } else {
-//     // If no media is available, display a placeholder image
-//     const placeholderImg = document.createElement("img");
-//     placeholderImg.src = "/images/No-image-available.jpg";
-//     placeholderImg.alt = "No image available";
-//     parentElement.appendChild(placeholderImg);
-//   }
-// }
 
 async function createProductTitle(listing, parentElement) {
   const productTitle = document.createElement("h1");
@@ -209,60 +193,84 @@ export async function productImageCarousel(listing, parentElement) {
   carouselInner.classList.add("carousel-inner");
   carousel.appendChild(carouselInner);
 
-  // Loop through the media array and create a carousel item for each image
-  listing.data.media.forEach((mediaItem, index) => {
+  const mediaItems = listing.data.media || [];
+  const mediaCount = mediaItems.length;
+
+  if (mediaCount > 0) {
+    // Loop through the media array and create a carousel item for each image
+    mediaItems.forEach((mediaItem, index) => {
+      const carouselItem = document.createElement("div");
+      carouselItem.classList.add("carousel-item", "listing-image-wrapper");
+
+      // Add 'active' class only to the first item
+      if (index === 0) {
+        carouselItem.classList.add("active");
+      }
+
+      const productImage = document.createElement("img");
+      productImage.src = mediaItem.url;
+      productImage.alt = mediaItem.alt || "Product image";
+      productImage.classList.add("img-fluid", "w-100", "listing-image"); // Add margin or any other styling if needed
+
+      carouselItem.appendChild(productImage);
+      carouselInner.appendChild(carouselItem);
+    });
+  } else {
     const carouselItem = document.createElement("div");
-    carouselItem.classList.add("carousel-item", "listing-image-wrapper");
+    carouselItem.classList.add(
+      "carousel-item",
+      "listing-image-wrapper",
+      "active",
+    ); // Set as active if it's the only item
 
-    // Add 'active' class only to the first item
-    if (index === 0) {
-      carouselItem.classList.add("active");
-    }
+    const placeholderImg = document.createElement("img");
+    placeholderImg.src = "/images/No-image-available.jpg";
+    placeholderImg.alt = "No image available";
+    placeholderImg.classList.add("img-fluid", "w-100", "listing-image");
 
-    const productImage = document.createElement("img");
-    productImage.src = mediaItem.url;
-    productImage.alt = mediaItem.alt || "Product image";
-    productImage.classList.add("img-fluid", "w-100", "listing-image"); // Add margin or any other styling if needed
-
-    carouselItem.appendChild(productImage);
+    carouselItem.appendChild(placeholderImg);
     carouselInner.appendChild(carouselItem);
-  });
+  }
 
-  // Create the previous button
-  const prevButton = document.createElement("button");
-  prevButton.classList.add("carousel-control-prev");
-  prevButton.type = "button";
-  prevButton.setAttribute("data-bs-target", "#carouselProduct");
-  prevButton.setAttribute("data-bs-slide", "prev");
+  // Create the previous button if there are more than one media item
+  if (mediaCount > 1) {
+    const prevButton = document.createElement("button");
+    prevButton.classList.add("carousel-control-prev");
+    prevButton.type = "button";
+    prevButton.setAttribute("data-bs-target", "#carouselProduct");
+    prevButton.setAttribute("data-bs-slide", "prev");
 
-  const prevIcon = document.createElement("span");
-  prevIcon.classList.add("carousel-control-prev-icon");
-  prevIcon.setAttribute("aria-hidden", "true");
+    const prevIcon = document.createElement("span");
+    prevIcon.classList.add("carousel-control-prev-icon");
+    prevIcon.setAttribute("aria-hidden", "true");
 
-  const prevText = document.createElement("span");
-  prevText.classList.add("visually-hidden");
-  prevText.textContent = "Previous";
+    const prevText = document.createElement("span");
+    prevText.classList.add("visually-hidden");
+    prevText.textContent = "Previous";
 
-  prevButton.appendChild(prevIcon);
-  prevButton.appendChild(prevText);
-  carousel.appendChild(prevButton);
+    prevButton.appendChild(prevIcon);
+    prevButton.appendChild(prevText);
+    carousel.appendChild(prevButton);
+  }
 
-  // Create the next button
-  const nextButton = document.createElement("button");
-  nextButton.classList.add("carousel-control-next");
-  nextButton.type = "button";
-  nextButton.setAttribute("data-bs-target", "#carouselProduct");
-  nextButton.setAttribute("data-bs-slide", "next");
+  // Create the next button if there are more than one media item
+  if (mediaCount > 1) {
+    const nextButton = document.createElement("button");
+    nextButton.classList.add("carousel-control-next");
+    nextButton.type = "button";
+    nextButton.setAttribute("data-bs-target", "#carouselProduct");
+    nextButton.setAttribute("data-bs-slide", "next");
 
-  const nextIcon = document.createElement("span");
-  nextIcon.classList.add("carousel-control-next-icon");
-  nextIcon.setAttribute("aria-hidden", "true");
+    const nextIcon = document.createElement("span");
+    nextIcon.classList.add("carousel-control-next-icon");
+    nextIcon.setAttribute("aria-hidden", "true");
 
-  const nextText = document.createElement("span");
-  nextText.classList.add("visually-hidden");
-  nextText.textContent = "Next";
+    const nextText = document.createElement("span");
+    nextText.classList.add("visually-hidden");
+    nextText.textContent = "Next";
 
-  nextButton.appendChild(nextIcon);
-  nextButton.appendChild(nextText);
-  carousel.appendChild(nextButton);
+    nextButton.appendChild(nextIcon);
+    nextButton.appendChild(nextText);
+    carousel.appendChild(nextButton);
+  }
 }

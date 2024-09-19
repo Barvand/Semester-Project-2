@@ -2,8 +2,10 @@ import { getProfile } from "../auth/profileData/index.js";
 import { load } from "../storage/load.js";
 import { displayProducts } from "./productCards.js";
 import { renderEditModal } from "./editProfileModal.js";
+import { isUserLoggedIn } from "../handlers/isUserLoggedIn.js";
 
 export async function renderProfile() {
+  const container = document.querySelector(".profile-page");
   // Get the post ID from the query string
   const queryString = document.location.search;
   const params = new URLSearchParams(queryString);
@@ -13,11 +15,10 @@ export async function renderProfile() {
     // Fetch the post data based on the ID
     const profile = await getProfile(name);
 
-    console.log(getProfile("Biddster"));
-
     // this renders the user data.
     renderProfilePage(profile);
     renderEditModal(profile);
+    isUserLoggedIn(container);
 
     // displays listings of the USER
     displayListings(profile);
