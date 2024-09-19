@@ -2,11 +2,10 @@ import { createProfileCards } from "../render/profiles.js";
 import { getProfiles } from "../auth/profileData/index.js";
 import { h1Header } from "../render/headers.js";
 
-let currentPage = 1; // Global variable to keep track of the current page
-const limit = 100; // Number of items to load per request
-
 // Function to handle fetching and displaying profiles for a specific page
 export async function handleProfiles(parentElement) {
+  let currentPage = 1; // Global variable to keep track of the current page
+  const limit = 100; // Number of items to load per request
   try {
     const getAllProfiles = await getProfiles(currentPage, limit);
     const profiles = getAllProfiles.data;
