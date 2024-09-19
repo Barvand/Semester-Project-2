@@ -3,7 +3,7 @@ $secondary: #000000;
 $danger: #e60000;
 $list-group-bg: rgb(145, 145, 145);
 $list-group-color: white;
-$gradient-primary: linear-gradient(to top left, #00f56e, #10b601);
+$gradient-primary: linear-gradient(to top left, #0a7db2, #0a7db2);
 $border-radius: 5px;
 
 @import "../../node_modules/bootstrap/scss/functions";
@@ -155,7 +155,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(75%); /* Darkens the image */
+  filter: brightness(50%); /* Darkens the image */
 }
 
 .hero--container-text-h1 {
