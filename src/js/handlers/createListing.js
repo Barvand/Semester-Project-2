@@ -11,7 +11,7 @@ import { createListing } from "../auth/postData/create.js";
 export async function setCreateListingFormListener() {
   const form = document.querySelector("#createListingForm");
   const errorDiv = document.querySelector(".error-message-listing"); // Select the error message div
-
+  const listingBtn = document.querySelector(".btn-create-listing");
   if (form) {
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
@@ -51,19 +51,15 @@ export async function setCreateListingFormListener() {
         media: mediaArray, // Assign the constructed media array
         tags: tags, // Assign the tags array
       };
-  
 
       try {
         // Send the listing to the API
         const response = await createListing(listing);
-      }
+        listingBtn.style.display = "none";
+      } catch (error) {
         // Check if the response contains an error field or some indicator of failure
-        catch (error) {
-      console.error("An error occurred while submitting the bid:", error);
-        }
-      })
-    }
-  }; 
-
-
-
+        console.error("An error occurred while submitting the bid:", error);
+      }
+    });
+  }
+}
