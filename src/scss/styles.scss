@@ -1,6 +1,6 @@
-$primary: #0d9adb;
+$primary: #0a7db2;
 $secondary: #000000;
-$danger: #f30000;
+$danger: #e60000;
 $list-group-bg: rgb(145, 145, 145);
 $list-group-color: white;
 $gradient-primary: linear-gradient(to top left, #00f56e, #10b601);
@@ -55,6 +55,16 @@ a {
 .vindt-logo {
   font-family: "Bungee", sans-serif;
   color: white;
+  padding: 2px 4px 2px 4px;
+  border-radius: $border-radius;
+  font-size: 20px;
+  border: white 1px solid;
+}
+
+.vindt-logo-dark {
+  font-family: "Bungee", sans-serif;
+  color: white;
+  background: black;
   padding: 2px 4px 2px 4px;
   border-radius: $border-radius;
   font-size: 20px;

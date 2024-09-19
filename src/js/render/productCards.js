@@ -45,20 +45,19 @@ async function createImageAndOverlay(parentElement, product, time) {
 
   // Create the overlayText element outside the condition
   const overlayText = document.createElement("p");
-  overlayText.className =
-    "text-white p-2 position-absolute top-0 end-0 rounded";
+  overlayText.className = "fw-bold p-2 position-absolute top-0 end-0 rounded";
 
   if (time < 0 && product._count && product._count.bids > 1) {
-    overlayText.classList.add("bg-success");
+    overlayText.classList.add("bg-success", "text-white");
     overlayText.textContent = `Item sold`;
   } else if (time > 0 && product._count && product._count.bids < 1) {
-    overlayText.classList.add("bg-warning");
+    overlayText.classList.add("bg-primary", "text-white");
     overlayText.textContent = `No bids yet`;
   } else if (time > 0) {
-    overlayText.classList.add("bg-black");
+    overlayText.classList.add("bg-black", "text-white");
     overlayText.textContent = `Ends in ${time} hours`;
   } else {
-    overlayText.classList.add("bg-danger");
+    overlayText.classList.add("bg-danger", "text-white");
     overlayText.textContent = `Offer is expired`;
   }
 
@@ -131,7 +130,7 @@ async function createBidsCount(product, parentElement) {
     // Display total number of bids
     const allBids = document.createElement("p");
     allBids.textContent = `Bids: ${product._count.bids}`;
-    allBids.classList.add("text-primary");
+    allBids.classList.add("text-black");
     cardDiv.appendChild(allBids);
   }
 }
