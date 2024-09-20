@@ -8,6 +8,8 @@ export async function login(profile) {
   const loginURL = API_BASE_URL + action;
   const body = JSON.stringify(profile);
 
+  const displayError = document.querySelector(".error-message-login");
+
   try {
     const response = await fetch(loginURL, {
       headers: {
@@ -26,14 +28,25 @@ export async function login(profile) {
       storage.save("token", accessToken);
       storage.save("profile", user);
 
-      // Redirect to the user's profile page
-      window.location.href = `/profiles/profile/?name=${user.name}`;
+      displayError.innerText =
+        "You have been successfully logged in, please wait";
+      displayError.classList.add(
+        "alert",
+        "alert-success",
+        "text-success",
+        "fw-bold",
+      );
+
+      // Redirect to the user's profile page after 2 seconds
+      setTimeout(() => {
+        window.location.href = `/profiles/profile/?name=${user.name}`;
+      }, 2000); // 2000 milliseconds = 2 seconds
     } else {
       // If login fails
       const errorResponse = await response.json(); // Parse the response as JSON
       const detailedErrorMessage = errorResponse.errors[0].message;
 
-      const displayError = document.querySelector(".error-message-login"); // Use the correct class selector
+      // Use the correct class selector
       if (displayError) {
         displayError.innerHTML = ""; // Clear any existing content
         displayError.classList.add(

@@ -12,6 +12,7 @@ import { renderMoreImageFields } from "./render/ListingForm.js";
 import { renderProfilesPage } from "./handlers/profilesHandler.js";
 import { renderAllPosts } from "./handlers/listingsPage.js";
 import { searchBarProfiles } from "./filters/searchProfile.js";
+import { formRegistrationValidation } from "./handlers/formValidation.js";
 
 const individualListing = document.querySelector(".listing-page");
 const listingContainer = document.querySelector(".listings-grid");

@@ -1,5 +1,5 @@
 import { createBids } from "../auth/postData/createBid.js";
-import { createBiddingTable } from "../render/bidForm.js";
+
 // Trick from course assignment video - Creates an object with the keys and values with a single line of code.
 /**
  * setCreatePostFormListener retrieves all required data from the html form and creates the post. This function does not require any
@@ -10,7 +10,6 @@ import { createBiddingTable } from "../render/bidForm.js";
  */
 export async function setCreateBiddingFormListener() {
   const form = document.querySelector("#bidForm");
-  const parentElement = document.querySelector(".bids");
 
   if (!form) {
     console.error("Bid form not found.");
@@ -18,10 +17,10 @@ export async function setCreateBiddingFormListener() {
   }
 
   form.addEventListener("submit", async (event) => {
-    event.preventDefault(); // Prevent default form submission
+    event.preventDefault();
 
     const formData = new FormData(event.target);
-    const bidAmount = formData.get("bidAmount"); // Get bid amount value
+    const bidAmount = formData.get("bidAmount");
 
     const amount = {
       amount: Number(bidAmount),
@@ -29,6 +28,7 @@ export async function setCreateBiddingFormListener() {
 
     try {
       // Send the bid amount to the API
+
       const response = await createBids(amount);
     } catch (error) {
       console.error("An error occurred while submitting the bid:", error);

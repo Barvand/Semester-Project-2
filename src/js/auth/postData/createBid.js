@@ -27,6 +27,10 @@ export async function createBids(postData) {
         "text-center",
         "text-success",
       );
+
+      // Remove classes to make sure the alert turns green if the user is displayed an error first
+      // and submits a bid afterwards.
+      displayError.classList.remove("text-danger", "alert-danger");
       displayError.textContent = "Bid has been placed, please wait";
 
       setTimeout(() => {
@@ -38,7 +42,7 @@ export async function createBids(postData) {
       const detailedErrorMessage = errorMessage.errors[0].message;
 
       if (displayError) {
-        displayError.innerHTML = ""; // Clear any existing content
+        displayError.innerHTML = "";
         displayError.classList.add(
           "text-danger",
           "text-center",

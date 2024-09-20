@@ -59,6 +59,7 @@ a {
   border-radius: $border-radius;
   font-size: 20px;
   border: white 1px solid;
+  background-color: $primary;
 }
 
 .vindt-logo-dark {
@@ -311,4 +312,27 @@ footer a {
   width: 100%;
   font-size: 18px;
   box-shadow: 1px black solid;
+}
+
+// Form validation
+.login-error-message-username,
+.login-error-message-password,
+.login-error-message-registration-email,
+.login-error-message-registration-name,
+.error-message-listing-deadline,
+.error-message-listing-title,
+.error-message-listing-description {
+  color: red;
+  height: 25px;
+  padding: 5px;
+}
+
+.login-error-message-registration-password {
+  color: red;
+  height: 60px;
+  padding: 5px;
+}
+
+.input-error {
+  border: 2px solid red; /* Change the border color */
 }

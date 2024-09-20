@@ -23,8 +23,6 @@ export async function createListing(postData) {
 
     if (response.ok) {
       createListingSuccessMessage(displayError);
-
-
     } else {
       // Handle failed listing
       const errorMessage = await response.json();

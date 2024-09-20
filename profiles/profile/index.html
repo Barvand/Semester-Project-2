@@ -135,7 +135,7 @@
           <div class="modal-content">
             <p class="navbar-brand vindt-logo text-center">VIND'T</p>
             <div class="modal-header">
-              <h5 class="modal-title">Register</h5>
+              <h5 class="modal-title" id="registerModalLabel">Register</h5>
               <button
                 type="button"
                 class="btn-close"
@@ -147,7 +147,7 @@
               <!-- Registration Form -->
               <form id="registerForm">
                 <div class="mb-3">
-                  <label for="username" class="form-label"
+                  <label for="name" class="form-label"
                     >Name<span class="text-danger"> * </span></label
                   >
                   <input
@@ -158,6 +158,7 @@
                     placeholder="Enter your name"
                     required
                   />
+                  <div class="login-error-message-registration-name"></div>
                 </div>
 
                 <div class="mb-3">
@@ -167,11 +168,12 @@
                   <input
                     type="email"
                     class="form-control"
-                    id="email-registration"
+                    id="email"
                     name="email"
-                    placeholder="name@example.com"
+                    placeholder="name@stud.noroff.no"
                     required
                   />
+                  <div class="login-error-message-registration-email"></div>
                 </div>
 
                 <div class="mb-3">
@@ -181,11 +183,12 @@
                   <input
                     type="password"
                     class="form-control"
-                    id="password-registration"
+                    id="password"
                     name="password"
                     placeholder="Enter your password"
                     required
                   />
+                  <div class="login-error-message-registration-password"></div>
                 </div>
 
                 <!-- Optional fields -->
@@ -269,7 +272,7 @@
           <div class="modal-content">
             <p class="navbar-brand vindt-logo text-center">VIND'T</p>
             <div class="modal-header">
-              <h5 class="modal-title" id="registerModalLabel">Register</h5>
+              <h5 class="modal-title">Login</h5>
               <button
                 type="button"
                 class="btn-close"
@@ -285,11 +288,11 @@
                     >Email <span class="text-danger"> * </span></label
                   >
                   <input
-                    type="text"
+                    type="email"
                     class="form-control"
                     id="email-login"
                     name="email"
-                    placeholder="Enter your username"
+                    placeholder="Use your email to log in"
                     required
                   />
                 </div>
@@ -579,8 +582,10 @@
                     class="form-control"
                     id="email"
                     name="email"
-                    placeholder="name@example.com"
+                    placeholder="name@stud.noroff.no"
                     required
+                    pattern="stud.noroff.no"
+                    title="Email must contain stud.noroff.no"
                   />
                 </div>
 
@@ -695,12 +700,14 @@
                     >Email <span class="text-danger"> * </span></label
                   >
                   <input
-                    type="text"
+                    type="email"
                     class="form-control"
                     id="email-login"
                     name="email"
                     placeholder="Enter your username"
                     required
+                    pattern="stud.noroff.no"
+                    title="Username must contain stud.noroff.no"
                   />
                 </div>
 
