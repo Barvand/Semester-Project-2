@@ -72,6 +72,9 @@
             <div class="offcanvas-body">
               <ul class="navbar-nav justify-content-end flex-grow-1 gap-4">
                 <li class="nav-item align-self-center">
+                  <p class="m-0 text-white nav-balance d-none"></p>
+                </li>
+                <li class="nav-item align-self-center">
                   <a
                     class="nav-link login-btn"
                     data-bs-toggle="modal"
@@ -104,7 +107,7 @@
                   >
                 </li>
                 <li
-                  class="profile-btn order-first order-md-last btn-group d-flex justify-content-center"
+                  class="profile-btn order-first order-md-last btn-group d-flex justify-content-center order-first order-md-last btn-group d-flex justify-content-center"
                 >
                   <img
                     class="avatar-profile-img p-1 rounded-circle"
@@ -307,14 +310,14 @@
         class="modal fade"
         id="loginModal"
         tabindex="-1"
-        aria-labelledby="loginModal"
+        aria-labelledby="loginModalLabel"
         aria-hidden="true"
       >
         <div class="modal-dialog">
           <div class="modal-content">
             <p class="navbar-brand vindt-logo text-center">VIND'T</p>
             <div class="modal-header">
-              <h5 class="modal-title">Login</h5>
+              <h5 class="modal-title" id="loginModalLabel">Login</h5>
               <button
                 type="button"
                 class="btn-close"
@@ -326,7 +329,7 @@
               <!-- Login modal -->
               <form id="loginForm">
                 <div class="mb-3">
-                  <label for="email" class="form-label"
+                  <label for="email-login" class="form-label"
                     >Email <span class="text-danger"> * </span></label
                   >
                   <input
@@ -340,7 +343,7 @@
                 </div>
 
                 <div class="mb-3">
-                  <label for="password" class="form-label"
+                  <label for="password-login" class="form-label"
                     >Password <span class="text-danger"> * </span></label
                   >
                   <input

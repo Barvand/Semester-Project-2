@@ -106,9 +106,7 @@ async function parentProfileInfo(profile, parentElement) {
 async function createProfileAvatar(profile, parentElement) {
   const avatarWrapper = document.createElement("div");
 
-  // Set the background image using the correct syntax
   avatarWrapper.style.backgroundImage = `url(${profile.data.avatar.url})`;
-
   avatarWrapper.classList.add(
     "avatar-wrapper",
     "col-12",

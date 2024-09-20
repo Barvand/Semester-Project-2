@@ -2,9 +2,8 @@ import * as listeners from "../js/handlers/index.js";
 import { renderSingleListing } from "./render/productPage.js";
 import { renderProfile } from "./render/profilePage.js";
 import { searchBar } from "./filters/index.js";
-import { displayCredits } from "./render/navbar.js";
 import { renderEndingSoonHomepage } from "./render/homepage.js";
-import { renderNavUser } from "./render/navbar.js";
+import { renderNavigation } from "./render/navbar.js";
 import { sortByMostBids } from "./filters/index.js";
 import { sortNewToOldBtn } from "./filters/index.js";
 import { deleteClickPost } from "../js/handlers/index.js";
@@ -19,8 +18,7 @@ const listingContainer = document.querySelector(".listings-grid");
 const profileContainer = document.querySelector(".profile-page");
 
 // Global functions
-displayCredits();
-renderNavUser();
+renderNavigation();
 renderMoreImageFields();
 listeners.setRegisterFormListener();
 listeners.setLoginFormListener();

@@ -2,7 +2,7 @@ import { getProfile } from "../auth/profileData/index.js";
 import { load } from "../storage/load.js";
 import { logout } from "../auth/logout.js";
 
-export async function displayCredits() {
+export async function renderNavigation() {
   const currentUser = load("profile");
 
   if (!currentUser) {
@@ -13,6 +13,7 @@ export async function displayCredits() {
     const profile = await getProfile(currentUser.name);
 
     createProfileDropdown(currentUser, profile);
+    renderNavUser(profile);
   } catch (error) {
     console.error("Error fetching or displaying credits:", error);
   }
@@ -44,7 +45,7 @@ async function createProfileDropdown(currentUser, profile) {
   const list = document.createElement("ul");
   list.classList.add("dropdown-menu", "dropdown-menu-end");
 
-  const listItemOne = document.createElement("li")
+  const listItemOne = document.createElement("li");
   listItemOne.classList.add("nav-item");
 
   const anchorOne = document.createElement("a");
@@ -64,24 +65,17 @@ async function createProfileDropdown(currentUser, profile) {
   });
   listItemTwo.appendChild(anchorTwo);
 
-  const listItemThree = document.createElement("li");
-  listItemThree.classList.add("nav-item");
-  const anchorThree = document.createElement("a");
-  anchorThree.classList.add("nav-link");
-  anchorThree.textContent = `Balance $${profile.data.credits}`;
-  listItemThree.appendChild(anchorThree);
-
   list.appendChild(listItemOne);
   list.appendChild(listItemTwo);
-  list.appendChild(listItemThree);
 
   divElement.appendChild(button);
   divElement.appendChild(list);
 }
 
-export async function renderNavUser() {
+export async function renderNavUser(profile) {
   const registerBtn = document.querySelector(".register-btn");
   const loginBtn = document.querySelector(".login-btn");
+  const balance = document.querySelector(".nav-balance");
 
   // Load the current user's profile
   const currentUser = load("profile");
@@ -102,9 +96,11 @@ export async function renderNavUser() {
     registerBtn.removeAttribute("data-bs-toggle");
     registerBtn.removeAttribute("data-bs-target");
 
-    loginBtn.textContent = "Home";
-    loginBtn.href = "/home/";
-    loginBtn.removeAttribute("data-bs-toggle");
+    balance.textContent = `Available balance $${profile.data.credits}`;
+    balance.classList.add("d-block");
+    balance.classList.remove("d-none");
+
+    loginBtn.style.display = "none";
     loginBtn.removeAttribute("data-bs-target");
   }
 }
