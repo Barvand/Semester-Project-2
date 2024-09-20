@@ -18,9 +18,9 @@ async function fetchAndDisplayListings(page, limit, sort, sortOrder) {
     listingContainer.innerHTML = ""; // Clear existing listings
     // Corrected comparison operator and fixed the else statement
     if (sortOrder === "asc") {
-      h1Header("Newest to oldest", listingContainer);
-    } else {
       h1Header("Oldest to newest", listingContainer);
+    } else {
+      h1Header("Newest to oldest", listingContainer);
     }
     displayProducts(listings, listingContainer);
   } catch (error) {
@@ -52,9 +52,9 @@ export async function sortNewToOldBtn() {
 
       // Change the button text based on the current sorting state
       if (isNewToOld) {
-        sortNewBtn.textContent = "Newest first";
+        sortNewBtn.textContent = "New";
       } else {
-        sortNewBtn.textContent = "Oldest first";
+        sortNewBtn.textContent = "Old";
       }
     });
   } else {
