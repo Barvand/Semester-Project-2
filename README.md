@@ -20,9 +20,8 @@ Welcome to the VINDT Auction project! This application allows users to browse, b
 - **Bootstrap**: For responsive design and UI components.
 - **API Integration**: Fetches data for listings and user interactions from a backend API.
 
-### Prerequisites
-
-- A modern web browser
-- A code editor (like Visual Studio Code)
 
 ### Installation
+
+1. Clone the repository: 
+git clone https://github.com/Barvand/Semester-Project-2.git
