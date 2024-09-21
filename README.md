@@ -25,3 +25,8 @@ Welcome to the VINDT Auction project! This application allows users to browse, b
 
 1. Clone the repository: 
 git clone https://github.com/Barvand/Semester-Project-2.git
+
+
+
+#### Github Projects Planning: 
+https://github.com/users/Barvand/projects/1/views/2
