@@ -20,6 +20,21 @@ Welcome to the VINDT Auction project! This application allows users to browse, b
 - **Bootstrap**: For responsive design and UI components.
 - **API Integration**: Fetches data for listings and user interactions from a backend API.
 
+## User Features
+
+- A user with a **stud.noroff.no** email may register.
+- A registered user may log in.
+- A registered user may log out.
+- A registered user may update their avatar.
+- A registered user may view their total credit.
+- A registered user may create a Listing with:
+  - Title
+  - Deadline date
+  - Media gallery
+  - Description
+- A registered user may add a Bid to another user’s Listing.
+- A registered user may view Bids made on a Listing.
+- An unregistered user may search through Listings.
 
 ### Installation
 
