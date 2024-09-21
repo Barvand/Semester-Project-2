@@ -1,7 +1,7 @@
 import { displayProducts } from "../render/productCards.js";
 import { API_BASE_URL } from "../constants.js";
 import { fetchToken } from "../fetchToken.js";
-import { renderAllPosts } from "../handlers/listingsPage.js";
+import { renderAllPosts } from "../filters/listingsPagination.js";
 
 export async function searchBar() {
   const searchInput = document.querySelector("#searchBar");

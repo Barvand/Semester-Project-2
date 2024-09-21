@@ -1,12 +1,13 @@
 import { getListings } from "../auth/postData/read.js";
 import { displayProducts } from "../render/productCards.js";
 import { h1Header } from "../render/headers.js";
+import { renderLoadMoreBtn } from "../filters/listingsPagination.js";
+
+const listingContainer = document.querySelector(".listings-grid");
 
 // Track the current sorting state
 let isNewToOld = true; // Initially sorting from New to Old
 let isHighToLow = true;
-
-const listingContainer = document.querySelector(".listings-grid");
 
 async function fetchAndDisplayListings(page, limit, sort, sortOrder) {
   try {

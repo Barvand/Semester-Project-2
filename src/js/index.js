@@ -9,7 +9,7 @@ import { sortNewToOldBtn } from "./filters/index.js";
 import { deleteClickPost } from "../js/handlers/index.js";
 import { renderMoreImageFields } from "./render/ListingForm.js";
 import { renderProfilesPage } from "./handlers/profilesHandler.js";
-import { renderAllPosts } from "./handlers/listingsPage.js";
+import { renderAllPosts } from "./filters/listingsPagination.js";
 import { searchBarProfiles } from "./filters/searchProfile.js";
 import { formRegistrationValidation } from "./handlers/formValidation.js";
 
