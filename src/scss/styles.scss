@@ -1,0 +1,338 @@
+$primary: #0a7db2;
+$secondary: #000000;
+$danger: #e60000;
+$list-group-bg: rgb(145, 145, 145);
+$list-group-color: white;
+$gradient-primary: linear-gradient(to top left, #0a7db2, #0a7db2);
+$border-radius: 5px;
+
+@import "../../node_modules/bootstrap/scss/functions";
+@import "variables";
+@import "variables-dark";
+@import "../../node_modules/bootstrap/scss/maps";
+@import "../../node_modules/bootstrap/scss/mixins";
+@import "../../node_modules/bootstrap/scss/utilities";
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+// general styles
+
+// fonts
+
+.bungee-regular {
+  font-family: "Bungee", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.darker-grotesque {
+  font-family: "Darker Grotesque", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+p,
+button,
+nav,
+a {
+  font-size: 18px;
+}
+
+nav {
+  font-weight: 600;
+}
+
+a {
+  text-decoration: none;
+}
+
+// ICON ROTATION
+.rotateIcon {
+  transform: rotate(180deg); /* Or any other transformation */
+}
+
+// VIND'T logo
+.vindt-logo {
+  font-family: "Bungee", sans-serif;
+  color: white;
+  padding: 2px 4px 2px 4px;
+  border-radius: $border-radius;
+  font-size: 20px;
+  border: white 1px solid;
+  background-color: $primary;
+}
+
+.vindt-logo-dark {
+  font-family: "Bungee", sans-serif;
+  color: white;
+  background: black;
+  padding: 2px 4px 2px 4px;
+  border-radius: $border-radius;
+  font-size: 20px;
+  border: white 1px solid;
+}
+
+// colours
+:root {
+  --third-color: #3c3131;
+  --bg-color: rgb(145, 145, 145);
+
+  // fonts
+  --main-font: "Darker Grotesque", Arial, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Bungee", sans-serif;
+}
+// fonts
+body {
+  font-family: var(--main-font);
+}
+// custom colors
+.third-bg-color {
+  background: var(--third-color);
+}
+.third-color {
+  color: var(--third-color);
+}
+
+// body background image
+body {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+
+.highlight {
+  position: relative;
+}
+
+.highlight::after {
+  display: block;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  opacity: 0.7;
+  transform: scale(1.07, 1.05) skewX(-15deg);
+  background-image: $gradient-primary;
+}
+
+.bg-color {
+  background-color: #b50ddb;
+}
+// custom button styles
+.btn-custom {
+  padding-right: 20px;
+  padding-left: 20px;
+  margin: 0;
+  border-radius: $border-radius;
+}
+
+// custom card styles
+.card {
+  min-height: 313px;
+}
+// Hero container homepage
+
+.hero--container-image {
+  height: 300px;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.hero--container-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(50%); /* Darkens the image */
+}
+
+.hero--container-text-h1 {
+  font-size: 32px;
+}
+
+.card-width {
+  width: calc(100% / 4);
+}
+
+.card-img-top {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+// Carousel homepage
+
+// Listing page
+
+.avatar-profile-img {
+  height: 60px;
+  width: 60px;
+  object-fit: cover;
+}
+
+.listing-image-wrapper {
+  height: 500px;
+  background-color: #ebe8e8;
+}
+
+.listing-image {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  padding: 5px;
+}
+
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+  background-color: $primary;
+  border-radius: 25px;
+}
+// Profile page
+
+.profile-banner {
+  width: 100%;
+  height: 200px;
+  background-position: center;
+  background-size: fill;
+}
+
+.avatar-wrapper {
+  display: inline-block;
+  border: 2px solid green;
+  border-radius: 100%;
+  width: 200px;
+  height: 200px;
+  background-position: center;
+  background-size: cover;
+}
+
+.edit-profile {
+  margin-left: auto; /* Pushes the edit-profile div to the right */
+}
+
+// footer
+footer {
+  background: #000000;
+  color: white;
+}
+
+footer a {
+  color: white;
+}
+
+// card hover
+
+.card:hover {
+  box-shadow: 1px 1px 5px #8d8b8b;
+  transition: 0.3s ease;
+}
+
+// error message
+.error-message {
+  color: red;
+  font-weight: bold;
+}
+
+// nav
+
+.dropdown {
+  list-style: none;
+  display: inline-block;
+  min-width: 300px;
+  border: none;
+}
+
+.dropdown-toggle {
+  padding: 5px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin-bottom: -1px;
+  color: white;
+}
+
+.dropdown-menu {
+  margin: 0;
+  list-style: none;
+  white-space: nowrap;
+  padding: 10px;
+  background-color: $primary;
+}
+
+//nav
+.dropdown-item:hover {
+  color: black;
+}
+
+.nav-link {
+  color: #fff;
+  position: relative;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #000;
+}
+
+.navbar {
+  height: 75px;
+}
+
+.nav-item-listing {
+  color: #fff;
+  border: white 1px solid;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.nav-item-listing:hover {
+  color: black;
+  background-color: white;
+}
+
+.login-btn,
+.register-btn {
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  border: white 1px solid;
+  text-align: center;
+  width: 100%;
+  font-size: 18px;
+  box-shadow: 1px black solid;
+}
+
+// Form validation
+.login-error-message-username,
+.login-error-message-password,
+.login-error-message-registration-email,
+.login-error-message-registration-name,
+.error-message-listing-deadline,
+.error-message-listing-title,
+.error-message-listing-description {
+  color: red;
+  height: 25px;
+  padding: 5px;
+}
+
+.login-error-message-registration-password {
+  color: red;
+  height: 60px;
+  padding: 5px;
+}
+
+.input-error {
+  border: 2px solid red; /* Change the border color */
+}

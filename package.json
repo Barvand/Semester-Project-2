@@ -1,19 +1,47 @@
 {
   "name": "semester-project-2",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Semester Project 2",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Barvand/Semester-Project-2.git"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "sass src/scss:dist/css",
+    "start": "sass --watch src/scss:dist/css & live-server",
+    "format": "prettier -w src/**/*.js",
+    "lint": "eslint src/**/*.js",
+    "lint-fix": "eslint src/**/*.js --cache --fix",
+    "prepare": "husky install"
   },
   "author": "Bart van den Berg",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Barvand/Semester-Project-2/issues"
   },
-  "homepage": "https://github.com/Barvand/Semester-Project-2#readme"
+  "homepage": "https://github.com/Barvand/Semester-Project-2#readme",
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "live-server": "^1.2.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.9.0",
+    "eslint": "^9.9.0",
+    "globals": "^15.9.0",
+    "husky": "^9.1.4",
+    "lint-staged": "^15.2.9",
+    "prettier": "^3.3.3",
+    "sass": "^1.77.8"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.html": [
+      "prettier --write"
+    ],
+    "*.scss": [
+      "prettier --write"
+    ]
+  }
 }
