@@ -1,23 +1,8 @@
 import { setCreateBiddingFormListener } from "../handlers/createBids.js";
-
-export async function renderBidsHeader(parentElement) {
-  const header = document.createElement("h2"); // Creating a new header element
-  header.textContent = "Bids"; // Setting the text content of the header
-  header.classList.add(
-    "border",
-    "border-3",
-    "rounded-1",
-    "col-12",
-    "col-md-2",
-    "col-lg-2",
-    "text-center",
-    "mt-2",
-  );
-  parentElement.appendChild(header); // Appending the header to the parent element
-}
+import { h2Header } from "./headers.js";
 
 export async function createBiddingTable(listing, parentElement) {
-  renderBidsHeader(parentElement);
+  h2Header("Bids", parentElement);
 
   // Create the table and its components
   const table = document.createElement("table");
@@ -49,7 +34,6 @@ export async function createBiddingTable(listing, parentElement) {
   headerRow.appendChild(th1);
   headerRow.appendChild(th2);
   headerRow.appendChild(th3);
-  headerRow.appendChild(th4);
 
   // Append the header row to thead
   thead.appendChild(headerRow);
@@ -75,7 +59,7 @@ export async function createBiddingTable(listing, parentElement) {
     th.textContent = index + 1;
 
     const td1 = document.createElement("td");
-    td1.textContent = `${bidData.amount} Credits`;
+    td1.textContent = `$${bidData.amount}`;
 
     const td2 = document.createElement("td");
     const userName = document.createElement("a");
@@ -83,13 +67,9 @@ export async function createBiddingTable(listing, parentElement) {
     userName.href = `/profiles/profile/?name=${bidData.bidder.name}`;
     td2.appendChild(userName);
 
-    const td3 = document.createElement("td");
-    td3.textContent = bidData.active ? "Yes" : "No";
-
     row.appendChild(th);
     row.appendChild(td1);
     row.appendChild(td2);
-    row.appendChild(td3);
 
     tbody.appendChild(row);
   });

@@ -3,6 +3,7 @@ import { load } from "../storage/load.js";
 import { displayProducts } from "./productCards.js";
 import { renderEditModal } from "./editProfileModal.js";
 import { isUserLoggedIn } from "../handlers/isUserLoggedIn.js";
+import { h2Header } from "./headers.js";
 
 export async function renderProfile() {
   const container = document.querySelector(".profile-page");
@@ -169,10 +170,8 @@ async function renderBioUser(profile, parentElement) {
 async function displayWinnings(profile) {
   const winningsParent = document.querySelector(".profile-winnings-container");
   const profileWins = profile.data.wins;
-  const header = document.createElement("h2");
-  header.textContent = `Winnings`;
+  h2Header("Winnings", winningsParent);
 
-  winningsParent.appendChild(header);
   if (profileWins.length === 0) {
     const p = document.createElement("p");
     p.textContent = `This user has no winnings yet.`;
@@ -186,9 +185,7 @@ async function displayListings(profile) {
   const listingParent = document.querySelector(".profile-listing-container");
   const profileListing = profile.data.listings;
 
-  const header = document.createElement("h2");
-  header.textContent = `Listings`;
-  listingParent.appendChild(header);
+  h2Header("Listings", listingParent);
 
   if (profileListing.length === 0) {
     const paragraph = document.createElement("p");
