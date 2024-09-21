@@ -28,7 +28,6 @@ export async function renderEndingSoonHomepage() {
 
   // If there are no valid listings, return early
   if (filteredListings.length === 0) {
-    console.log("No valid listings to display.");
     return;
   }
 

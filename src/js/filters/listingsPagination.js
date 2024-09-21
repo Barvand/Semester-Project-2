@@ -23,8 +23,6 @@ export async function renderAllPosts() {
         return endsAtDate > now; // Keep only valid listings
       });
 
-      console.log(validListings);
-
       // Append valid listings to the container
       displayProducts(validListings, listingContainer);
 

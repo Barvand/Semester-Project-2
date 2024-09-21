@@ -7,8 +7,6 @@ export async function deleteListingFormListener() {
 
   const profile = load("profile");
 
-  console.log(profile.name);
-
   try {
     // Attempt to remove the post with the given ID
     await removeListing(id);

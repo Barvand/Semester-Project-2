@@ -13,8 +13,6 @@ export async function renderSingleListing(parentElement) {
   try {
     // Fetch the post data based on the ID
     const listing = await getListing(id);
-
-    console.log(listing);
     // Render the post with the fetched data
     createProductPage(listing, parentElement);
   } catch (error) {

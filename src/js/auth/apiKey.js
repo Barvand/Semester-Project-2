@@ -22,7 +22,6 @@ export async function createApiKey() {
     if (response.ok) {
       const apiKeyData = await response.json();
 
-      console.log(apiKeyData);
       return apiKeyData; // Optionally return the created API key data
     } else {
       const errorMessage = await response.text();
