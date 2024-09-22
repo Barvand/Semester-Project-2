@@ -25,13 +25,19 @@ export async function createProductPage(listing, parentElement) {
   imageElementDiv.classList.add(
     "listing-image-wrapper",
     "col-12",
-    "col-md-8",
+    "col-md-7",
     "rounded",
   );
   parentElement.appendChild(imageElementDiv);
 
   const textElementDiv = document.createElement("div");
-  textElementDiv.classList.add("col-12", "col-md-4", "p-2", "text-center");
+  textElementDiv.classList.add(
+    "col-12",
+    "col-md-5",
+    "p-0",
+    "text-center",
+    "mt-2",
+  );
   parentElement.appendChild(textElementDiv);
 
   const bidsProfileSection = document.querySelector(".bids");
