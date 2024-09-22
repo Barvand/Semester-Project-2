@@ -1,8 +1,17 @@
 import { setCreateBiddingFormListener } from "../handlers/createBids.js";
 import { h2Header } from "./headers.js";
+import { isUserLoggedIn } from "../handlers/isUserLoggedIn.js";
 
 export async function createBiddingTable(listing, parentElement) {
+  // Create the header for the bids section
   h2Header("Bids", parentElement);
+
+  // Check if the user is logged in
+  const loggedIn = isUserLoggedIn(parentElement); // Pass parentElement to display error
+
+  if (!loggedIn) {
+    return; // Exit the function since the user is not logged in
+  }
 
   // Create the table and its components
   const table = document.createElement("table");
@@ -25,10 +34,6 @@ export async function createBiddingTable(listing, parentElement) {
   const th3 = document.createElement("th");
   th3.scope = "col";
   th3.textContent = "User";
-
-  const th4 = document.createElement("th");
-  th4.scope = "col";
-  th4.textContent = "Active";
 
   // Append header cells to the header row
   headerRow.appendChild(th1);
@@ -80,6 +85,8 @@ export async function createBiddingTable(listing, parentElement) {
 
   // Finally, append the table to the parent element
   parentElement.appendChild(table);
+
+  createBidButton(parentElement);
 }
 
 export async function createBidButton(parentElement) {

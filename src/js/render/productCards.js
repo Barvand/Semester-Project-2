@@ -31,39 +31,79 @@ async function createCardDiv(product, parentElement) {
   cardDiv.className = "card border-1 rounded";
   parentElement.appendChild(cardDiv);
 
-  const hoursLeft = calculateHoursLeft(product.endsAt);
+  const timeLeft = calculateTimeLeft(product.endsAt);
 
-  createImageAndOverlay(cardDiv, product, hoursLeft);
+  createImageAndOverlay(cardDiv, product, timeLeft);
   cardBody(cardDiv, product);
 }
 
-async function createImageAndOverlay(parentElement, product, time) {
+async function createImageAndOverlay(parentElement, product, timeLeft) {
   const imageContainer = document.createElement("a");
   imageContainer.className = "bg-black position-relative rounded";
   imageContainer.href = `/listings/listing/?id=${product.id}`;
   parentElement.appendChild(imageContainer);
 
-  // Create the overlayText element outside the condition
+  // Create the overlayText element
   const overlayText = document.createElement("p");
   overlayText.className = "fw-bold p-2 position-absolute top-0 end-0 rounded";
+  imageContainer.appendChild(overlayText);
 
-  if (time < 0 && product._count && product._count.bids > 1) {
-    overlayText.classList.add("bg-success", "text-white");
-    overlayText.textContent = `Item sold`;
-  } else if (time > 0 && product._count && product._count.bids < 1) {
-    overlayText.classList.add("bg-primary", "text-white");
-    overlayText.textContent = `No bids yet`;
-  } else if (time > 100) {
-    // New condition for time more than 100 hours
-    overlayText.classList.add("bg-black", "text-white");
-    overlayText.textContent = `More than 100 hours left`;
-  } else if (time > 0) {
-    overlayText.classList.add("bg-black", "text-white");
-    overlayText.textContent = `Ends in ${time} hours`;
-  } else {
-    overlayText.classList.add("bg-danger", "text-white");
-    overlayText.textContent = `Offer is expired`;
+  function updateCountdown() {
+    const updatedTimeLeft = calculateTimeLeft(product.endsAt); // Recalculate time left
+
+    // Check if the time has expired
+    if (
+      updatedTimeLeft.days < 0 ||
+      (updatedTimeLeft.days === 0 &&
+        updatedTimeLeft.hours === 0 &&
+        updatedTimeLeft.minutes === 0 &&
+        updatedTimeLeft.seconds === 0)
+    ) {
+      // Time has expired
+      if (product._count && product._count.bids > 0) {
+        // Item sold
+        overlayText.classList.add("bg-success", "text-white");
+        overlayText.textContent = `Item sold`;
+      } else {
+        // Item expired without bids
+        overlayText.classList.add("bg-danger", "text-white");
+        overlayText.textContent = `Item expired`;
+      }
+    } else {
+      // Time has not expired
+      if (product._count && product._count.bids < 1) {
+        overlayText.classList.add("bg-primary", "text-white");
+        overlayText.textContent = `No bids yet`;
+      } else {
+        // Update the countdown text based on remaining time
+        overlayText.classList.add("bg-black", "text-white");
+
+        let countdownText = "";
+
+        if (updatedTimeLeft.days > 1) {
+          // More than 1 day left
+          countdownText = `${updatedTimeLeft.days}d`;
+        } else if (updatedTimeLeft.days === 1) {
+          // Exactly 1 day left, show hours and minutes
+          countdownText = `${updatedTimeLeft.hours}h ${updatedTimeLeft.minutes}m`;
+        } else if (updatedTimeLeft.hours > 0) {
+          // Less than 24 hours left, show hours and seconds
+          countdownText = `${updatedTimeLeft.hours}h ${updatedTimeLeft.minutes}m ${updatedTimeLeft.seconds}s`;
+        } else {
+          // Less than an hour left, show minutes and seconds
+          countdownText = `${updatedTimeLeft.minutes}m ${updatedTimeLeft.seconds}s`;
+        }
+
+        overlayText.textContent = `Ends in ${countdownText}`;
+      }
+    }
   }
+
+  // Call updateCountdown immediately to show the initial time
+  updateCountdown();
+
+  // Update the countdown every second
+  const interval = setInterval(updateCountdown, 1000);
 
   // Append the overlay text to the image container
   imageContainer.appendChild(overlayText);
@@ -139,13 +179,25 @@ async function createBidsCount(product, parentElement) {
   }
 }
 
-export function calculateHoursLeft(endsAt) {
+export function calculateTimeLeft(endsAt) {
   const endsAtDate = new Date(endsAt);
   const currentDate = new Date();
   const diffInMs = endsAtDate - currentDate;
-  const diffInHours = Math.floor(diffInMs / (1000 * 60 * 60)); // Convert milliseconds to hours
-  return diffInHours;
-}
 
-// a function that checks if the time has passed
-// then displays latest bid name as the winner on the product page.
+  if (diffInMs <= 0) {
+    return {
+      days: 0,
+      hours: 0,
+      minutes: 0,
+      seconds: 0,
+    };
+  }
+
+  const diffInSeconds = Math.floor(diffInMs / 1000); // Convert milliseconds to seconds
+  const days = Math.floor(diffInSeconds / (60 * 60 * 24));
+  const hours = Math.floor((diffInSeconds % (60 * 60 * 24)) / (60 * 60));
+  const minutes = Math.floor((diffInSeconds % (60 * 60)) / 60);
+  const seconds = Math.floor(diffInSeconds % 60);
+
+  return { days, hours, minutes, seconds };
+}

@@ -12,6 +12,11 @@ export async function renderProfile() {
   const params = new URLSearchParams(queryString);
   const name = params.get("name");
 
+  const loggedIn = isUserLoggedIn(container);
+  if (!loggedIn) {
+    return; // Exit the function
+  }
+
   try {
     // Fetch the post data based on the ID
     const profile = await getProfile(name);

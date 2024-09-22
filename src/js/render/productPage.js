@@ -1,15 +1,14 @@
 import { getListing } from "../auth/postData/read.js";
 import { load } from "../storage/load.js";
-
-import { calculateHoursLeft } from "./productCards.js";
+import { calculateTimeLeft } from "./productCards.js";
 import { createBiddingTable } from "./bidForm.js";
-import { createBidButton } from "./bidForm.js";
 
 export async function renderSingleListing(parentElement) {
   // Get the post ID from the query string
   const queryString = document.location.search;
   const params = new URLSearchParams(queryString);
   const id = params.get("id"); // Extract the ID from the query string
+
   try {
     // Fetch the post data based on the ID
     const listing = await getListing(id);
@@ -42,17 +41,17 @@ export async function createProductPage(listing, parentElement) {
 
   const bidsProfileSection = document.querySelector(".bids");
 
-  const hoursLeft = calculateHoursLeft(listing.data.endsAt);
+  const hoursLeft = calculateTimeLeft(listing.data.endsAt);
 
   // createProductImage(listing, imageElementDiv);
   productImageCarousel(listing, imageElementDiv);
   createProductSeller(listing, textElementDiv);
   createProductTitle(listing, textElementDiv);
   createProductDescription(listing, textElementDiv);
+
   createDisplayBids(listing, textElementDiv, hoursLeft);
   timerAndButton(listing, textElementDiv, hoursLeft);
   createBiddingTable(listing, bidsProfileSection);
-  createBidButton(bidsProfileSection);
 
   // only displays the delete button if currentUser name matches the seller name.
   const currentUser = load("profile");
@@ -104,7 +103,6 @@ async function createDisplayBids(listing, parentElement, hoursLeft) {
 async function timerAndButton(listing, parentElement, hoursLeft) {
   const productEnds = document.createElement("p");
   productEnds.classList.add("p-1", "rounded");
-  productEnds.textContent = `Offer expires in: ${hoursLeft} hours`;
   parentElement.appendChild(productEnds);
 
   const bidBtn = document.createElement("button");
@@ -125,25 +123,67 @@ async function timerAndButton(listing, parentElement, hoursLeft) {
     sectionBids.scrollIntoView({ behavior: "smooth" });
   });
 
-  if (hoursLeft < 0 && listing.data._count && listing.data._count.bids > 1) {
-    productEnds.classList.add("bg-success", "text-white", "fw-bold");
-    productEnds.textContent = `Item has been sold`;
-    bidBtn.style.display = "none";
-  } else if (
-    hoursLeft > 0 &&
-    listing.data._count &&
-    listing.data._count.bids < 1
-  ) {
-    productEnds.classList.add("bg-warning");
-    productEnds.textContent = `Be the first to bid!`;
-  } else if (hoursLeft > 0) {
-    productEnds.classList.add("bg-black", "text-white", "text-center");
-    productEnds.textContent = `Ends in ${hoursLeft} hours`;
-  } else {
-    productEnds.classList.add("bg-danger", "text-white", "text-center");
-    productEnds.textContent = `Offer is expired`;
-    bidBtn.style.display = "none";
+  // Function to update the countdown
+  function updateCountdown() {
+    const updatedTimeLeft = calculateTimeLeft(listing.data.endsAt);
+
+    // Check if updatedTimeLeft is valid
+    if (!updatedTimeLeft || typeof updatedTimeLeft.days !== "number") {
+      productEnds.classList.add("bg-danger", "text-white", "text-center");
+      productEnds.textContent = `Offer is expired`;
+      bidBtn.style.display = "none";
+      clearInterval(countdownInterval); // Stop the countdown when expired
+      return; // Exit the function
+    }
+
+    // Check if the time has expired
+    if (
+      updatedTimeLeft.days < 0 ||
+      (updatedTimeLeft.days === 0 &&
+        updatedTimeLeft.hours === 0 &&
+        updatedTimeLeft.minutes === 0 &&
+        updatedTimeLeft.seconds === 0)
+    ) {
+      // Time has expired
+      if (listing.data._count && listing.data._count.bids > 0) {
+        productEnds.classList.add("bg-success", "text-white", "fw-bold");
+        productEnds.textContent = `Item has been sold`;
+        bidBtn.style.display = "none";
+      } else {
+        productEnds.classList.add("bg-danger", "text-white", "text-center");
+        productEnds.textContent = `Offer is expired`;
+        bidBtn.style.display = "none";
+      }
+      clearInterval(countdownInterval); // Stop the countdown when expired
+    } else {
+      // Update the countdown text
+      productEnds.classList.add("bg-black", "text-white", "text-center");
+
+      let countdownText = "";
+
+      if (updatedTimeLeft.days > 1) {
+        // More than 1 day left
+        countdownText = `${updatedTimeLeft.days}d`;
+      } else if (updatedTimeLeft.days === 1) {
+        // Exactly 1 day left, show hours and minutes
+        countdownText = `${updatedTimeLeft.hours}h ${updatedTimeLeft.minutes}m`;
+      } else if (updatedTimeLeft.hours > 0) {
+        // Less than 24 hours, show hours and minutes
+        countdownText = `${updatedTimeLeft.hours}h ${updatedTimeLeft.minutes}m`;
+      } else {
+        // Less than an hour left, show minutes and seconds
+        countdownText = `${updatedTimeLeft.minutes}m ${updatedTimeLeft.seconds}s`;
+      }
+
+      productEnds.textContent = `Ends in ${countdownText}`;
+    }
   }
+
+  // Initial countdown update
+  updateCountdown();
+
+  // Update the countdown every second
+  const countdownInterval = setInterval(updateCountdown, 1000);
 }
 
 export async function createProductSeller(listing, parentElement) {
