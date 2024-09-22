@@ -351,9 +351,9 @@
             <div class="modal-body">
               <form id="createListingForm">
                 <div class="mb-3">
-                  <label for="title" class="form-label"
-                    >Product title <span class="text-danger"> * </span></label
-                  >
+                  <label for="title" class="form-label">
+                    Product title <span class="text-danger"> * </span>
+                  </label>
                   <input
                     type="text"
                     class="form-control"
@@ -362,13 +362,13 @@
                     placeholder="Enter a title for your product(s)"
                     required
                   />
+                  <div class="error-message-listing-title"></div>
                 </div>
 
                 <div class="mb-3">
-                  <label for="description" class="form-label"
-                    >Product description
-                    <span class="text-danger"> * </span></label
-                  >
+                  <label for="description" class="form-label">
+                    Product description <span class="text-danger"> * </span>
+                  </label>
                   <input
                     type="text"
                     class="form-control"
@@ -377,6 +377,7 @@
                     placeholder="Enter your description"
                     required
                   />
+                  <div class="error-message-listing-description"></div>
                 </div>
 
                 <div class="mb-3">
@@ -392,9 +393,7 @@
 
                 <div class="mb-3">
                   <label for="deadline-date" class="form-label"
-                    >Add deadline date<span class="text-danger">
-                      *
-                    </span></label
+                    >Add deadline date</label
                   >
                   <input
                     type="date"
@@ -403,10 +402,11 @@
                     name="deadline-date"
                     required
                   />
+                  <div class="error-message-listing-deadline"></div>
                 </div>
 
                 <div class="mb-3">
-                  <label for="media-url">Media URL</label>
+                  <label for="media-url" class="form-label">Media URL</label>
                   <input
                     type="url"
                     class="form-control"
@@ -418,7 +418,9 @@
                 </div>
 
                 <div class="mb-3">
-                  <label for="media-alt">Media ALT Text</label>
+                  <label for="media-alt" class="form-label"
+                    >Media ALT Text</label
+                  >
                   <input
                     type="text"
                     class="form-control"
@@ -429,7 +431,21 @@
                   />
                 </div>
 
-                <div class="error-message-listing" class="d-none"></div>
+                <div id="media-container" class="mb-3">
+                  <div class="media-item mb-2">
+                    <button
+                      type="button"
+                      id="add-media-btn"
+                      class="btn btn-primary text-white fw-bold"
+                    >
+                      <i class="fa fa-plus" aria-hidden="true"></i>
+                      Add an image
+                    </button>
+                  </div>
+                </div>
+
+                <div class="error-message-listing"></div>
+
                 <div class="d-grid">
                   <button
                     type="submit"
