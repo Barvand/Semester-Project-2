@@ -13,7 +13,6 @@ export async function setCreateBiddingFormListener() {
 
   if (!form) {
     console.error("Bid form not found.");
-    return;
   }
 
   form.addEventListener("submit", async (event) => {

@@ -5,7 +5,7 @@ import { h1Header } from "../render/headers.js";
 export async function renderAllPosts() {
   try {
     let currentPage = 1; // Track the current page
-    const limit = 50; // Number of items to load per request
+    const limit = 100; // Number of items to load per request
     const listingContainer = document.querySelector(".listings-grid");
 
     listingContainer.innerHTML = ""; // Clear existing listings

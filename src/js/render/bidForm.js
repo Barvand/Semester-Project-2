@@ -10,7 +10,7 @@ export async function createBiddingTable(listing, parentElement) {
   const loggedIn = isUserLoggedIn(parentElement); // Pass parentElement to display error
 
   if (!loggedIn) {
-    return; // Exit the function since the user is not logged in
+    // Exit the function since the user is not logged in
   }
 
   // Create the table and its components
@@ -49,7 +49,6 @@ export async function createBiddingTable(listing, parentElement) {
     noBidsMessage.classList.add("text-muted");
     noBidsMessage.textContent = "No users have placed a bid yet.";
     parentElement.appendChild(noBidsMessage);
-    return; // Exit the function since there's nothing else to render
   }
 
   // Sort bids by amount in descending order (highest first)
