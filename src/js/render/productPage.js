@@ -105,24 +105,6 @@ async function timerAndButton(listing, parentElement, hoursLeft) {
   productEnds.classList.add("p-1", "rounded");
   parentElement.appendChild(productEnds);
 
-  const bidBtn = document.createElement("button");
-  bidBtn.classList.add(
-    "btn",
-    "btn-primary",
-    "text-white",
-    "btn-custom",
-    "fw-bold",
-    "w-100",
-  );
-  bidBtn.textContent = `Place a bid`;
-  parentElement.appendChild(bidBtn);
-
-  // Ensure the `.bids` element exists and is appended
-  bidBtn.addEventListener("click", () => {
-    const sectionBids = document.querySelector(".bids");
-    sectionBids.scrollIntoView({ behavior: "smooth" });
-  });
-
   // Function to update the countdown
   function updateCountdown() {
     const updatedTimeLeft = calculateTimeLeft(listing.data.endsAt);
@@ -131,7 +113,6 @@ async function timerAndButton(listing, parentElement, hoursLeft) {
     if (!updatedTimeLeft || typeof updatedTimeLeft.days !== "number") {
       productEnds.classList.add("bg-danger", "text-white", "text-center");
       productEnds.textContent = `Offer is expired`;
-      bidBtn.style.display = "none";
       clearInterval(countdownInterval); // Stop the countdown when expired
       return; // Exit the function
     }
@@ -148,11 +129,9 @@ async function timerAndButton(listing, parentElement, hoursLeft) {
       if (listing.data._count && listing.data._count.bids > 0) {
         productEnds.classList.add("bg-success", "text-white", "fw-bold");
         productEnds.textContent = `Item has been sold`;
-        bidBtn.style.display = "none";
       } else {
         productEnds.classList.add("bg-danger", "text-white", "text-center");
         productEnds.textContent = `Offer is expired`;
-        bidBtn.style.display = "none";
       }
       clearInterval(countdownInterval); // Stop the countdown when expired
     } else {
