@@ -10,7 +10,7 @@ export async function createBiddingTable(listing, parentElement) {
   const loggedIn = isUserLoggedIn(parentElement); // Pass parentElement to display error
 
   if (!loggedIn) {
-    // Exit the function since the user is not logged in
+    return;
   }
 
   // Create the table and its components
